@@ -1,1 +1,1 @@
-# Spring Boot App for Yandex Weather
+# Spring Boot App for OpenWeatherMap 
