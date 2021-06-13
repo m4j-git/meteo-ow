@@ -1,0 +1,44 @@
+{
+  "properties": [
+    {
+      "name": "meteo",
+      "type": "java.lang.Boolean",
+      "description": "A description for 'meteo'."
+    },
+    {
+      "name": "meteo.test.provider.enabled",
+      "type": "java.lang.String",
+      "description": "Description for meteo.test.provider.enabled."
+    },
+    {
+      "name": "meteo.ow.enabled",
+      "type": "java.lang.String",
+      "description": "Description for meteo.ow.enabled."
+    },
+    {
+      "name": "meteo.test.data.path",
+      "type": "java.lang.String",
+      "description": "Description for meteo.test.data.path."
+    },
+    {
+      "name": "meteo.scheduling.enabled",
+      "type": "java.lang.String",
+      "description": "Description for meteo.scheduling.enabled."
+    },
+    {
+      "name": "maven.branch-name",
+      "type": "java.lang.String",
+      "description": "Description for maven.branch-name."
+    },
+    {
+      "name": "maven.commit-hash",
+      "type": "java.lang.String",
+      "description": "Description for maven.commit-hash."
+    },
+    {
+      "name": "maven.application.version",
+      "type": "java.lang.String",
+      "description": "Description for maven.application.version."
+    }
+  ]
+}

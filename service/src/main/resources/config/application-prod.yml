@@ -1,0 +1,38 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  boot:
+    ##################
+    #   Admin client Settings
+    ##################
+    admin:
+      client:
+        url: http://meteohost:8080/meteo-admin
+        username: ${METEO_USER}
+        password: ${METEO_PASSWD}
+        instance:
+          metadata:
+            user:
+              name: ${METEO_USER}
+              password: ${METEO_PASSWD}
+          service-base-url: http://meteohost:8080
+
+##################
+#   Management Settings
+##################
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+

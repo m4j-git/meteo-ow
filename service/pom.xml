@@ -1,0 +1,180 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>meteo-ow-service</artifactId>
+    <packaging>war</packaging>
+    <name>meteo-ow-service</name>
+
+    <parent>
+        <groupId>com.woodapiary.meteo</groupId>
+        <artifactId>meteo-ow</artifactId>
+        <version>21.2.6-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.woodapiary.meteo</groupId>
+            <artifactId>meteo-ow-api</artifactId>
+            <version>${meteo.project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-csv</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>meteo-ow</finalName>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <configuration>
+                    <changeLogFile>src/main/resources/db/db.changelog-master.xml</changeLogFile>
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                    <url>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/meteo-ow</url>
+                    <username>${env.METEO_USER}</username>
+                    <password>${env.METEO_PASSWD}</password>
+                    <outputChangeLogFile>src/main/resources/db/changelog/changelog-gen-${maven.build.timestamp}.yaml
+                    </outputChangeLogFile>
+                    <referenceDriver>com.mysql.cj.jdbc.Driver</referenceDriver>
+                    <referenceUrl>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/meteo-ow-dev</referenceUrl>
+                    <referenceUsername>${env.METEO_USER}</referenceUsername>
+                    <referencePassword>${env.METEO_PASSWD}</referencePassword>
+                    <diffChangeLogFile>src/main/resources/db/changelog/changelog-diff-${maven.build.timestamp}.yaml
+                    </diffChangeLogFile>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+        </profile>
+
+        <profile>
+            <id>stage</id>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <dependencies>
+                <dependency>
+                    <groupId>de.codecentric</groupId>
+                    <artifactId>spring-boot-admin-starter-client</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-actuator</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-swagger-ui</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>mysql</id>
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>h2</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+</project>

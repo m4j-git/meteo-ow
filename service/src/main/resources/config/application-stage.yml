@@ -1,0 +1,37 @@
+##################
+#   Spring Settings
+##################
+spring:
+  jpa:
+    generate-ddl: false
+    properties:
+      hibernate:
+        type: info
+    show-sql: false
+  thymeleaf:
+    cache: true
+
+##################
+#   Server Settings
+##################
+server:
+  port: 8081
+
+##################
+#   Logging Settings
+##################
+logging:
+  level:
+    ROOT: INFO
+    org:
+      hibernate: INFO
+      springframework: INFO
+    com:
+      woodapiary: DEBUG
+
+##################
+#   Meteo Settings
+##################
+meteo:
+  scheduling:
+    enabled: false

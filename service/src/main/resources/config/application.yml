@@ -1,0 +1,64 @@
+##################
+#   Spring Settings
+##################
+spring:
+  application:
+    name: meteo-ow
+  profiles:
+    active:
+      - '@spring.profiles.active@'
+      - '@spring.profiles.db@'
+  jpa:
+    generate-ddl: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        type: info
+        use_sql_comments: true
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+      use-new-id-generator-mappings: false
+  thymeleaf:
+    cache: true
+  security:
+    user:
+      name: ${METEO_USER}
+      password: ${METEO_PASSWD}
+
+##################
+#   Server Settings
+##################
+server:
+  port: 8080
+  servlet:
+    context-path: /meteo-ow
+
+##################
+#   Logging Settings
+##################
+logging:
+  level:
+    ROOT: INFO
+    org:
+      hibernate: INFO
+      springframework:
+        security: INFO
+    com:
+      woodapiary: INFO
+
+##################
+#   Meteo Settings
+##################
+meteo:
+  scheduling:
+    enabled: true
+  client: rest
+
+##################
+#   Maven Settings
+##################
+maven:
+  branch-name: '@scmBranch@'
+  build-number: '@buildNumber@'

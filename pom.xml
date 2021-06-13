@@ -1,0 +1,467 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.woodapiary.meteo</groupId>
+    <artifactId>meteo-ow</artifactId>
+    <version>21.2.6-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>meteo-ow</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.0</version>
+        <relativePath/>
+    </parent>
+
+    <description>Spring Boot App for OpenWeatherMap</description>
+    <url>https://woodapiary.com/meteo-ow</url>
+    <inceptionYear>2021</inceptionYear>
+
+    <organization>
+        <name>woodapiary.com</name>
+        <url>https://woodapiary.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Copyright (c) 2002-2021 meteo@woodapiary.com</name>
+            <url>https://woodapiary.com</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>woodapiary</name>
+            <email>meteo@woodapiary.com</email>
+            <organization>woodapiary.com</organization>
+            <organizationUrl>https://woodapiary.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>service</module>
+        <module>api</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:https://github.com/woodapiary/meteo-ow</connection>
+        <developerConnection>scm:git:https://github.com/woodapiary/meteo-ow</developerConnection>
+        <url>https://github.com/woodapiary/meteo-ow</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+        <maven.javadoc.skip>false</maven.javadoc.skip>
+        <skip.tests>true</skip.tests>
+        <dependency.locations.enabled>false</dependency.locations.enabled>
+        <meteo.project.version>${project.version}</meteo.project.version>
+
+        <!-- Dependency versions -->
+        <spring-boot.version>2.5.0</spring-boot.version>
+        <jackson.version>2.9.6</jackson.version>
+        <org.mapstruct.version>1.4.0.Final</org.mapstruct.version>
+        <io.springfox.version>2.9.2</io.springfox.version>
+        <swagger.version>1.5.20</swagger.version>
+        <hibernate.validator.version>6.1.6.Final</hibernate.validator.version>
+        <modelmapper.version>2.3.9</modelmapper.version>
+        <springboot.admin.starter.version>2.4.1</springboot.admin.starter.version>
+        <org.apache.httpcomponents.client5.version>5.0.3</org.apache.httpcomponents.client5.version>
+        <javax.mail.version>1.4.7</javax.mail.version>
+        <commons-io.version>2.8.0</commons-io.version>
+        <lombok.version>1.18.20</lombok.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>repository.spring.release</id>
+            <name>Spring GA Repository</name>
+            <url>http://repo.spring.io/release</url>
+        </repository>
+        <repository>
+            <id>spring-m</id>
+            <name>spring</name>
+            <url>https://repo.spring.io/milestone/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${org.mapstruct.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${io.springfox.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${io.springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${springboot.admin.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${springboot.admin.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${org.apache.httpcomponents.client5.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <compilerArgs>
+                            <arg>--add-modules</arg>
+                            <arg>java.annotation</arg>
+                        </compilerArgs>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${org.mapstruct.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-configuration-processor</artifactId>
+                                <version>${spring-boot.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>build-info</id>
+                            <goals>
+                                <goal>build-info</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <revisionOnScmFailure>true</revisionOnScmFailure>
+                    <format>{0,number}</format>
+                    <items>
+                        <item>buildNumber</item>
+                    </items>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                        </manifestEntries>
+                    </archive>
+                    <archiveClasses>false</archiveClasses>
+                    <outputDirectory>${env.METEO_HOME}/deploy/output/</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <!--version>2.22.2</version-->
+                <configuration>
+                    <!--skipTests>${skip.tests}</skipTests-->
+                    <testFailureIgnore>${maven.test.failure.ignore}</testFailureIgnore>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.0.rc2</version>
+                <configuration>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>${env.METEO_HOME}/LICENSE.md</header>
+                            <includes>
+                                <include>**/*.java</include>
+                                <!--include>**/*.xml</include -->
+                            </includes>
+                            <excludes>
+                                <exclude>info/**/*.*</exclude>
+                            </excludes>
+                            <useDefaultExcludes>true</useDefaultExcludes>
+                        </licenseSet>
+                    </licenseSets>
+                    <skipExistingHeaders>false</skipExistingHeaders>
+                    <strictCheck>true</strictCheck>
+                    <mapping>
+                        <java>SLASHSTAR_STYLE</java>
+                    </mapping>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install-format</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>PACKAGE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.0</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId><!--version>3.0.0-M3</version-->
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.6.1</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+                <skip.tests>false</skip.tests>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>stage</id>
+            <properties>
+                <spring.profiles.active>stage</spring.profiles.active>
+                <skip.tests>false</skip.tests>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+                <skip.tests>true</skip.tests>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>mysql</id>
+            <properties>
+                <spring.profiles.db>mysql</spring.profiles.db>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>h2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.db>h2</spring.profiles.db>
+            </properties>
+        </profile>
+    </profiles>
+
+
+</project>

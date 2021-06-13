@@ -1,0 +1,8 @@
+/target/
+buildNumber.properties
+/setup/site
+/setup/war
+.apt_generated
+.settings
+*.log
+.attach_pid*

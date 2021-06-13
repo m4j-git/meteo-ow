@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      # schema
+      file: db/changelog/changelog-diff-2021-06-08T21:05:02Z.yaml
