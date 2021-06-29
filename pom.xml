@@ -202,10 +202,10 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <compilerArgs>
+                        <!--compilerArgs>
                             <arg>--add-modules</arg>
                             <arg>java.annotation</arg>
-                        </compilerArgs>
+                        </compilerArgs-->
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.mapstruct</groupId>
