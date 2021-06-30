@@ -57,7 +57,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
 
-        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+        <maven.test.failure.ignore>false</maven.test.failure.ignore>
         <maven.javadoc.skip>false</maven.javadoc.skip>
         <skip.tests>true</skip.tests>
         <dependency.locations.enabled>false</dependency.locations.enabled>
@@ -202,10 +202,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <!--compilerArgs>
-                            <arg>--add-modules</arg>
-                            <arg>java.annotation</arg>
-                        </compilerArgs-->
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.mapstruct</groupId>
@@ -276,7 +272,6 @@
                         </manifestEntries>
                     </archive>
                     <archiveClasses>false</archiveClasses>
-                    <outputDirectory>${env.METEO_HOME}/deploy/output/</outputDirectory>
                 </configuration>
             </plugin>
 
