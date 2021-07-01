@@ -313,7 +313,7 @@
                 <configuration>
                     <licenseSets>
                         <licenseSet>
-                            <header>${env.METEO_HOME}/LICENSE.md</header>
+                            <header>LICENSE.md</header>
                             <includes>
                                 <include>**/*.java</include>
                                 <!--include>**/*.xml</include -->
