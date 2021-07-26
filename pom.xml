@@ -67,9 +67,9 @@
         <spring-boot.version>2.5.3</spring-boot.version>
         <jackson.version>2.9.6</jackson.version>
         <org.mapstruct.version>1.4.0.Final</org.mapstruct.version>
-        <io.springfox.version>2.9.2</io.springfox.version>
+        <io.springfox.version>3.0.0</io.springfox.version>
         <swagger.version>1.5.20</swagger.version>
-        <hibernate.validator.version>6.1.6.Final</hibernate.validator.version>
+        <hibernate.validator.version>7.0.1.Final</hibernate.validator.version>
         <modelmapper.version>2.3.9</modelmapper.version>
         <springboot.admin.starter.version>2.4.1</springboot.admin.starter.version>
         <org.apache.httpcomponents.client5.version>5.0.3</org.apache.httpcomponents.client5.version>
