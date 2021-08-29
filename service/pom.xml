@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.woodapiary.meteo</groupId>
         <artifactId>meteo-ow</artifactId>
-        <version>21.3.2-SNAPSHOT</version>
+        <version>21.3.3-SNAPSHOT</version>
     </parent>
 
     <dependencies>
