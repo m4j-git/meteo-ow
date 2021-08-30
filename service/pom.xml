@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>meteo-ow-service</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>meteo-ow-service</name>
 
     <parent>
@@ -107,6 +107,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.5.2</version>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
             </plugin>
 
             <plugin>
