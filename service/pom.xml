@@ -8,7 +8,7 @@
     <name>meteo-ow-service</name>
 
     <parent>
-        <groupId>com.woodapiary.meteo</groupId>
+        <groupId>ru.m4j.meteo</groupId>
         <artifactId>meteo-ow</artifactId>
         <version>21.3.3-SNAPSHOT</version>
     </parent>
@@ -16,7 +16,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.woodapiary.meteo</groupId>
+            <groupId>ru.m4j.meteo</groupId>
             <artifactId>meteo-ow-api</artifactId>
             <version>${meteo.project.version}</version>
         </dependency>

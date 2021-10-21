@@ -1,1 +1,1 @@
-Copyright (c) 2002-2021 meteo@woodapiary.com
+Copyright (c) 2002-2021 meteo@m4j.ru

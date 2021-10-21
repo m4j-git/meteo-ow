@@ -31,7 +31,7 @@
             </encoder>
         </appender>
 
-        <logger name="com.woodapiary.meteo" additivity="false">
+        <logger name="ru.m4j.meteo" additivity="false">
             <appender-ref ref="meteo-ow-log"/>
             <appender-ref ref="stdout"/>
         </logger>

@@ -8,14 +8,14 @@
     <name>meteo-ow</name>
 
     <parent>
-        <groupId>com.woodapiary.meteo</groupId>
+        <groupId>ru.m4j.meteo</groupId>
         <artifactId>meteo-bom</artifactId>
         <version>21.3.4-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
     <description>Spring Boot App for OpenWeatherMap</description>
-    <url>https://woodapiary.com/meteo-ow</url>
+    <url>https://m4j.ru/meteo-ow</url>
     <inceptionYear>2021</inceptionYear>
 
     <modules>
@@ -24,8 +24,8 @@
     </modules>
 
     <scm>
-        <connection>scm:git:https://github.com/woodapiary/meteo-ow</connection>
-        <url>https://github.com/woodapiary/meteo-ow</url>
+        <connection>scm:git:https://github.com/m4j-git/meteo-ow</connection>
+        <url>https://github.com/m4j-git/meteo-ow</url>
     </scm>
 
     <build>

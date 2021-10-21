@@ -32,7 +32,7 @@ logging:
       hibernate: INFO
       springframework: INFO
     com:
-      woodapiary: INFO
+      m4j: INFO
 
 ##################
 #   Meteo Settings

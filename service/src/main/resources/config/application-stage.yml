@@ -27,7 +27,7 @@ logging:
       hibernate: INFO
       springframework: INFO
     com:
-      woodapiary: DEBUG
+      m4j: DEBUG
 
 ##################
 #   Meteo Settings
