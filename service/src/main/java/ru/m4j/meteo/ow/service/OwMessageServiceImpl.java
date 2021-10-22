@@ -3,14 +3,14 @@
  */
 package ru.m4j.meteo.ow.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import ru.m4j.meteo.ow.domain.OwFact;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.mapper.OwMessageDtoModelMapper;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.Instant;

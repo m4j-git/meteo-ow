@@ -4,13 +4,13 @@
 package ru.m4j.meteo.ow.task;
 
 
-import ru.m4j.meteo.ow.service.OwDirectoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
+import ru.m4j.meteo.ow.service.OwDirectoryService;
 
 @Component
 @ConditionalOnProperty(name = "meteo.scheduling.enabled", havingValue = "true")

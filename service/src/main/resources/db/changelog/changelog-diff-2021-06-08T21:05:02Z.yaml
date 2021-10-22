@@ -1,649 +1,649 @@
 databaseChangeLog:
-- changeSet:
-    id: 1623186307138-1
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: alert_id
-            type: BIGINT
-        - column:
-            name: description
-            type: VARCHAR(255)
-        - column:
-            constraints:
-              nullable: false
-            name: end
-            type: datetime
-        - column:
-            constraints:
-              nullable: false
-            name: event
-            type: VARCHAR(255)
-        - column:
-            name: sender_name
-            type: VARCHAR(255)
-        - column:
-            constraints:
-              nullable: false
-            name: start
-            type: datetime
-        - column:
-            constraints:
-              nullable: false
-            name: message_id
-            type: BIGINT
-        tableName: ow_alert
-- changeSet:
-    id: 1623186307138-2
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: daily_id
-            type: BIGINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: clouds
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: dew_point
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-            name: dt
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: feels_like_day
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: feels_like_eve
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: feels_like_morn
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: feels_like_night
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: humidity
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: pop
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: pressure
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: rain1h
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: snow1h
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: sunrise
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: sunset
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp_day
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp_eve
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp_max
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp_min
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp_morn
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp_night
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: uvi
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: visibility
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_deg
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_gust
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_speed
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-            name: message_id
-            type: BIGINT
-        tableName: ow_daily
-- changeSet:
-    id: 1623186307138-3
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: fact_id
-            type: BIGINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: clouds
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: dew_point
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-            name: dt
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: feels_like
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: humidity
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: pressure
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: rain1h
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: snow1h
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: sunrise
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: sunset
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: uvi
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: visibility
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_deg
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_gust
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_speed
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-              unique: true
-            name: message_id
-            type: BIGINT
-        tableName: ow_fact
-- changeSet:
-    id: 1623186307138-4
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: hourly_id
-            type: BIGINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: clouds
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: dew_point
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-            name: dt
-            type: datetime
-        - column:
-            defaultValueComputed: 'NULL'
-            name: feels_like
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: humidity
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: pop
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: pressure
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: rain1h
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: snow1h
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: temp
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: visibility
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_deg
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_gust
-            type: SMALLINT
-        - column:
-            defaultValueComputed: 'NULL'
-            name: wind_speed
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-            name: message_id
-            type: BIGINT
-        tableName: ow_hourly
-- changeSet:
-    id: 1623186307138-5
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: message_id
-            type: BIGINT
-        - column:
-            constraints:
-              nullable: false
-            defaultValueComputed: current_timestamp()
-            name: created_on
-            type: timestamp
-        - column:
-            constraints:
-              nullable: false
-            name: geoname_id
-            type: INT
-        - column:
-            constraints:
-              nullable: false
-              unique: true
-            name: message_uuid
-            type: BINARY(16)
-        tableName: ow_message
-- changeSet:
-    id: 1623186307138-6
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: id
-            type: SMALLINT
-        - column:
-            constraints:
-              nullable: false
-            name: description
-            type: VARCHAR(255)
-        - column:
-            constraints:
-              nullable: false
-            name: icon
-            type: VARCHAR(255)
-        - column:
-            constraints:
-              nullable: false
-            name: main
-            type: VARCHAR(255)
-        tableName: ow_weather
-- changeSet:
-    id: 1623186307138-7
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: daily_id
-            type: BIGINT
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: weather_id
-            type: SMALLINT
-        tableName: ow_weather_daily
-- changeSet:
-    id: 1623186307138-8
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: fact_id
-            type: BIGINT
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: weather_id
-            type: SMALLINT
-        tableName: ow_weather_fact
-- changeSet:
-    id: 1623186307138-9
-    author: alex (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: hourly_id
-            type: BIGINT
-        - column:
-            constraints:
-              nullable: false
-              primaryKey: true
-            name: weather_id
-            type: SMALLINT
-        tableName: ow_weather_hourly
-- changeSet:
-    id: 1623186307138-10
-    author: alex (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: weather_id
-        indexName: FK3hxf9im4g3lhu0fv2ly2mbgbu
-        tableName: ow_weather_fact
-- changeSet:
-    id: 1623186307138-11
-    author: alex (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: weather_id
-        indexName: FK6ffdf97c37q87g48y7r0ea2pn
-        tableName: ow_weather_hourly
-- changeSet:
-    id: 1623186307138-12
-    author: alex (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: message_id
-        indexName: FK7wu4r7sbot1tjqffkwa1lmcye
-        tableName: ow_daily
-- changeSet:
-    id: 1623186307138-13
-    author: alex (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: message_id
-        indexName: FK9rhk6p9fg5dbg6xers3gpev39
-        tableName: ow_alert
-- changeSet:
-    id: 1623186307138-14
-    author: alex (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: message_id
-        indexName: FKl06ynmht84lcaq5caqabpujpl
-        tableName: ow_hourly
-- changeSet:
-    id: 1623186307138-15
-    author: alex (generated)
-    changes:
-    - createIndex:
-        columns:
-        - column:
-            name: weather_id
-        indexName: FKpbrn0x3r53x21sogrkad00moi
-        tableName: ow_weather_daily
-- changeSet:
-    id: 1623186307138-16
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: daily_id
-        baseTableName: ow_weather_daily
-        constraintName: FK3gkffhgesgo6ioc23yxfxvfst
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: daily_id
-        referencedTableName: ow_daily
-        validate: true
-- changeSet:
-    id: 1623186307138-17
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: weather_id
-        baseTableName: ow_weather_fact
-        constraintName: FK3hxf9im4g3lhu0fv2ly2mbgbu
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: id
-        referencedTableName: ow_weather
-        validate: true
-- changeSet:
-    id: 1623186307138-18
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: hourly_id
-        baseTableName: ow_weather_hourly
-        constraintName: FK5uysf1rfhulbq394suqd05kon
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: hourly_id
-        referencedTableName: ow_hourly
-        validate: true
-- changeSet:
-    id: 1623186307138-19
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: weather_id
-        baseTableName: ow_weather_hourly
-        constraintName: FK6ffdf97c37q87g48y7r0ea2pn
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: id
-        referencedTableName: ow_weather
-        validate: true
-- changeSet:
-    id: 1623186307138-20
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: message_id
-        baseTableName: ow_daily
-        constraintName: FK7wu4r7sbot1tjqffkwa1lmcye
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: message_id
-        referencedTableName: ow_message
-        validate: true
-- changeSet:
-    id: 1623186307138-21
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: message_id
-        baseTableName: ow_alert
-        constraintName: FK9rhk6p9fg5dbg6xers3gpev39
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: message_id
-        referencedTableName: ow_message
-        validate: true
-- changeSet:
-    id: 1623186307138-22
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: message_id
-        baseTableName: ow_fact
-        constraintName: FKcrw8skw0a0c5vesf2s7ngwwie
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: message_id
-        referencedTableName: ow_message
-        validate: true
-- changeSet:
-    id: 1623186307138-23
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: fact_id
-        baseTableName: ow_weather_fact
-        constraintName: FKeihihy7e1dwv789tt68xbn48j
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: fact_id
-        referencedTableName: ow_fact
-        validate: true
-- changeSet:
-    id: 1623186307138-24
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: message_id
-        baseTableName: ow_hourly
-        constraintName: FKl06ynmht84lcaq5caqabpujpl
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: message_id
-        referencedTableName: ow_message
-        validate: true
-- changeSet:
-    id: 1623186307138-25
-    author: alex (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: weather_id
-        baseTableName: ow_weather_daily
-        constraintName: FKpbrn0x3r53x21sogrkad00moi
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: RESTRICT
-        onUpdate: RESTRICT
-        referencedColumnNames: id
-        referencedTableName: ow_weather
-        validate: true
+  - changeSet:
+      id: 1623186307138-1
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: alert_id
+                  type: BIGINT
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: end
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: event
+                  type: VARCHAR(255)
+              - column:
+                  name: sender_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: message_id
+                  type: BIGINT
+            tableName: ow_alert
+  - changeSet:
+      id: 1623186307138-2
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: daily_id
+                  type: BIGINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: clouds
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: dew_point
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: dt
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: feels_like_day
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: feels_like_eve
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: feels_like_morn
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: feels_like_night
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: humidity
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: pop
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: pressure
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: rain1h
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: snow1h
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: sunrise
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: sunset
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp_day
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp_eve
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp_max
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp_min
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp_morn
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp_night
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: uvi
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: visibility
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_deg
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_gust
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_speed
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: message_id
+                  type: BIGINT
+            tableName: ow_daily
+  - changeSet:
+      id: 1623186307138-3
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: fact_id
+                  type: BIGINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: clouds
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: dew_point
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: dt
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: feels_like
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: humidity
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: pressure
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: rain1h
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: snow1h
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: sunrise
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: sunset
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: uvi
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: visibility
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_deg
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_gust
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_speed
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: message_id
+                  type: BIGINT
+            tableName: ow_fact
+  - changeSet:
+      id: 1623186307138-4
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: hourly_id
+                  type: BIGINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: clouds
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: dew_point
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: dt
+                  type: datetime
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: feels_like
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: humidity
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: pop
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: pressure
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: rain1h
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: snow1h
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: temp
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: visibility
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_deg
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_gust
+                  type: SMALLINT
+              - column:
+                  defaultValueComputed: 'NULL'
+                  name: wind_speed
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: message_id
+                  type: BIGINT
+            tableName: ow_hourly
+  - changeSet:
+      id: 1623186307138-5
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: message_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: current_timestamp()
+                  name: created_on
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: geoname_id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: message_uuid
+                  type: BINARY(16)
+            tableName: ow_message
+  - changeSet:
+      id: 1623186307138-6
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: id
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: icon
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: main
+                  type: VARCHAR(255)
+            tableName: ow_weather
+  - changeSet:
+      id: 1623186307138-7
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: daily_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: weather_id
+                  type: SMALLINT
+            tableName: ow_weather_daily
+  - changeSet:
+      id: 1623186307138-8
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: fact_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: weather_id
+                  type: SMALLINT
+            tableName: ow_weather_fact
+  - changeSet:
+      id: 1623186307138-9
+      author: alex (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: hourly_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  name: weather_id
+                  type: SMALLINT
+            tableName: ow_weather_hourly
+  - changeSet:
+      id: 1623186307138-10
+      author: alex (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: weather_id
+            indexName: FK3hxf9im4g3lhu0fv2ly2mbgbu
+            tableName: ow_weather_fact
+  - changeSet:
+      id: 1623186307138-11
+      author: alex (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: weather_id
+            indexName: FK6ffdf97c37q87g48y7r0ea2pn
+            tableName: ow_weather_hourly
+  - changeSet:
+      id: 1623186307138-12
+      author: alex (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: message_id
+            indexName: FK7wu4r7sbot1tjqffkwa1lmcye
+            tableName: ow_daily
+  - changeSet:
+      id: 1623186307138-13
+      author: alex (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: message_id
+            indexName: FK9rhk6p9fg5dbg6xers3gpev39
+            tableName: ow_alert
+  - changeSet:
+      id: 1623186307138-14
+      author: alex (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: message_id
+            indexName: FKl06ynmht84lcaq5caqabpujpl
+            tableName: ow_hourly
+  - changeSet:
+      id: 1623186307138-15
+      author: alex (generated)
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: weather_id
+            indexName: FKpbrn0x3r53x21sogrkad00moi
+            tableName: ow_weather_daily
+  - changeSet:
+      id: 1623186307138-16
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: daily_id
+            baseTableName: ow_weather_daily
+            constraintName: FK3gkffhgesgo6ioc23yxfxvfst
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: daily_id
+            referencedTableName: ow_daily
+            validate: true
+  - changeSet:
+      id: 1623186307138-17
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: weather_id
+            baseTableName: ow_weather_fact
+            constraintName: FK3hxf9im4g3lhu0fv2ly2mbgbu
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: ow_weather
+            validate: true
+  - changeSet:
+      id: 1623186307138-18
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: hourly_id
+            baseTableName: ow_weather_hourly
+            constraintName: FK5uysf1rfhulbq394suqd05kon
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: hourly_id
+            referencedTableName: ow_hourly
+            validate: true
+  - changeSet:
+      id: 1623186307138-19
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: weather_id
+            baseTableName: ow_weather_hourly
+            constraintName: FK6ffdf97c37q87g48y7r0ea2pn
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: ow_weather
+            validate: true
+  - changeSet:
+      id: 1623186307138-20
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: message_id
+            baseTableName: ow_daily
+            constraintName: FK7wu4r7sbot1tjqffkwa1lmcye
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: message_id
+            referencedTableName: ow_message
+            validate: true
+  - changeSet:
+      id: 1623186307138-21
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: message_id
+            baseTableName: ow_alert
+            constraintName: FK9rhk6p9fg5dbg6xers3gpev39
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: message_id
+            referencedTableName: ow_message
+            validate: true
+  - changeSet:
+      id: 1623186307138-22
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: message_id
+            baseTableName: ow_fact
+            constraintName: FKcrw8skw0a0c5vesf2s7ngwwie
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: message_id
+            referencedTableName: ow_message
+            validate: true
+  - changeSet:
+      id: 1623186307138-23
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: fact_id
+            baseTableName: ow_weather_fact
+            constraintName: FKeihihy7e1dwv789tt68xbn48j
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: fact_id
+            referencedTableName: ow_fact
+            validate: true
+  - changeSet:
+      id: 1623186307138-24
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: message_id
+            baseTableName: ow_hourly
+            constraintName: FKl06ynmht84lcaq5caqabpujpl
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: message_id
+            referencedTableName: ow_message
+            validate: true
+  - changeSet:
+      id: 1623186307138-25
+      author: alex (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: weather_id
+            baseTableName: ow_weather_daily
+            constraintName: FKpbrn0x3r53x21sogrkad00moi
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: ow_weather
+            validate: true
 

@@ -3,13 +3,13 @@
  */
 package ru.m4j.meteo.ow.api;
 
-import ru.m4j.meteo.ow.model.OwCurrentDto;
-import ru.m4j.meteo.ow.model.OwMessageDto;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.m4j.meteo.ow.model.OwCurrentDto;
+import ru.m4j.meteo.ow.model.OwMessageDto;
 
 import java.util.List;
 

@@ -3,13 +3,13 @@
  */
 package ru.m4j.meteo.ow.mapper;
 
-import ru.m4j.meteo.ow.domain.*;
-import ru.m4j.meteo.ow.model.*;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Component;
+import ru.m4j.meteo.ow.domain.*;
+import ru.m4j.meteo.ow.model.*;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Type;

@@ -3,12 +3,12 @@
  */
 package ru.m4j.meteo.ow.service;
 
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Repository;
 import ru.m4j.meteo.ow.domain.OwFact;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.repo.*;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.Join;
 import javax.transaction.Transactional;

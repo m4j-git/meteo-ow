@@ -3,9 +3,9 @@
  */
 package ru.m4j.meteo.ow.repo;
 
-import ru.m4j.meteo.ow.domain.OwHourly;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ru.m4j.meteo.ow.domain.OwHourly;
 
 @Repository
 public interface OwHourlyRepository extends JpaRepository<OwHourly, Long> {

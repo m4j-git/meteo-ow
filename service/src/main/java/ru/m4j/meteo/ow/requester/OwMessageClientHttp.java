@@ -4,9 +4,9 @@
 package ru.m4j.meteo.ow.requester;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.m4j.meteo.ow.model.OwMessageDto;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
+import ru.m4j.meteo.ow.model.OwMessageDto;
 
 import java.io.BufferedReader;
 import java.io.IOException;

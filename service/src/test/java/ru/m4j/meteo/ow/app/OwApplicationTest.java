@@ -3,12 +3,12 @@
  */
 package ru.m4j.meteo.ow.app;
 
-import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.config.OwConstants;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
+import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.config.OwConstants;
 
 
 @SpringBootTest(classes = OwTestApplication.class)

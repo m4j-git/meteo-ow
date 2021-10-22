@@ -4,10 +4,6 @@
 package ru.m4j.meteo.ow.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.model.OwCurrentDto;
-import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.ow.repo.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.model.OwCurrentDto;
+import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.repo.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

@@ -3,14 +3,14 @@
  */
 package ru.m4j.meteo.ow.requester;
 
-import ru.m4j.meteo.ow.model.GeonameDto;
-import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.ow.service.OwMessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+import ru.m4j.meteo.ow.model.GeonameDto;
+import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.service.OwMessageService;
 
 import java.net.URI;
 
