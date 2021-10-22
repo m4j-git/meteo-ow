@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class OwCurrentDto implements Serializable {
+public class  OwCurrentDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     /**
