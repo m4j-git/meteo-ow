@@ -39,6 +39,11 @@
       "name": "maven.application.version",
       "type": "java.lang.String",
       "description": "Description for maven.application.version."
+    },
+    {
+      "name": "meteo.client",
+      "type": "java.lang.String",
+      "description": "Description for meteo.client."
     }
   ]
 }
