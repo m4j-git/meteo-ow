@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.app.OwTestConstants;
 import ru.m4j.meteo.ow.domain.*;
 import ru.m4j.meteo.ow.model.*;
 
@@ -26,8 +27,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OwMessageDtoModelMapperTest {
 
     private static final String testDataFile = "ow_onecall.json";
-    @Value("${meteo.test.data.path}")
-    private String testDataPath;
     @Autowired
     private OwMessageDtoModelMapper mapper;
     @Autowired
@@ -39,7 +38,7 @@ public class OwMessageDtoModelMapperTest {
     }
 
     private OwMessageDto readJson() throws IOException {
-        final FileInputStream fis = new FileInputStream(testDataPath + testDataFile);
+        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath + testDataFile);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             return jacksonMapper.readValue(rd, OwMessageDto.class);
         }

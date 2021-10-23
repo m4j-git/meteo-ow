@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.app.OwTestConstants;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 
@@ -29,8 +30,6 @@ class OwMessageJsonTest {
     private static final String testDataFile = "ow_onecall.json";
     @Autowired
     private ObjectMapper jacksonMapper;
-    @Value("${meteo.test.data.path}")
-    private String testDataPath;
     @Autowired
     private OwMessageDtoModelMapper mapper;
 
@@ -40,7 +39,7 @@ class OwMessageJsonTest {
     }
 
     private OwMessageDto readJson() throws IOException {
-        final FileInputStream fis = new FileInputStream(testDataPath + testDataFile);
+        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath  + testDataFile);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             return jacksonMapper.readValue(rd, OwMessageDto.class);
         }

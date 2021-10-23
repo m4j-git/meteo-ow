@@ -38,10 +38,7 @@ logging:
 #   Meteo Settings
 ##################
 meteo:
-  test:
-    data:
-      path: src/test/data/
-  client: rest
+  client: #http
 
 ##################
 #   Maven Settings
