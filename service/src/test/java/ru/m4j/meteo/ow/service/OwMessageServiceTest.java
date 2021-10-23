@@ -8,7 +8,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import ru.m4j.meteo.ow.OwTestApplication;
@@ -66,7 +65,7 @@ public class OwMessageServiceTest {
         assertEquals(0, hourlyRepo.count());
         assertEquals(0, factRepo.count());
         assertEquals(0, msgRepo.count());
-        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath  + testDataFile);
+        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath + testDataFile);
         OwMessageDto dto;
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             dto = jacksonMapper.readValue(rd, OwMessageDto.class);
