@@ -9,7 +9,7 @@
     <parent>
         <groupId>ru.m4j.meteo</groupId>
         <artifactId>meteo-ow</artifactId>
-        <version>21.3.3-SNAPSHOT</version>
+        <version>21.4.2-SNAPSHOT</version>
     </parent>
 
     <dependencies>
