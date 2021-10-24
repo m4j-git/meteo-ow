@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>meteo-ow</artifactId>
-    <version>21.4.2-SNAPSHOT</version>
+    <version>21.4.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>meteo-ow</name>
 
     <parent>
         <groupId>ru.m4j.meteo</groupId>
         <artifactId>meteo-bom</artifactId>
-        <version>21.4.2-SNAPSHOT</version>
+        <version>21.4.3-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
