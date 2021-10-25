@@ -40,4 +40,20 @@
             <appender-ref ref="stdout"/>
         </root>
     </springProfile>
+    <springProfile name="stage">
+        <appender name="stdout"
+                  class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d %5p [%t] \(%c.java:%L\) - %m%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="ru.m4j.meteo" additivity="false">
+            <appender-ref ref="stdout"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="stdout"/>
+        </root>
+    </springProfile>
 </configuration>
