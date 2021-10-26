@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>meteo-ow</artifactId>
-    <version>21.4.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>meteo-ow</name>
 
