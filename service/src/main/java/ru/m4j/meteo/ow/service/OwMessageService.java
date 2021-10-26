@@ -3,10 +3,10 @@
  */
 package ru.m4j.meteo.ow.service;
 
+import java.util.List;
+
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
-
-import java.util.List;
 
 public interface OwMessageService {
 

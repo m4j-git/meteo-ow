@@ -3,16 +3,18 @@
  */
 package ru.m4j.meteo.ow.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

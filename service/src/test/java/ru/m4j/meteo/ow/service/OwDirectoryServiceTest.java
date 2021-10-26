@@ -3,21 +3,22 @@
  */
 package ru.m4j.meteo.ow.service;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.domain.OwWeather;
-import ru.m4j.meteo.ow.model.OwWeatherDto;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.domain.OwWeather;
+import ru.m4j.meteo.ow.model.OwWeatherDto;
 
 
 @SpringBootTest(classes = OwTestApplication.class)

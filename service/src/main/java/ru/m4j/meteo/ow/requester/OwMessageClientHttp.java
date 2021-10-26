@@ -3,11 +3,6 @@
  */
 package ru.m4j.meteo.ow.requester;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
-import ru.m4j.meteo.ow.model.OwMessageDto;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +10,13 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.m4j.meteo.ow.model.OwMessageDto;
 
 @ConditionalOnProperty(name = "meteo.client", havingValue = "http")
 @Component

@@ -3,16 +3,10 @@
  */
 package ru.m4j.meteo.ow.mapper;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
-import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.app.OwTestConstants;
-import ru.m4j.meteo.ow.domain.OwMessage;
-import ru.m4j.meteo.ow.model.OwMessageDto;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -20,8 +14,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.app.OwTestConstants;
+import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.model.OwMessageDto;
 
 @SpringBootTest(classes = OwTestApplication.class)
 class OwMessageJsonTest {

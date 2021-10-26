@@ -3,6 +3,12 @@
  */
 package ru.m4j.meteo.ow.rest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+import java.net.URI;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +21,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
@@ -23,12 +30,6 @@ import ru.m4j.meteo.ow.repo.OwFactRepository;
 import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.service.OwDao;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
-
-import java.io.IOException;
-import java.net.URI;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = OwTestApplication.class)
 class OwRestResourceTest {

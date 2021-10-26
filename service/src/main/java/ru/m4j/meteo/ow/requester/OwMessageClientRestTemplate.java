@@ -3,13 +3,14 @@
  */
 package ru.m4j.meteo.ow.requester;
 
+import java.net.URI;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.m4j.meteo.ow.model.OwMessageDto;
 
-import java.net.URI;
+import ru.m4j.meteo.ow.model.OwMessageDto;
 
 @ConditionalOnProperty(name = "meteo.client", havingValue = "rest", matchIfMissing = true)
 @Component

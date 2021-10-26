@@ -3,17 +3,18 @@
  */
 package ru.m4j.meteo.ow.repo;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import ru.m4j.meteo.ow.domain.OwMessage;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import ru.m4j.meteo.ow.domain.OwMessage;
 
 @Repository
 public interface OwMessageRepository extends JpaRepository<OwMessage, Long>, JpaSpecificationExecutor<OwMessage> {

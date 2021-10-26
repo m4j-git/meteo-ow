@@ -3,9 +3,9 @@
  */
 package ru.m4j.meteo.ow.requester;
 
-import ru.m4j.meteo.ow.model.OwMessageDto;
-
 import java.net.URI;
+
+import ru.m4j.meteo.ow.model.OwMessageDto;
 
 public interface OwMessageClient {
 

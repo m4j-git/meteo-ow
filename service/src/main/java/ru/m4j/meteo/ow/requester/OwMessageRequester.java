@@ -3,16 +3,17 @@
  */
 package ru.m4j.meteo.ow.requester;
 
+import java.net.URI;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import ru.m4j.meteo.ow.model.GeonameDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.service.OwMessageService;
-
-import java.net.URI;
 
 /**
  * https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}

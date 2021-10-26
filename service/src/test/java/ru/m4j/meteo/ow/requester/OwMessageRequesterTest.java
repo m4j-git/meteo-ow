@@ -3,21 +3,9 @@
  */
 package ru.m4j.meteo.ow.requester;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.transaction.annotation.Transactional;
-import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.app.OwTestConstants;
-import ru.m4j.meteo.ow.model.GeonameDto;
-import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.ow.repo.OwMessageRepository;
-import ru.m4j.meteo.ow.service.OwDao;
-import ru.m4j.meteo.ow.service.OwDirectoryService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -25,9 +13,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.app.OwTestConstants;
+import ru.m4j.meteo.ow.model.GeonameDto;
+import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.repo.OwMessageRepository;
+import ru.m4j.meteo.ow.service.OwDao;
+import ru.m4j.meteo.ow.service.OwDirectoryService;
 
 @SpringBootTest(classes = OwTestApplication.class)
 @Transactional

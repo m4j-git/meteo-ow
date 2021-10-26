@@ -3,22 +3,24 @@
  */
 package ru.m4j.meteo.ow.service;
 
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+
 import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.mapper.OwMessageDtoModelMapper;
 import ru.m4j.meteo.ow.model.OwWeatherDto;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Set;
 
 @Service
 public class OwDirectoryService {

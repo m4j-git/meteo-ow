@@ -3,18 +3,31 @@
  */
 package ru.m4j.meteo.ow.mapper;
 
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.PostConstruct;
+
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Component;
-import ru.m4j.meteo.ow.domain.*;
-import ru.m4j.meteo.ow.model.*;
 
-import javax.annotation.PostConstruct;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
+import ru.m4j.meteo.ow.domain.OwAlert;
+import ru.m4j.meteo.ow.domain.OwDaily;
+import ru.m4j.meteo.ow.domain.OwFact;
+import ru.m4j.meteo.ow.domain.OwHourly;
+import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.domain.OwWeather;
+import ru.m4j.meteo.ow.model.OwAlertDto;
+import ru.m4j.meteo.ow.model.OwCurrentDto;
+import ru.m4j.meteo.ow.model.OwDailyDto;
+import ru.m4j.meteo.ow.model.OwHourlyDto;
+import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.model.OwPrecipDto;
+import ru.m4j.meteo.ow.model.OwWeatherDto;
 
 @Component
 public class OwMessageDtoModelMapper {

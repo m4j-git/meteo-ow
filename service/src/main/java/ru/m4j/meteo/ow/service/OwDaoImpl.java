@@ -3,19 +3,26 @@
  */
 package ru.m4j.meteo.ow.service;
 
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Repository;
-import ru.m4j.meteo.ow.domain.OwFact;
-import ru.m4j.meteo.ow.domain.OwMessage;
-import ru.m4j.meteo.ow.domain.OwWeather;
-import ru.m4j.meteo.ow.repo.*;
-
-import javax.persistence.criteria.Join;
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
+import javax.persistence.criteria.Join;
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Repository;
+
+import ru.m4j.meteo.ow.domain.OwFact;
+import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.domain.OwWeather;
+import ru.m4j.meteo.ow.repo.OwAlertRepository;
+import ru.m4j.meteo.ow.repo.OwDailyRepository;
+import ru.m4j.meteo.ow.repo.OwFactRepository;
+import ru.m4j.meteo.ow.repo.OwHourlyRepository;
+import ru.m4j.meteo.ow.repo.OwMessageRepository;
+import ru.m4j.meteo.ow.repo.OwWeatherRepository;
 
 @Repository
 public class OwDaoImpl implements OwDao {

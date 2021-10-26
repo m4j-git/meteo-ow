@@ -3,13 +3,14 @@
  */
 package ru.m4j.meteo.ow.rest;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
+
 import ru.m4j.meteo.ow.api.OwRestController;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.service.OwMessageService;
-
-import java.util.List;
 
 @RestController
 public class OwRestResourceImpl implements OwRestController {

@@ -3,14 +3,14 @@
  */
 package ru.m4j.meteo.ow.service;
 
-import ru.m4j.meteo.ow.domain.OwFact;
-import ru.m4j.meteo.ow.domain.OwMessage;
-import ru.m4j.meteo.ow.domain.OwWeather;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
+import ru.m4j.meteo.ow.domain.OwFact;
+import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.domain.OwWeather;
 
 public interface OwDao {
     OwMessage saveMessage(OwMessage message, Integer geonameId);

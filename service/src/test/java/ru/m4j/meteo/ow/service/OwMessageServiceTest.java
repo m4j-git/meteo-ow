@@ -3,18 +3,8 @@
  */
 package ru.m4j.meteo.ow.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.app.OwTestConstants;
-import ru.m4j.meteo.ow.model.OwCurrentDto;
-import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.ow.repo.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -24,8 +14,25 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.app.OwTestConstants;
+import ru.m4j.meteo.ow.model.OwCurrentDto;
+import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.repo.OwAlertRepository;
+import ru.m4j.meteo.ow.repo.OwDailyRepository;
+import ru.m4j.meteo.ow.repo.OwFactRepository;
+import ru.m4j.meteo.ow.repo.OwHourlyRepository;
+import ru.m4j.meteo.ow.repo.OwMessageRepository;
+import ru.m4j.meteo.ow.repo.OwWeatherRepository;
 
 @SpringBootTest(classes = OwTestApplication.class)
 @Transactional
