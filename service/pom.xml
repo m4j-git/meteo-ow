@@ -18,6 +18,12 @@
 
 		<dependency>
 			<groupId>ru.m4j.meteo</groupId>
+			<artifactId>meteo-bom</artifactId>
+			<version>${meteo.project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>ru.m4j.meteo</groupId>
 			<artifactId>meteo-ow-api</artifactId>
 			<version>${meteo.project.version}</version>
 		</dependency>
