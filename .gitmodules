@@ -1,0 +1,3 @@
+[submodule "meteo-bom"]
+	path = meteo-bom
+	url = ../meteo-bom
