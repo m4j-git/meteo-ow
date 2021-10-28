@@ -8,17 +8,18 @@
 	<packaging>jar</packaging>
 	<name>meteo-ow-service</name>
 
-	<parent>
-		<groupId>ru.m4j.meteo</groupId>
-		<artifactId>meteo-ow</artifactId>
-		<version>21.4.5-SNAPSHOT</version>
+    <parent>
+        <groupId>ru.m4j.meteo</groupId>
+        <artifactId>meteo-bom-parent</artifactId>
+        <version>21.4.5-SNAPSHOT</version>
+        <relativePath>../bom/parent</relativePath>
 	</parent>
 
 	<dependencies>
-
-		<dependency>
+		
+				<dependency>
 			<groupId>ru.m4j.meteo</groupId>
-			<artifactId>meteo-bom</artifactId>
+			<artifactId>meteo-bom-share</artifactId>
 			<version>${meteo.project.version}</version>
 		</dependency>
 		
@@ -110,6 +111,41 @@
 
 		<plugins>
 
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+            
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
