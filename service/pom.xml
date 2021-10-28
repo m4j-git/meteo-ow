@@ -183,13 +183,25 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+				<skip.tests>false</skip.tests>
+			</properties>
 		</profile>
 
 		<profile>
 			<id>stage</id>
+			<properties>
+				<spring.profiles.active>stage</spring.profiles.active>
+				<skip.tests>false</skip.tests>
+			</properties>
 		</profile>
 		<profile>
 			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+				<skip.tests>true</skip.tests>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>de.codecentric</groupId>
@@ -207,6 +219,9 @@
 		</profile>
 		<profile>
 			<id>mysql</id>
+			<properties>
+				<spring.profiles.db>mysql</spring.profiles.db>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>mysql</groupId>
@@ -220,6 +235,9 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<spring.profiles.db>h2</spring.profiles.db>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>com.h2database</groupId>
