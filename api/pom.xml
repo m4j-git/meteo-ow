@@ -10,7 +10,7 @@
         <groupId>ru.m4j.meteo</groupId>
         <artifactId>meteo-bom-parent</artifactId>
         <version>21.4.5-SNAPSHOT</version>
-        <relativePath>../bom//parent</relativePath>
+        <relativePath>../bom/parent</relativePath>
 	</parent>
 
     <dependencies>

@@ -16,12 +16,12 @@
 	</parent>
 
 	<dependencies>
-		
-				<dependency>
-			<groupId>ru.m4j.meteo</groupId>
-			<artifactId>meteo-bom-share</artifactId>
-			<version>${meteo.project.version}</version>
-		</dependency>
+
+	<dependency>
+		<groupId>ru.m4j.meteo</groupId>
+		<artifactId>meteo-bom-share</artifactId>
+		<version>${meteo.project.version}</version>
+	</dependency>
 		
 		<dependency>
 			<groupId>ru.m4j.meteo</groupId>

@@ -1,78 +1,79 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
- <groupId>ru.m4j.meteo</groupId>
-    <artifactId>meteo-ow</artifactId>
-    	<version>21.4.5-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>meteo-ow</name>
+	<groupId>ru.m4j.meteo</groupId>
+	<artifactId>meteo-ow</artifactId>
+	<version>21.4.5-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>meteo-ow</name>
 
-    <description>Spring Boot App for OpenWeatherMap</description>
-    <url>https://m4j.ru/meteo-ow</url>
-    <inceptionYear>2021</inceptionYear>
+	<description>Spring Boot App for OpenWeatherMap</description>
+	<url>https://m4j.ru/meteo-ow</url>
+	<inceptionYear>2021</inceptionYear>
 
-    <modules>
-            <module>bom</module>
-            <module>api</module>
-        <module>service</module>
-    </modules>
+	<modules>
+		<module>bom</module>
+		<module>api</module>
+		<module>service</module>
+	</modules>
 
-    <scm>
-        <connection>scm:git:https://github.com/m4j-git/meteo-ow</connection>
-        <url>https://github.com/m4j-git/meteo-ow</url>
-    </scm>
+	<scm>
+		<connection>scm:git:https://github.com/m4j-git/meteo-ow</connection>
+		<url>https://github.com/m4j-git/meteo-ow</url>
+	</scm>
 
-    <build>
+	<build>
 
 
-    </build>
+	</build>
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.profiles.active>dev</spring.profiles.active>
-                <skip.tests>false</skip.tests>
-            </properties>
-        </profile>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+				<skip.tests>false</skip.tests>
+			</properties>
+		</profile>
 
-        <profile>
-            <id>stage</id>
-            <properties>
-                <spring.profiles.active>stage</spring.profiles.active>
-                <skip.tests>false</skip.tests>
-            </properties>
-        </profile>
+		<profile>
+			<id>stage</id>
+			<properties>
+				<spring.profiles.active>stage</spring.profiles.active>
+				<skip.tests>false</skip.tests>
+			</properties>
+		</profile>
 
-        <profile>
-            <id>prod</id>
-            <properties>
-                <spring.profiles.active>prod</spring.profiles.active>
-                <skip.tests>true</skip.tests>
-            </properties>
-        </profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+				<skip.tests>true</skip.tests>
+			</properties>
+		</profile>
 
-        <profile>
-            <id>mysql</id>
-            <properties>
-                <spring.profiles.db>mysql</spring.profiles.db>
-            </properties>
-        </profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<spring.profiles.db>mysql</spring.profiles.db>
+			</properties>
+		</profile>
 
-        <profile>
-            <id>h2</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <spring.profiles.db>h2</spring.profiles.db>
-            </properties>
-        </profile>
-    </profiles>
+		<profile>
+			<id>h2</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.db>h2</spring.profiles.db>
+			</properties>
+		</profile>
+	</profiles>
 
 
 </project>
