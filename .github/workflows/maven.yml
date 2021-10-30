@@ -14,11 +14,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        java: [ '11' ]
+        java: [ '17' ]
         os: [ 'ubuntu-latest' ]
     name: Java ${{ matrix.Java }} (${{ matrix.os }})
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
