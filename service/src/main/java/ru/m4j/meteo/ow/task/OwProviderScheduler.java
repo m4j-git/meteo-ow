@@ -36,7 +36,9 @@ public class OwProviderScheduler {
     private List<GeonameDto> requestGeonames() {
         return List.of(new GeonameDto(1, "Moscow", 55.75, 37.6),
                 new GeonameDto(2, "Shilovo", 54.571705, 41.083740),
-                new GeonameDto(3, "Kaliningrad", 54.710157, 20.510137));
+                new GeonameDto(3, "Kaliningrad", 54.710157, 20.510137),
+                new GeonameDto(4, "Magadan", 59.5638, 150.803)
+                );
     }
 
 }
