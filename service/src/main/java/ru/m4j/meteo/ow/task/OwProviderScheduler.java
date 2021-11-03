@@ -16,7 +16,7 @@ import ru.m4j.meteo.ow.requester.OwMessageRequester;
 @ConditionalOnProperty(name = "meteo.scheduling.enabled", havingValue = "true")
 public class OwProviderScheduler {
 
-    private static final int mFixedRate = 3600 * 4;
+    private static final int mFixedRate = 3600 * 2;
 
     private final OwMessageRequester requester;
 
@@ -40,5 +40,5 @@ public class OwProviderScheduler {
                 new GeonameDto(4, "Magadan", 59.5638, 150.803)
                 );
     }
-
+ 
 }
