@@ -3,13 +3,18 @@
  */
 package ru.m4j.meteo.ow.requester;
 
+import java.io.File;
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.m4j.meteo.ow.model.GeonameDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
@@ -35,13 +40,15 @@ public class OwMessageRequester {
 
     private final OwMessageService service;
     private final OwMessageClient client;
-
+    private final ObjectMapper jacksonMapper;
+    
     @Value("${OPENWEATHERMAP_API_KEY}")
     private String apiKey;
 
-    public OwMessageRequester(OwMessageService service, OwMessageClient client) {
+    public OwMessageRequester(OwMessageService service, OwMessageClient client, ObjectMapper jacksonMapper) {
         this.service = service;
         this.client = client;
+        this.jacksonMapper = jacksonMapper;
     }
 
     //Free 60 calls/minute 1,000,000 calls/month
@@ -51,6 +58,7 @@ public class OwMessageRequester {
             dto = client.request(getUri(geo));
             service.saveMessageToDb(dto, geo.getGeonameId());
             log.info("read ow weather message ok for {}", geo);
+            log.debug(dto.toString());
         } catch (Exception e) {
             e.printStackTrace();
             log.error("ow message is {}", (dto == null ? "null" : dto.toString()));

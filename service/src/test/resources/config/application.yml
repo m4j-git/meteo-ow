@@ -32,7 +32,7 @@ logging:
       hibernate: INFO
       springframework: INFO
     com:
-      m4j: INFO
+      m4j: DEBUG
 
 ##################
 #   Meteo Settings
