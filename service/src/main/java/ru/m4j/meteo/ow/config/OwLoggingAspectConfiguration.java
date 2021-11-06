@@ -17,7 +17,7 @@ import ru.m4j.meteo.aop.LoggingAspect;
 public class OwLoggingAspectConfiguration {
 
     @Bean
-    @Profile("dev")
+    @Profile("stage")
     public LoggingAspect loggingAspect(Environment env) {
         return new LoggingAspect(env);
     }

@@ -62,15 +62,15 @@ public class OwMessage implements Serializable {
     private OwFact fact;
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "alertId", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToMany(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
     private List<OwAlert> alerts = new ArrayList<>();
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "dailyId", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToMany(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
     private List<OwDaily> dailies = new ArrayList<>();
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "hourlyId", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToMany(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
     private List<OwHourly> hourlies = new ArrayList<>();
 
     public void addFact(final OwFact fact) {
