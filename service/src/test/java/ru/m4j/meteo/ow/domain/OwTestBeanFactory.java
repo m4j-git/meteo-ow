@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import ru.m4j.meteo.ow.model.GeonameDto;
+import ru.m4j.meteo.ow.model.LocationDto;
 
 @Configuration
 public class OwTestBeanFactory {
@@ -24,8 +24,8 @@ public class OwTestBeanFactory {
 
     @Bean
     @Scope("prototype")
-    GeonameDto createGeoname() {
-        return new GeonameDto(geonameId, "Moscow", 55.75, 37.6);
+    LocationDto createGeoname() {
+        return new LocationDto(geonameId, "Moscow", 55.75, 37.6);
     }
 
     @Bean(name = "message_skinny")

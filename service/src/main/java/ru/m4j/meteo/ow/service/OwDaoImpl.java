@@ -118,16 +118,12 @@ public class OwDaoImpl implements OwDao {
     public Specification<OwFact> factSpecification(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo) {
         return (root, query, builder) -> {
             Join<OwFact, OwMessage> join = root.join("message");
-            return builder.and(
-                    builder.equal(join.get("geonameId"), geonameId),
-                    builder.between(join.get("createdOn"), dateFrom, dateTo));
+            return builder.and(builder.equal(join.get("geonameId"), geonameId), builder.between(join.get("createdOn"), dateFrom, dateTo));
         };
     }
 
     public Specification<OwMessage> messageSpecification(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo) {
-        return (root, query, builder) -> builder.and(
-                builder.equal(root.get("geonameId"), geonameId),
-                builder.between(root.get("createdOn"), dateFrom, dateTo));
+        return (root, query, builder) -> builder.and(builder.equal(root.get("geonameId"), geonameId), builder.between(root.get("createdOn"), dateFrom, dateTo));
     }
 
     @Override

@@ -57,7 +57,8 @@ public class OwDaily implements Serializable {
      */
     private OwTemp temp;
     /**
-     * This accounts for the human perception of weather. Units – default: kelvin, metric
+     * This accounts for the human perception of weather. Units – default: kelvin,
+     * metric
      */
     private OwFeelsLike feelsLike;
     /**
@@ -69,17 +70,19 @@ public class OwDaily implements Serializable {
      */
     private Short humidity;
     /**
-     * Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Atmospheric temperature (varying according to pressure and humidity) below
+     * which water droplets begin to condense and dew can form. Units – default:
+     * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short dewPoint;
     /**
-     * Wind speed.
-     * Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
+     * Wind speed. Units – default: metre/sec, metric: metre/sec, imperial:
+     * miles/hour.
      */
     private Short windSpeed;
     /**
-     * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+     * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
+     * miles/hour
      */
     private Short windGust;
     /**
@@ -112,7 +115,7 @@ public class OwDaily implements Serializable {
     private Short snow1h;
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinTable(name = "ow_weather_daily", joinColumns = {@JoinColumn(name = "daily_id")}, inverseJoinColumns = {@JoinColumn(name = "weather_id")})
+    @JoinTable(name = "ow_weather_daily", joinColumns = { @JoinColumn(name = "daily_id") }, inverseJoinColumns = { @JoinColumn(name = "weather_id") })
     private Set<OwWeather> weather = new HashSet<>();
 
     @ManyToOne
@@ -138,14 +141,12 @@ public class OwDaily implements Serializable {
             return false;
         }
         OwDaily other = (OwDaily) o;
-        return dailyId != null &&
-                dailyId.equals(other.getDailyId());
+        return (dailyId != null) && dailyId.equals(other.getDailyId());
     }
 
     @Override
     public int hashCode() {
         return Objects.hashCode(dailyId);
     }
-
 
 }

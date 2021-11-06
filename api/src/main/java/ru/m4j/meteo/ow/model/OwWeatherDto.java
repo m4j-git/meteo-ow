@@ -27,8 +27,8 @@ public class OwWeatherDto implements Serializable {
      */
     private String main;
     /**
-     * Weather condition within the group (full list of weather conditions).
-     * Get the output in your language
+     * Weather condition within the group (full list of weather conditions). Get the
+     * output in your language
      */
     private String description;
     /**

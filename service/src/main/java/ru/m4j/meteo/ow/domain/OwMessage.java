@@ -58,20 +58,20 @@ public class OwMessage implements Serializable {
     private Integer geonameId;
 
     @Setter(value = AccessLevel.NONE)
-    @OneToOne(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToOne(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
     private OwFact fact;
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
-    private List<OwAlert> alerts = new ArrayList<>();
+    @OneToMany(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
+    private final List<OwAlert> alerts = new ArrayList<>();
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
-    private List<OwDaily> dailies = new ArrayList<>();
+    @OneToMany(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
+    private final List<OwDaily> dailies = new ArrayList<>();
 
     @Setter(value = AccessLevel.NONE)
-    @OneToMany(mappedBy = "message", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
-    private List<OwHourly> hourlies = new ArrayList<>();
+    @OneToMany(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
+    private final List<OwHourly> hourlies = new ArrayList<>();
 
     public void addFact(final OwFact fact) {
         this.fact = fact;
@@ -122,14 +122,12 @@ public class OwMessage implements Serializable {
             return false;
         }
         OwMessage other = (OwMessage) o;
-        return messageId != null &&
-                messageId.equals(other.getMessageId());
+        return (messageId != null) && messageId.equals(other.getMessageId());
     }
 
     @Override
     public int hashCode() {
         return Objects.hashCode(messageId);
     }
-
 
 }

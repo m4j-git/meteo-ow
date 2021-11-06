@@ -33,5 +33,3 @@ public interface OwRestController {
     @GetMapping("/messages/facts")
     List<OwCurrentDto> getFacts(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom, @RequestParam(required = false) String dateTo);
 }
-
-

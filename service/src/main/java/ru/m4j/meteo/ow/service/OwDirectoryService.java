@@ -30,7 +30,6 @@ public class OwDirectoryService {
     private final OwDao dao;
     private final OwMessageDtoModelMapper mapper;
 
-
     public OwDirectoryService(OwMessageDtoModelMapper mapper, ResourceLoader resourceLoader, OwDao dao) {
         this.mapper = mapper;
         this.dao = dao;
@@ -59,6 +58,5 @@ public class OwDirectoryService {
         final ObjectReader reader = mapperCsv.readerFor(OwWeatherDto.class).with(schema);
         return reader.<T>readValues(stream).readAll();
     }
-
 
 }

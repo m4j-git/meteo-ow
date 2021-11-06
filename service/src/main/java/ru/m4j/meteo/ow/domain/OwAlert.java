@@ -75,8 +75,7 @@ public class OwAlert implements Serializable {
             return false;
         }
         OwAlert other = (OwAlert) o;
-        return alertId != null &&
-                alertId.equals(other.getAlertId());
+        return (alertId != null) && alertId.equals(other.getAlertId());
     }
 
     @Override

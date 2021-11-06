@@ -78,13 +78,11 @@ public class OwMessageServiceImpl implements OwMessageService {
     }
 
     private LocalDateTime dateToMapper(String dateTo) {
-        return dateTo != null ? LocalDateTime.parse(dateTo) :
-                LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault());
+        return dateTo != null ? LocalDateTime.parse(dateTo) : LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault());
     }
 
     private LocalDateTime dateFromMapper(String dateFrom) {
-        return dateFrom != null ? LocalDateTime.parse(dateFrom) :
-                LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault());
+        return dateFrom != null ? LocalDateTime.parse(dateFrom) : LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault());
     }
 
     private void validGeoname(Integer geonameId) {

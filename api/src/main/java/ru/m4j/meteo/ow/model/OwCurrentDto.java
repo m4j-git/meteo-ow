@@ -39,14 +39,12 @@ public class OwCurrentDto implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private Instant sunset;
     /**
-     * Temperature.
-     * Units - default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Double temp;
     /**
-     * Temperature.
-     * This temperature parameter accounts for the human perception of weather.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Temperature. This temperature parameter accounts for the human perception of
+     * weather. Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     @JsonProperty("feels_like")
     private Double feelsLike;
@@ -59,8 +57,9 @@ public class OwCurrentDto implements Serializable {
      */
     private Integer humidity;
     /**
-     * Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Atmospheric temperature (varying according to pressure and humidity) below
+     * which water droplets begin to condense and dew can form. Units – default:
+     * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     @JsonProperty("dew_point")
     private Double dewPoint;
@@ -77,9 +76,8 @@ public class OwCurrentDto implements Serializable {
      */
     private Integer visibility;
     /**
-     * Wind speed. Wind speed.
-     * Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
-     * How to change units used
+     * Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec,
+     * imperial: miles/hour. How to change units used
      */
     @JsonProperty("wind_speed")
     private Double windSpeed;
@@ -89,8 +87,8 @@ public class OwCurrentDto implements Serializable {
     @JsonProperty("wind_deg")
     private Integer windDeg;
     /**
-     * Wind gust.
-     * Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+     * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
+     * miles/hour
      */
     @JsonProperty("wind_gust")
     private Double windGust;

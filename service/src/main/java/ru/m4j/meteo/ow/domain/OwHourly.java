@@ -45,14 +45,12 @@ public class OwHourly implements Serializable {
     @NotNull
     private OffsetDateTime dt;
     /**
-     * Temperature.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Temperature. Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short temp;
     /**
-     * Temperature.
-     * This accounts for the human perception of weather.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Temperature. This accounts for the human perception of weather. Units –
+     * default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short feelsLike;
     /**
@@ -64,8 +62,9 @@ public class OwHourly implements Serializable {
      */
     private Short humidity;
     /**
-     * Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Atmospheric temperature (varying according to pressure and humidity) below
+     * which water droplets begin to condense and dew can form. Units – default:
+     * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short dewPoint;
     /**
@@ -77,11 +76,13 @@ public class OwHourly implements Serializable {
      */
     private Short visibility;
     /**
-     * Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+     * Wind speed. Units – default: metre/sec, metric: metre/sec, imperial:
+     * miles/hour
      */
     private Short windSpeed;
     /**
-     * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
+     * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
+     * miles/hour.
      */
     private Short windGust;
     /**
@@ -102,7 +103,7 @@ public class OwHourly implements Serializable {
     private Short snow1h;
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinTable(name = "ow_weather_hourly", joinColumns = {@JoinColumn(name = "hourly_id")}, inverseJoinColumns = {@JoinColumn(name = "weather_id")})
+    @JoinTable(name = "ow_weather_hourly", joinColumns = { @JoinColumn(name = "hourly_id") }, inverseJoinColumns = { @JoinColumn(name = "weather_id") })
     private Set<OwWeather> weather = new HashSet<>();
 
     @ManyToOne
@@ -128,8 +129,7 @@ public class OwHourly implements Serializable {
             return false;
         }
         OwHourly other = (OwHourly) o;
-        return hourlyId != null &&
-                hourlyId.equals(other.getHourlyId());
+        return (hourlyId != null) && hourlyId.equals(other.getHourlyId());
     }
 
     @Override

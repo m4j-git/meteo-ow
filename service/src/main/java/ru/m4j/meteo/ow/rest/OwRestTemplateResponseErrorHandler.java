@@ -13,17 +13,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResponseErrorHandler;
 
 @Component
-public class OwRestTemplateResponseErrorHandler
-        implements ResponseErrorHandler {
+public class OwRestTemplateResponseErrorHandler implements ResponseErrorHandler {
 
     private static final Logger log = LoggerFactory.getLogger(OwRestTemplateResponseErrorHandler.class);
 
     @Override
-    public boolean hasError(ClientHttpResponse httpResponse)
-            throws IOException {
-        return (
-                httpResponse.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR
-                        || httpResponse.getStatusCode().series() == HttpStatus.Series.SERVER_ERROR);
+    public boolean hasError(ClientHttpResponse httpResponse) throws IOException {
+        return ((httpResponse.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR) || (httpResponse.getStatusCode().series() == HttpStatus.Series.SERVER_ERROR));
     }
 
     @Override

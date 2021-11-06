@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.app.OwTestConstants;
-import ru.m4j.meteo.ow.model.GeonameDto;
+import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.service.OwDao;
@@ -57,7 +57,7 @@ class OwMessageRequesterTest {
     }
 
     @Test
-    public void testRequestProvider(@Autowired GeonameDto geoname) throws IOException {
+    public void testRequestProvider(@Autowired LocationDto geoname) throws IOException {
         when(client.request(requester.getUri(geoname))).thenReturn(readJson());
         final OwMessageDto result = requester.requestProvider(geoname);
         assertNotNull(result.getCurrent().getDt());

@@ -56,14 +56,12 @@ public class OwFact implements Serializable {
      */
     private OffsetDateTime sunset;
     /**
-     * Temperature.
-     * Units - default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short temp;
     /**
-     * Temperature.
-     * This temperature parameter accounts for the human perception of weather.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Temperature. This temperature parameter accounts for the human perception of
+     * weather. Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short feelsLike;
     /**
@@ -75,8 +73,9 @@ public class OwFact implements Serializable {
      */
     private Short humidity;
     /**
-     * Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form.
-     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     * Atmospheric temperature (varying according to pressure and humidity) below
+     * which water droplets begin to condense and dew can form. Units – default:
+     * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
     private Short dewPoint;
     /**
@@ -92,9 +91,8 @@ public class OwFact implements Serializable {
      */
     private Short visibility;
     /**
-     * Wind speed. Wind speed.
-     * Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
-     * How to change units used
+     * Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec,
+     * imperial: miles/hour. How to change units used
      */
     private Short windSpeed;
     /**
@@ -102,8 +100,8 @@ public class OwFact implements Serializable {
      */
     private Short windDeg;
     /**
-     * Wind gust.
-     * Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+     * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
+     * miles/hour
      */
     private Short windGust;
     /**
@@ -115,10 +113,8 @@ public class OwFact implements Serializable {
      */
     private Short snow1h;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
-    @JoinTable(name = "ow_weather_fact",
-            joinColumns = @JoinColumn(name = "fact_id", nullable = false, updatable = false),
-            inverseJoinColumns = @JoinColumn(name = "weather_id", nullable = false, updatable = false))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.REFRESH })
+    @JoinTable(name = "ow_weather_fact", joinColumns = @JoinColumn(name = "fact_id", nullable = false, updatable = false), inverseJoinColumns = @JoinColumn(name = "weather_id", nullable = false, updatable = false))
 
     private Set<OwWeather> weather = new HashSet<>();
 
@@ -146,8 +142,7 @@ public class OwFact implements Serializable {
             return false;
         }
         OwFact other = (OwFact) o;
-        return factId != null &&
-                factId.equals(other.getFactId());
+        return (factId != null) && factId.equals(other.getFactId());
     }
 
     @Override

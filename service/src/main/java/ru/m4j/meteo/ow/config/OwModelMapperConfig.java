@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OwModelMapperConfig {
 
-
     final Converter<Instant, LocalDateTime> instantToLocalDateTime = new AbstractConverter<>() {
         @Override
         protected LocalDateTime convert(final Instant source) {
@@ -82,11 +81,7 @@ public class OwModelMapperConfig {
     @Bean
     public ModelMapper modelMapper() {
         final ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.STRICT)
-                .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PUBLIC)
-                .setSkipNullEnabled(true);
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT).setFieldMatchingEnabled(true).setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PUBLIC).setSkipNullEnabled(true);
 
         modelMapper.addConverter(instantToOffsetDateTime);
         modelMapper.addConverter(instantFromOffsetDateTime);

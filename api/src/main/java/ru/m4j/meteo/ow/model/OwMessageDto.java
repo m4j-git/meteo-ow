@@ -25,16 +25,12 @@ public class OwMessageDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * message_uuid
-     * Уникальный идентификатор
-     * Строка
+     * message_uuid Уникальный идентификатор Строка
      */
     @JsonProperty("message_uuid")
     private UUID messageUuid;
     /**
-     * created_on
-     * Временная метка запроса провайдера
-     * Строка
+     * created_on Временная метка запроса провайдера Строка
      */
     @JsonProperty("created_on")
     private Instant createdOn;

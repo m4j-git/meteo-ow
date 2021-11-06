@@ -19,9 +19,7 @@ public class OwMessageClientRestTemplate implements OwMessageClient {
     private final RestTemplate restTemplate;
 
     public OwMessageClientRestTemplate(RestTemplateBuilder rtBuilder) {
-        this.restTemplate = rtBuilder
-                .additionalInterceptors((request, body, execution) -> execution.execute(request, body))
-                .build();
+        this.restTemplate = rtBuilder.additionalInterceptors((request, body, execution) -> execution.execute(request, body)).build();
     }
 
     @Override

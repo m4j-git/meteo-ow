@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("!dev")
 @SpringBootApplication
-@EntityScan(basePackages = {"ru.m4j.meteo.*.domain"})
+@EntityScan(basePackages = { "ru.m4j.meteo.*.domain" })
 public class OwApplication extends SpringBootServletInitializer {
 
     public static void main(final String[] args) {

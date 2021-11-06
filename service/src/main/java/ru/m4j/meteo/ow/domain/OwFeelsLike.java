@@ -63,4 +63,3 @@ public class OwFeelsLike implements Serializable {
     }
 
 }
-

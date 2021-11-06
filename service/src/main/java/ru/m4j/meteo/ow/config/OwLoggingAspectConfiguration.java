@@ -11,7 +11,6 @@ import org.springframework.core.env.Environment;
 
 import ru.m4j.meteo.aop.LoggingAspect;
 
-
 @Configuration
 @EnableAspectJAutoProxy
 public class OwLoggingAspectConfiguration {

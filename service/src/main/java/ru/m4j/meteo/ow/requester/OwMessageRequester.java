@@ -3,10 +3,7 @@
  */
 package ru.m4j.meteo.ow.requester;
 
-import java.io.File;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,19 +11,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import ru.m4j.meteo.ow.model.GeonameDto;
+import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.service.OwMessageService;
 
 /**
- * https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
- * lat, lon	required	Geographical coordinates (latitude, longitude)
- * appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
- * units	optional	Units of measurement. standard, metric and imperial units are available.
- * If you do not use the units parameter, standard units will be applied by default. Learn more
- * lang	optional	You can use the lang parameter to get the output in your language.
+ * https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API
+ * key} lat, lon required Geographical coordinates (latitude, longitude) appid
+ * required Your unique API key (you can always find it on your account page
+ * under the "API key" tab) units optional Units of measurement. standard,
+ * metric and imperial units are available. If you do not use the units
+ * parameter, standard units will be applied by default. Learn more lang
+ * optional You can use the lang parameter to get the output in your language.
  */
 
 @Service
@@ -40,19 +36,17 @@ public class OwMessageRequester {
 
     private final OwMessageService service;
     private final OwMessageClient client;
-    private final ObjectMapper jacksonMapper;
-    
+
     @Value("${OPENWEATHERMAP_API_KEY}")
     private String apiKey;
 
-    public OwMessageRequester(OwMessageService service, OwMessageClient client, ObjectMapper jacksonMapper) {
+    public OwMessageRequester(OwMessageService service, OwMessageClient client) {
         this.service = service;
         this.client = client;
-        this.jacksonMapper = jacksonMapper;
     }
 
-    //Free 60 calls/minute 1,000,000 calls/month
-    public OwMessageDto requestProvider(GeonameDto geo) {
+    // Free 60 calls/minute 1,000,000 calls/month
+    public OwMessageDto requestProvider(LocationDto geo) {
         OwMessageDto dto = null;
         try {
             dto = client.request(getUri(geo));
@@ -66,18 +60,8 @@ public class OwMessageRequester {
         return dto;
     }
 
-    URI getUri(GeonameDto geo) {
-        return UriComponentsBuilder.newInstance()
-                .scheme(scheme)
-                .host(host)
-                .path(path)
-                .queryParam("lat", geo.getLat())
-                .queryParam("lon", geo.getLon())
-                .queryParam("appid", apiKey)
-                .queryParam("exclude", "minutely")
-                .queryParam("units", "metric")
-                .buildAndExpand()
-                .toUri();
+    URI getUri(LocationDto geo) {
+        return UriComponentsBuilder.newInstance().scheme(scheme).host(host).path(path).queryParam("lat", geo.getLat()).queryParam("lon", geo.getLon()).queryParam("appid", apiKey).queryParam("exclude", "minutely").queryParam("units", "metric").buildAndExpand().toUri();
     }
 
 }

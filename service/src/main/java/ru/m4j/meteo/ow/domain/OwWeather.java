@@ -33,8 +33,8 @@ public class OwWeather implements Serializable {
     @NotNull
     private String main;
     /**
-     * Weather condition within the group (full list of weather conditions).
-     * Get the output in your language
+     * Weather condition within the group (full list of weather conditions). Get the
+     * output in your language
      */
     @NotNull
     private String description;
@@ -58,8 +58,7 @@ public class OwWeather implements Serializable {
             return false;
         }
         OwWeather other = (OwWeather) o;
-        return id != null &&
-                id.equals(other.getId());
+        return (id != null) && id.equals(other.getId());
     }
 
     @Override
