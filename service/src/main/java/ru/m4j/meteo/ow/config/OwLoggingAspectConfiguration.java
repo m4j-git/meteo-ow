@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 
-import ru.m4j.meteo.aop.LoggingAspect;
+import ru.m4j.meteo.share.aop.LoggingAspect;
 
 @Configuration
 @EnableAspectJAutoProxy
