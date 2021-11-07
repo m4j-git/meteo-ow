@@ -61,7 +61,8 @@ public class OwMessageRequester {
     }
 
     URI getUri(LocationDto geo) {
-        return UriComponentsBuilder.newInstance().scheme(scheme).host(host).path(path).queryParam("lat", geo.getLat()).queryParam("lon", geo.getLon()).queryParam("appid", apiKey).queryParam("exclude", "minutely").queryParam("units", "metric").buildAndExpand().toUri();
+        return UriComponentsBuilder.newInstance().scheme(scheme).host(host).path(path).queryParam("lat", geo.getLat()).queryParam("lon", geo.getLon())
+                .queryParam("appid", apiKey).queryParam("exclude", "minutely").queryParam("units", "metric").buildAndExpand().toUri();
     }
 
 }

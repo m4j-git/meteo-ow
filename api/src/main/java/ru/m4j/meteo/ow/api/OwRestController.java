@@ -19,7 +19,8 @@ public interface OwRestController {
 
     @ApiOperation(notes = "openweather messages", value = "get list of weather messages")
     @GetMapping("/messages")
-    List<OwMessageDto> getMessages(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom, @RequestParam(required = false) String dateTo);
+    List<OwMessageDto> getMessages(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom,
+            @RequestParam(required = false) String dateTo);
 
     @ApiOperation(notes = "openweather messages", value = "get weather message")
     @GetMapping("/messages/{id}")
@@ -31,5 +32,6 @@ public interface OwRestController {
 
     @ApiOperation(notes = "openweather messages", value = "get fact weather messages")
     @GetMapping("/messages/facts")
-    List<OwCurrentDto> getFacts(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom, @RequestParam(required = false) String dateTo);
+    List<OwCurrentDto> getFacts(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom,
+            @RequestParam(required = false) String dateTo);
 }

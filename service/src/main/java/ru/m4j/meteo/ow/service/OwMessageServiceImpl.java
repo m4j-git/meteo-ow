@@ -78,7 +78,8 @@ public class OwMessageServiceImpl implements OwMessageService {
     }
 
     private LocalDateTime dateToMapper(String dateTo) {
-        return dateTo != null ? LocalDateTime.parse(dateTo) : LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault());
+        return dateTo != null ? LocalDateTime.parse(dateTo)
+                : LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault());
     }
 
     private LocalDateTime dateFromMapper(String dateFrom) {
