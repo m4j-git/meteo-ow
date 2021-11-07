@@ -46,5 +46,4 @@ class OwWeatherRepositoryTest {
         assertEquals(0, repo.count());
     }
 
-
 }

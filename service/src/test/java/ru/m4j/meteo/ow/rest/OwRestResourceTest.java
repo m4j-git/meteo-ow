@@ -66,15 +66,7 @@ class OwRestResourceTest {
 
     @Test
     public void testGetFacts() {
-        URI uri = UriComponentsBuilder.newInstance()
-                .scheme(scheme)
-                .host(host)
-                .port(randomServerPort)
-                .path(path)
-                .pathSegment("messages/facts")
-                .queryParam("geonameId", geonameId)
-                .buildAndExpand()
-                .toUri();
+        URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/facts").queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwCurrentDto[]> response = restTemplate.getForEntity(uri, OwCurrentDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
@@ -83,15 +75,7 @@ class OwRestResourceTest {
 
     @Test
     public void testGetLastMessage() {
-        URI uri = UriComponentsBuilder.newInstance()
-                .scheme(scheme)
-                .host(host)
-                .port(randomServerPort)
-                .path(path)
-                .pathSegment("messages/last")
-                .queryParam("geonameId", geonameId)
-                .buildAndExpand()
-                .toUri();
+        URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/last").queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
@@ -99,15 +83,7 @@ class OwRestResourceTest {
 
     @Test
     public void testGetMessages() {
-        URI uri = UriComponentsBuilder.newInstance()
-                .scheme(scheme)
-                .host(host)
-                .port(randomServerPort)
-                .path(path)
-                .pathSegment("messages")
-                .queryParam("geonameId", geonameId)
-                .buildAndExpand()
-                .toUri();
+        URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages").queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwMessageDto[]> response = restTemplate.getForEntity(uri, OwMessageDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
@@ -116,19 +92,11 @@ class OwRestResourceTest {
 
     @Test
     public void testGetMessage() {
-        URI uri = UriComponentsBuilder.newInstance()
-                .scheme(scheme)
-                .host(host)
-                .port(randomServerPort)
-                .path(path)
-                .pathSegment("messages/{messageUuid}")
-                .buildAndExpand(messageUuid)
-                .toUri();
+        URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/{messageUuid}").buildAndExpand(messageUuid).toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
     }
-
 
     @AfterEach
     public void tearDown() {
@@ -137,6 +105,5 @@ class OwRestResourceTest {
         assertEquals(0, factRepo.count());
         assertEquals(0, msgRepo.count());
     }
-
 
 }

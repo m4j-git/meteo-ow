@@ -137,5 +137,4 @@ public class OwMessageDtoModelMapperTest {
         assertTrue(dto.toString().length() > 0);
     }
 
-
 }

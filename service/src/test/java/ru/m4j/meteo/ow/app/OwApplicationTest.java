@@ -11,10 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.config.OwConstants;
 
-
 @SpringBootTest(classes = OwTestApplication.class)
 class OwApplicationTest {
-
 
     private static final Logger log = LoggerFactory.getLogger(OwApplicationTest.class);
 

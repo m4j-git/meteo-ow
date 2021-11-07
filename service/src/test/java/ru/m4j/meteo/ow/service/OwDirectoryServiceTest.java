@@ -20,7 +20,6 @@ import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.model.OwWeatherDto;
 
-
 @SpringBootTest(classes = OwTestApplication.class)
 @Transactional
 class OwDirectoryServiceTest {

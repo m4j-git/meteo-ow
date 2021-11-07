@@ -70,5 +70,4 @@ class OwMessageJsonTest {
         assertTrue(json.length() > 10);
     }
 
-
 }

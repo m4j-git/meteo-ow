@@ -22,5 +22,4 @@ class OwFactTest {
         assertThat(fact.toString().length()).isGreaterThan(100);
     }
 
-
 }
