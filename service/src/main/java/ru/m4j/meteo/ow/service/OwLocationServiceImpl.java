@@ -19,7 +19,7 @@ import ru.m4j.meteo.ow.model.LocationsDto;
 public class OwLocationServiceImpl implements OwLocationService {
 
     @Override
-    public List<LocationDto> requestGeonames() {
+    public List<LocationDto> requestLocations() {
         try {
             XmlMapper xmlMapper = new XmlMapper();
             URL resource = OwLocationService.class.getClassLoader().getResource("data/locations.xml");

@@ -24,7 +24,7 @@ public class OwLocationServiceTest {
 
     @Test
     public void test01() throws JsonGenerationException, JsonMappingException, IOException {
-        assertThat(service.requestGeonames().size() > 0);
+        assertThat(service.requestLocations().size() > 0);
     }
 
 }

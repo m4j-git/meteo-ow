@@ -9,6 +9,6 @@ import ru.m4j.meteo.ow.model.LocationDto;
 
 public interface OwLocationService {
 
-    List<LocationDto> requestGeonames();
+    List<LocationDto> requestLocations();
 
 }

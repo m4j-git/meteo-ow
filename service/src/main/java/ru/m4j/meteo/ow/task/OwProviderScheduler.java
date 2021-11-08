@@ -20,16 +20,16 @@ public class OwProviderScheduler {
     private static final int mFixedRate = 3600 * 2;
 
     private final OwMessageRequester requester;
-    private final OwLocationService geo;
+    private final OwLocationService locationService;
 
-    public OwProviderScheduler(OwMessageRequester requester, OwLocationService geo) {
+    public OwProviderScheduler(OwMessageRequester requester, OwLocationService locationService) {
         this.requester = requester;
-        this.geo = geo;
+        this.locationService = locationService;
     }
 
     @Scheduled(fixedRate = (1000 * mFixedRate) / 10, initialDelay = 3000)
     public void run() {
-        List<LocationDto> gns = geo.requestGeonames();
+        List<LocationDto> gns = locationService.requestLocations();
         for (final LocationDto gn : gns) {
             requester.requestProvider(gn);
         }
