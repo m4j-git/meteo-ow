@@ -13,20 +13,26 @@ spring:
     open-in-view: false
     properties:
       hibernate:
-        format_sql: true
+        "[format_sql]": true
         type: info
-        use_sql_comments: true
+        "[use_sql_comments]": true
     show-sql: false
     hibernate:
       ddl-auto: validate
       use-new-id-generator-mappings: false
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred #?
   thymeleaf:
     cache: true
+    # mode: HTML
   security:
     user:
       name: ${METEO_USER}
       password: ${METEO_PASSWD}
-
+#  main:
+#    lazy-initialization: true
 ##################
 #   Server Settings
 ##################
@@ -45,9 +51,8 @@ logging:
       hibernate: INFO
       springframework:
         security: INFO
-    com:
-      m4j: INFO
-
+    ru:    
+      m4j: DEBUG
 ##################
 #   Meteo Settings
 ##################
@@ -62,3 +67,157 @@ meteo:
 maven:
   branch-name: '@scmBranch@'
   build-number: '@buildNumber@'
+  
+--- #stage
+##################
+#   Spring Settings
+##################
+spring:
+  config:
+    activate:
+      on-profile: stage
+  jpa:
+    generate-ddl: false
+    properties:
+      hibernate:
+        type: info
+    show-sql: false
+  thymeleaf:
+    cache: false
+  output:
+    ansi:
+      enabled: ALWAYS
+
+##################
+#   Server Settings
+##################
+server:
+  port: 8081
+
+##################
+#   Logging Settings
+##################
+logging:
+  level:
+    ROOT: INFO
+    org:
+      hibernate: INFO
+      springframework: INFO
+    ru:
+      m4j: DEBUG
+
+##################
+#   Meteo Settings
+##################
+meteo:
+  scheduling:
+    enabled: false
+
+--- #prod
+##################
+#   Spring Settings
+##################
+spring:
+  config:
+    activate:
+      on-profile: prod
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  boot:
+    ##################
+    #   Admin client Settings
+    ##################
+    admin:
+      client:
+        url: http://meteohost:8090/meteo-admin
+        username: ${METEO_USER}
+        password: ${METEO_PASSWD}
+        instance:
+          metadata:
+            user:
+              name: ${METEO_USER}
+              password: ${METEO_PASSWD}
+          service-base-url: http://meteohost:8090
+
+##################
+#   Server Settings
+##################
+server:
+  port: 8081
+  shutdown: graceful  # а для встроенного??
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+    min-response-size: 1024
+##################
+#   Logging Settings
+##################
+logging:
+  level:
+    ROOT: INFO
+    org:
+      hibernate: INFO
+      springframework:
+        security: INFO
+    ru:
+      m4j: INFO
+  file:
+    path: logs
+    max-history: 30
+    max-size: 1MB  
+    clean-history-on-start: true
+##################
+#   Management Settings
+##################
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+--- #h2
+##################
+#   Spring Settings
+##################
+spring:
+  config:
+    activate:
+      on-profile: h2        
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:meteo-ow-dev
+    username: ${METEO_USER}
+    password: ${METEO_PASSWD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+--- #mysql
+##################
+#   Spring Settings
+##################
+spring:
+  config:
+    activate:
+      on-profile: mysql      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/meteo-ow?&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true
+    username: ${METEO_USER}
+    password: ${METEO_PASSWD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL55Dialect        

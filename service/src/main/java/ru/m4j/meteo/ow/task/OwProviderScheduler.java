@@ -27,7 +27,7 @@ public class OwProviderScheduler {
         this.locationService = locationService;
     }
 
-    @Scheduled(fixedRate = (1000 * mFixedRate) / 10, initialDelay = 3000)
+    @Scheduled(fixedRate = (1000 * mFixedRate), initialDelay = 3000)
     public void run() {
         List<LocationDto> gns = locationService.requestLocations();
         for (final LocationDto gn : gns) {
