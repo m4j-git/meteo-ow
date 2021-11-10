@@ -140,7 +140,7 @@ spring:
             user:
               name: ${METEO_USER}
               password: ${METEO_PASSWD}
-          service-base-url: http://meteohost:8090
+          service-base-url: http://meteohost:8081
 
 ##################
 #   Server Settings
