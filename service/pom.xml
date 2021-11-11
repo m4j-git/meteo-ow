@@ -52,6 +52,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 		</dependency>
@@ -206,20 +218,6 @@
 				<spring.profiles.active>prod</spring.profiles.active>
 				<skip.tests>true</skip.tests>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>de.codecentric</groupId>
-					<artifactId>spring-boot-admin-starter-client</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-actuator</artifactId>
-				</dependency>
-				<dependency>
-					<groupId>io.springfox</groupId>
-					<artifactId>springfox-swagger-ui</artifactId>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>mysql</id>
