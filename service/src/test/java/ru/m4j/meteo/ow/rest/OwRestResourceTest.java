@@ -38,7 +38,7 @@ class OwRestResourceTest {
     private final Integer geonameId = 1;
     private final String host = "localhost";
     private final String scheme = "http";
-    private final String path = "/api/v1/ow";
+    private final String path = "/api/v1";
     @LocalServerPort
     private int randomServerPort;
     @Autowired
@@ -95,7 +95,7 @@ class OwRestResourceTest {
 
     @Test
     public void testGetMessage() {
-        URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/{messageUuid}")
+        URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/one/{messageUuid}")
                 .buildAndExpand(messageUuid).toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
