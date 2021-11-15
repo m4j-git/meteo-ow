@@ -14,5 +14,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(basePackages = { "ru.m4j.meteo.*.domain" })
 @EnableJpaAuditing(/* auditorAwareRef = "springSecurityAuditorAware" */)
 @EnableTransactionManagement
-public class OwDatabaseConfiguration {
+public class OwJpaConfiguration {
 }
