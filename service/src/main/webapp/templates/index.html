@@ -26,7 +26,7 @@
           <div class="card mb-4">
             <div class="card-body">
               <p class="mb-0">
-                Дата/время: <span th:text="${weather.current.obsTime}">--</span>
+                Дата/время: <span th:text="${weather.current.dt}">--</span>
               </p>
               <p class="mb-0">
                 Температура: <span th:text="${weather.current.temp}">--</span> C.
@@ -34,11 +34,9 @@
               <p class="mb-0">
                 Температура (ощущается как): <span th:text="${weather.current.feelsLike}">--</span> C.
               </p>
+
               <p class="mb-0">
-                Температура воды: <span th:text="${weather.current.tempWater}">--</span> C.
-              </p>
-              <p class="mb-0">
-                Давление: <span th:text="${weather.current.pressureMm}">--</span> мм.
+                Давление: <span th:text="${weather.current.pressure}">--</span> мм.
               </p>
               <p class="mb-0">
                 Влажность: <span th:text="${weather.current.humidity}">--</span> %.
