@@ -38,7 +38,7 @@ class OwMessageRepositoryTest {
     }
 
     @Test
-    public void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes) {
+    void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes) {
         OwMessage ent1 = repo.save(mes);
         assertEquals(1, repo.count());
         assertNotNull(ent1.getMessageId());
@@ -48,7 +48,7 @@ class OwMessageRepositoryTest {
     }
 
     @Test
-    public void testFindLastMessage(@Qualifier("message_skinny") OwMessage mes) {
+    void testFindLastMessage(@Qualifier("message_skinny") OwMessage mes) {
         OwMessage ent1 = repo.save(mes);
         assertEquals(1, repo.count());
         final OwMessage ent2 = repo.findTopByGeonameIdOrderByCreatedOnDesc(geonameId);
@@ -56,7 +56,7 @@ class OwMessageRepositoryTest {
     }
 
     @Test
-    public void testFindIdByUuid(@Qualifier("message_skinny") OwMessage mes) {
+    void testFindIdByUuid(@Qualifier("message_skinny") OwMessage mes) {
         final OwMessage ent = repo.save(mes);
         assertEquals(1, repo.count());
         assertNotNull(ent.getMessageUuid());
@@ -66,7 +66,7 @@ class OwMessageRepositoryTest {
     }
 
     @Test
-    public void testFindMessages(@Qualifier("message_skinny") OwMessage mes) {
+    void testFindMessages(@Qualifier("message_skinny") OwMessage mes) {
         OwMessage ent = repo.save(mes);
         assertEquals(1, repo.count());
         final List<OwMessage> findMessages = repo.findMessages(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),

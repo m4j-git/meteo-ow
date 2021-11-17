@@ -49,7 +49,7 @@ class OwMessageJsonTest {
     }
 
     @Test
-    public void testFullMessageJson(@Qualifier("message") OwMessage entity) throws IOException {
+    void testFullMessageJson(@Qualifier("message") OwMessage entity) throws IOException {
         OwMessageDto dto = readJson();
         dto.setLat(null);
         dto.setLon(null);

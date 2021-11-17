@@ -36,7 +36,7 @@ import ru.m4j.meteo.ow.repo.OwWeatherRepository;
 
 @SpringBootTest(classes = OwTestApplication.class)
 @Transactional
-public class OwMessageServiceTest {
+class OwMessageServiceTest {
 
     private static final String testDataFile = "ow_onecall.json";
     private final Integer geonameId = 1;
@@ -90,7 +90,7 @@ public class OwMessageServiceTest {
     }
 
     @Test
-    public void testGetLastMessage() {
+    void testGetLastMessage() {
         final OwMessageDto dto = service.getLastMessage(geonameId);
         assertNotNull(dto);
         assertNotNull(dto.getCreatedOn());
@@ -98,21 +98,21 @@ public class OwMessageServiceTest {
     }
 
     @Test
-    public void testGetFacts() {
+    void testGetFacts() {
         final List<OwCurrentDto> fact2List = service.getFacts(geonameId, null, null);
         assertEquals(1, fact2List.size());
         assertNotNull(fact2List.get(0));
     }
 
     @Test
-    public void testGetMessages() {
+    void testGetMessages() {
         final List<OwMessageDto> ent2List = service.getMessages(geonameId, null, null);
         assertEquals(1, ent2List.size());
         assertNotNull(ent2List.get(0));
     }
 
     @Test
-    public void testGetMessage() {
+    void testGetMessage() {
         final OwMessageDto dto = service.getMessage(messageUuid);
         assertNotNull(dto);
     }

@@ -3,6 +3,8 @@
  */
 package ru.m4j.meteo.ow.app;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,7 @@ class OwApplicationTest {
     @Test
     void testApplication() {
         log.info("test app {}", OwConstants.module);
+        assertTrue(true);
     }
 
 }

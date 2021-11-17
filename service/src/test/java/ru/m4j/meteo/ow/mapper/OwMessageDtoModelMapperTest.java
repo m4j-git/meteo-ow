@@ -56,7 +56,7 @@ public class OwMessageDtoModelMapperTest {
     }
 
     @Test
-    public void testMessageMapper() throws IOException {
+    void testMessageMapper() throws IOException {
         OwMessageDto dto = readJson();
         dto.setCurrent(null);
         dto.setAlerts(null);

@@ -42,7 +42,7 @@ class OwFactRepositoryTest {
     }
 
     @Test
-    public void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes, @Autowired OwFact fact) {
+    void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes, @Autowired OwFact fact) {
         mes = repoM.save(mes);
         mes.addFact(fact);
         final OwFact ent1 = repo.save(fact);
@@ -53,7 +53,7 @@ class OwFactRepositoryTest {
     }
 
     @Test
-    public void testFindFacts(@Qualifier("message") OwMessage mes) {
+    void testFindFacts(@Qualifier("message") OwMessage mes) {
         OwMessage ent = repoM.save(mes);
         assertEquals(1, repo.count());
         final List<OwFact> findFacts = repo.findFacts(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),

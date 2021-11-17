@@ -3,20 +3,18 @@
  */
 package ru.m4j.meteo.ow.task;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
 
 @Component
 @ConditionalOnProperty(name = "meteo.scheduling.enabled", havingValue = "true")
+@Slf4j
 public class OwProviderStartupRunner implements CommandLineRunner {
-
-    private static final Logger log = LoggerFactory.getLogger(OwProviderStartupRunner.class);
 
     private final OwDirectoryService dir;
 

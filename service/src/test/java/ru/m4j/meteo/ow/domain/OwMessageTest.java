@@ -16,7 +16,7 @@ import ru.m4j.meteo.ow.OwTestApplication;
 class OwMessageTest {
 
     @Test
-    public void testMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
+    void testMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
         assertNotNull(mes);
         assertNotNull(mes.getMessageUuid());
         assertThat(mes.hashCode()).isEqualTo(0);
@@ -24,7 +24,7 @@ class OwMessageTest {
     }
 
     @Test
-    public void testMessage(@Qualifier("message") OwMessage mes) {
+    void testMessage(@Qualifier("message") OwMessage mes) {
         assertNotNull(mes);
         assertNotNull(mes.getFact());
         assertNotNull(mes.getDailies());

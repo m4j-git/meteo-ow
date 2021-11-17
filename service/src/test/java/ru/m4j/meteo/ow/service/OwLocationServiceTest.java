@@ -17,14 +17,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import ru.m4j.meteo.ow.OwTestApplication;
 
 @SpringBootTest(classes = OwTestApplication.class)
-public class OwLocationServiceTest {
+class OwLocationServiceTest {
 
     @Autowired
-    OwLocationService service;
+    private OwLocationService service;
 
     @Test
-    public void test01() throws JsonGenerationException, JsonMappingException, IOException {
-        assertThat(service.requestLocations().size() > 0);
+    void test01() throws JsonGenerationException, JsonMappingException, IOException {
+        assertThat(service.requestLocations().size()).isPositive();
     }
 
 }

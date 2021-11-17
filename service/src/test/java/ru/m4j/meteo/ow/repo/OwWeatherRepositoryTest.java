@@ -32,7 +32,7 @@ class OwWeatherRepositoryTest {
     }
 
     @Test
-    public void testCreateAndFindBiId(@Qualifier("weather") OwWeather weatherBean) {
+    void testCreateAndFindBiId(@Qualifier("weather") OwWeather weatherBean) {
         final OwWeather ent1 = repo.save(weatherBean);
         assertEquals(1, repo.count());
         assertNotNull(ent1.getId());
@@ -41,7 +41,7 @@ class OwWeatherRepositoryTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         repo.deleteAll();
         assertEquals(0, repo.count());
     }

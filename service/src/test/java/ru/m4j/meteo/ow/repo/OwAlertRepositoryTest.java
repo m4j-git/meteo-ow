@@ -36,7 +36,7 @@ class OwAlertRepositoryTest {
     }
 
     @Test
-    public void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Qualifier("alert") OwAlert alertBean) {
+    void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Qualifier("alert") OwAlert alertBean) {
         mes = repoM.save(mes);
         mes.addAlert(alertBean);
         final OwAlert ent1 = repo.save(alertBean);

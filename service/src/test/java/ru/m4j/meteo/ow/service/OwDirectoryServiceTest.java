@@ -35,13 +35,13 @@ class OwDirectoryServiceTest {
     }
 
     @Test
-    public void testReadConditionalFromFile() throws IOException {
+    void testReadConditionalFromFile() throws IOException {
         final List<OwWeatherDto> res = requester.readConditionCodesFromFile();
         assertTrue(res.size() > 0);
     }
 
     @Test
-    public void testSaveConditionalToDb() throws IOException {
+    void testSaveConditionalToDb() throws IOException {
         final Set<OwWeather> res = requester.saveConditionCodesToDb();
         assertTrue(res.size() > 0);
         dao.deleteWeatherConditionCodes();

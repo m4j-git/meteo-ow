@@ -42,7 +42,7 @@ class OwDailyRepositoryTest {
     }
 
     @Test
-    public void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Autowired OwDaily dailyBean) {
+    void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Autowired OwDaily dailyBean) {
         mes = repoM.save(mes);
         mes.addDaily(dailyBean);
         final OwDaily ent1 = repo.save(dailyBean);

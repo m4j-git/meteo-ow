@@ -33,6 +33,8 @@ spring:
       password: ${METEO_PASSWD}
 #  main:
 #    lazy-initialization: true
+  liquibase:
+    enabled: true
 ##################
 #   Server Settings
 ##################
@@ -97,7 +99,8 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
-
+  liquibase:
+    enabled: true
 ##################
 #   Server Settings
 ##################
@@ -139,6 +142,8 @@ spring:
       enabled: false
     livereload:
       enabled: false
+  liquibase:
+    enabled: true
   boot:
     ##################
     #   Admin client Settings

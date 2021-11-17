@@ -37,7 +37,7 @@ import ru.m4j.meteo.ow.repo.OwWeatherRepository;
 
 @SpringBootTest(classes = OwTestApplication.class)
 @Transactional
-public class OwDaoTest {
+class OwDaoTest {
 
     private final Integer geonameId = 2;
     @Autowired
@@ -70,14 +70,14 @@ public class OwDaoTest {
     }
 
     @Test
-    public void testCreateMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
+    void testCreateMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         assertNotNull(ent.getMessageId());
         assertEquals(1, msgRepo.count());
     }
 
     @Test
-    public void testCreateMessage(@Qualifier("message") OwMessage mes) throws IOException {
+    void testCreateMessage(@Qualifier("message") OwMessage mes) throws IOException {
         dir.saveConditionCodesToDb();
         mes = dao.saveMessage(mes, geonameId);
         assertEquals(1, factRepo.count());
@@ -97,14 +97,14 @@ public class OwDaoTest {
     }
 
     @Test
-    public void testFindLastMessage(@Qualifier("message") OwMessage mes) {
+    void testFindLastMessage(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         final OwMessage ent2 = dao.findLastMessage(geonameId);
         assertEquals(ent, ent2);
     }
 
     @Test
-    public void testFindFacts(@Qualifier("message") OwMessage mes) {
+    void testFindFacts(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         final List<OwFact> fact2List = dao.findFacts(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
                 LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
@@ -113,7 +113,7 @@ public class OwDaoTest {
     }
 
     @Test
-    public void testFindFactsViaSpecification(@Qualifier("message") OwMessage mes) {
+    void testFindFactsViaSpecification(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         final List<OwFact> fact2List = dao.findFactsViaSpecification(geonameId,
                 LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
@@ -124,7 +124,7 @@ public class OwDaoTest {
     }
 
     @Test
-    public void testFindMessages(@Qualifier("message") OwMessage mes) {
+    void testFindMessages(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         final List<OwMessage> ent2List = dao.findMessages(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
                 LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
@@ -133,7 +133,7 @@ public class OwDaoTest {
     }
 
     @Test
-    public void testFindMessagesViaSpecification(@Qualifier("message") OwMessage mes) {
+    void testFindMessagesViaSpecification(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         assertEquals(1, msgRepo.count());
         final List<OwMessage> ent2List = dao.findMessagesViaSpecification(geonameId,
@@ -144,7 +144,7 @@ public class OwDaoTest {
     }
 
     @Test
-    public void testFindMessageByUuid(@Qualifier("message") OwMessage ent1) {
+    void testFindMessageByUuid(@Qualifier("message") OwMessage ent1) {
         UUID uuid = UUID.randomUUID();
         ent1.setMessageUuid(uuid);
         ent1 = dao.saveMessage(ent1, geonameId);

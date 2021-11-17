@@ -16,7 +16,7 @@ import ru.m4j.meteo.ow.OwTestApplication;
 class OwFactTest {
 
     @Test
-    public void testFact(@Autowired OwFact fact) {
+    void testFact(@Autowired OwFact fact) {
         assertNotNull(fact);
         assertThat(fact.hashCode()).isEqualTo(0);
         assertThat(fact.toString().length()).isGreaterThan(100);

@@ -42,7 +42,7 @@ class OwHourlyRepositoryTest {
     }
 
     @Test
-    public void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Qualifier("hourly") OwHourly hourlyBean) {
+    void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Qualifier("hourly") OwHourly hourlyBean) {
         mes = repoM.save(mes);
         hourlyBean.setMessage(mes);
         final OwHourly ent1 = repo.save(hourlyBean);

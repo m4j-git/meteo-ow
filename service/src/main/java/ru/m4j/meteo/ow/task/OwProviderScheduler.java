@@ -17,7 +17,7 @@ import ru.m4j.meteo.ow.service.OwLocationService;
 @ConditionalOnProperty(name = "meteo.scheduling.enabled", havingValue = "true")
 public class OwProviderScheduler {
 
-    private static final int mFixedRate = 3600 * 2;
+    private static final int FIXED_RATE = 3600 * 2;
 
     private final OwMessageRequester requester;
     private final OwLocationService locationService;
@@ -27,7 +27,7 @@ public class OwProviderScheduler {
         this.locationService = locationService;
     }
 
-    @Scheduled(fixedRate = (1000 * mFixedRate), initialDelay = 3000)
+    @Scheduled(fixedRate = (1000 * FIXED_RATE), initialDelay = 3000)
     public void run() {
         List<LocationDto> gns = locationService.requestLocations();
         for (final LocationDto gn : gns) {

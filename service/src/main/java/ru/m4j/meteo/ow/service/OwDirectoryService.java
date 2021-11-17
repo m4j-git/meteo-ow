@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
@@ -18,14 +16,15 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.mapper.OwMessageDtoModelMapper;
 import ru.m4j.meteo.ow.model.OwWeatherDto;
 
 @Service
+@Slf4j
 public class OwDirectoryService {
 
-    private static final Logger log = LoggerFactory.getLogger(OwDirectoryService.class);
     private final ResourceLoader resourceLoader;
     private final OwDao dao;
     private final OwMessageDtoModelMapper mapper;
