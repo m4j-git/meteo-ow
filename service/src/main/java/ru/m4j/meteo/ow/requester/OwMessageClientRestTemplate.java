@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import ru.m4j.meteo.ow.model.OwMessageDto;
 
-@ConditionalOnProperty(name = "meteo.client", havingValue = "rest", matchIfMissing = true)
+@ConditionalOnProperty(name = "meteo.provider.type", havingValue = "resttemplate", matchIfMissing = true)
 @Component
 public class OwMessageClientRestTemplate implements OwMessageClient {
 

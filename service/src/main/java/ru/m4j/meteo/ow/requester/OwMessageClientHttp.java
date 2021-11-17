@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.m4j.meteo.ow.model.OwMessageDto;
 
-@ConditionalOnProperty(name = "meteo.client", havingValue = "http")
+@ConditionalOnProperty(name = "meteo.provider.type", havingValue = "http")
 @Component
 public class OwMessageClientHttp implements OwMessageClient {
 
@@ -29,17 +29,12 @@ public class OwMessageClientHttp implements OwMessageClient {
     }
 
     @Override
-    public OwMessageDto request(URI uri) {
-        try {
-            URLConnection connection = uri.toURL().openConnection();
-            try (InputStream is = connection.getInputStream();
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-                final OwMessageDto owDto = jacksonMapper.readValue(rd, OwMessageDto.class);
-                rd.close();
-                return owDto;
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public OwMessageDto request(URI uri) throws IOException {
+        URLConnection connection = uri.toURL().openConnection();
+        try (InputStream is = connection.getInputStream();
+                BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+            final OwMessageDto owDto = jacksonMapper.readValue(rd, OwMessageDto.class);
+            return owDto;
         }
     }
 

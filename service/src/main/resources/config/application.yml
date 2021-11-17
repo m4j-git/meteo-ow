@@ -37,9 +37,9 @@ spring:
 #   Server Settings
 ##################
 server:
-  port: 8080
-  servlet:
-    context-path: /meteo-ow
+  port: 8081
+  #servlet:
+    #context-path: /meteo-ow
 
 ##################
 #   Logging Settings
@@ -59,8 +59,17 @@ logging:
 meteo:
   scheduling:
     enabled: true
-  client: rest
+  provider:
+    type: resttemplate
 
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://meteohost:8761/eureka/
+    healthcheck:
+      enabled: true
+    enabled: false
+    
 ##################
 #   Maven Settings
 ##################
@@ -68,7 +77,8 @@ maven:
   branch-name: '@scmBranch@'
   build-number: '@buildNumber@'
   
---- #stage
+--- ################### stage ################### 
+
 ##################
 #   Spring Settings
 ##################
@@ -91,8 +101,6 @@ spring:
 ##################
 #   Server Settings
 ##################
-server:
-  port: 8081
 
 ##################
 #   Logging Settings
@@ -113,7 +121,12 @@ meteo:
   scheduling:
     enabled: false
 
---- #prod
+eureka:
+  client:
+    enabled: true
+    
+--- ################### prod ################### 
+
 ##################
 #   Spring Settings
 ##################
@@ -146,7 +159,6 @@ spring:
 #   Server Settings
 ##################
 server:
-  port: 8081
   shutdown: graceful  # а для встроенного??
   compression:
     enabled: true
@@ -169,6 +181,11 @@ logging:
     max-history: 30
     max-size: 1MB  
     clean-history-on-start: true
+    
+eureka:
+  client:
+    enabled: true
+    
 ##################
 #   Management Settings
 ##################
@@ -183,7 +200,8 @@ management:
       exposure:
         include: '*'
 
---- #h2
+--- ################### h2 ###################
+ 
 ##################
 #   Spring Settings
 ##################
@@ -204,7 +222,8 @@ spring:
     console:
       enabled: true
 
---- #mysql
+--- ################### mysql ################### 
+
 ##################
 #   Spring Settings
 ##################
