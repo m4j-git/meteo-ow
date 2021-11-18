@@ -184,13 +184,13 @@
 					<url>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/meteo-ya</url>
 					<username>${env.METEO_USER}</username>
 					<password>${env.METEO_PASSWD}</password>
-					<outputChangeLogFile>${change.log.path}changelog-gen-${maven.build.timestamp}.yaml
+					<outputChangeLogFile>${change.log.path}changelog-gen-${maven.build.timestamp.format}.yaml
 					</outputChangeLogFile>
 					<referenceDriver>com.mysql.cj.jdbc.Driver</referenceDriver>
 					<referenceUrl>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/meteo-ya-dev</referenceUrl>
 					<referenceUsername>${env.METEO_USER}</referenceUsername>
 					<referencePassword>${env.METEO_PASSWD}</referencePassword>
-					<diffChangeLogFile>${change.log.path}changelog-diff-${maven.build.timestamp}.yaml
+					<diffChangeLogFile>${change.log.path}changelog-diff-${maven.build.timestamp.format}.yaml
 					</diffChangeLogFile>
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 				</configuration>
