@@ -1,6 +1,6 @@
 [![Java CI with Maven](https://github.com/m4j-git/meteo-ow/actions/workflows/maven.yml/badge.svg)](https://github.com/m4j-git/meteo-ow/actions/workflows/maven.yml)
 
-# Spring Boot App for OpenWeatherMap
+# Spring Boot App for OpenWeather
 
 ### Environment variables
 * METEO_USER
