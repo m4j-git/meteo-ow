@@ -11,5 +11,5 @@
 * MYSQL_PASSWD
 * OPENWEATHERMAP_API_KEY
 
-### Hosts
+### /etc/hosts
 * meteohost
