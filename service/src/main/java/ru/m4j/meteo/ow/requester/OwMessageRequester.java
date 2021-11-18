@@ -5,12 +5,11 @@ package ru.m4j.meteo.ow.requester;
 
 import java.net.URI;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.service.OwMessageService;
@@ -25,14 +24,16 @@ import ru.m4j.meteo.ow.service.OwMessageService;
  * optional You can use the lang parameter to get the output in your language.
  */
 
+@Slf4j
 @Service
 public class OwMessageRequester {
 
-    private static final Logger log = LoggerFactory.getLogger(OwMessageRequester.class);
-
-    private final static String host = "api.openweathermap.org";
-    private final static String scheme = "https";
-    private final static String path = "/data/2.5/onecall";
+    @Value("${meteo.provider.host:api.openweathermap.org}")
+    private String host;
+    @Value("${meteo.provider.scheme:https}")
+    private String scheme;
+    @Value("${meteo.provider.path:/data/2.5/onecall}")
+    private String path;
 
     private final OwMessageService service;
     private final OwMessageClient client;

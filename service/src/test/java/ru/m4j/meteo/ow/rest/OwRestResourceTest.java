@@ -65,7 +65,7 @@ class OwRestResourceTest {
     }
 
     @Test
-    public void testGetFacts() {
+    void testGetFacts() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/facts")
                 .queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwCurrentDto[]> response = restTemplate.getForEntity(uri, OwCurrentDto[].class);
@@ -75,7 +75,7 @@ class OwRestResourceTest {
     }
 
     @Test
-    public void testGetLastMessage() {
+    void testGetLastMessage() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/last")
                 .queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
@@ -84,7 +84,7 @@ class OwRestResourceTest {
     }
 
     @Test
-    public void testGetMessages() {
+    void testGetMessages() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages")
                 .queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwMessageDto[]> response = restTemplate.getForEntity(uri, OwMessageDto[].class);
@@ -94,7 +94,7 @@ class OwRestResourceTest {
     }
 
     @Test
-    public void testGetMessage() {
+    void testGetMessage() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/one/{messageUuid}")
                 .buildAndExpand(messageUuid).toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);

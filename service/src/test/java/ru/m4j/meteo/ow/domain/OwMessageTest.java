@@ -19,7 +19,7 @@ class OwMessageTest {
     void testMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
         assertNotNull(mes);
         assertNotNull(mes.getMessageUuid());
-        assertThat(mes.hashCode()).isEqualTo(0);
+        assertThat(mes.hashCode()).isZero();
         assertThat(mes.toString().length()).isGreaterThan(100);
     }
 

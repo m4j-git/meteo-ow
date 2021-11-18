@@ -77,7 +77,7 @@ class OwMessageDtoModelMapperTest {
     }
 
     @Test
-    public void testFactMapper() throws IOException {
+    void testFactMapper() throws IOException {
         OwMessageDto dto = readJson();
         final OwCurrentDto dto1 = dto.getCurrent();
         final OwFact entity = mapper.factDtoToFact(dto1);
@@ -88,7 +88,7 @@ class OwMessageDtoModelMapperTest {
     }
 
     @Test
-    public void testAlertMapper() throws IOException {
+    void testAlertMapper() throws IOException {
         OwMessageDto dto = readJson();
         final List<OwAlertDto> dto1 = dto.getAlerts();
         final List<OwAlert> entity = mapper.alertListDtoToAlertList(dto1);
@@ -99,7 +99,7 @@ class OwMessageDtoModelMapperTest {
     }
 
     @Test
-    public void testDailyMapper() throws IOException {
+    void testDailyMapper() throws IOException {
         OwMessageDto dto = readJson();
         final List<OwDailyDto> dto1 = dto.getDaily();
         final List<OwDaily> entity = mapper.dailyListDtoToDailyList(dto1);
@@ -110,7 +110,7 @@ class OwMessageDtoModelMapperTest {
     }
 
     @Test
-    public void testHourlyMapper() throws IOException {
+    void testHourlyMapper() throws IOException {
         OwMessageDto dto = readJson();
         final List<OwHourlyDto> dto1 = dto.getHourly();
         final List<OwHourly> entity = mapper.hourlyListDtoToHourlyList(dto1);
@@ -121,7 +121,7 @@ class OwMessageDtoModelMapperTest {
     }
 
     @Test
-    public void testFullMessageMapper() throws IOException {
+    void testFullMessageMapper() throws IOException {
         OwMessageDto dto = readJson();
         dto.setLat(null);
         dto.setLon(null);

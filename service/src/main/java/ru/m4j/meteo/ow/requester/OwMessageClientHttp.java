@@ -33,8 +33,7 @@ public class OwMessageClientHttp implements OwMessageClient {
         URLConnection connection = uri.toURL().openConnection();
         try (InputStream is = connection.getInputStream();
                 BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-            final OwMessageDto owDto = jacksonMapper.readValue(rd, OwMessageDto.class);
-            return owDto;
+            return jacksonMapper.readValue(rd, OwMessageDto.class);
         }
     }
 

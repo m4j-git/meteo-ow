@@ -11,20 +11,19 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.domain.OwFact;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.mapper.OwMessageDtoModelMapper;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 
+@Slf4j
 @Service
 public class OwMessageServiceImpl implements OwMessageService {
 
-    private static final Logger log = LoggerFactory.getLogger(OwMessageService.class);
     private final OwDao dao;
     private final OwMessageDtoModelMapper mapper;
 

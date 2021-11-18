@@ -18,7 +18,7 @@ class OwFactTest {
     @Test
     void testFact(@Autowired OwFact fact) {
         assertNotNull(fact);
-        assertThat(fact.hashCode()).isEqualTo(0);
+        assertThat(fact.hashCode()).isZero();
         assertThat(fact.toString().length()).isGreaterThan(100);
     }
 

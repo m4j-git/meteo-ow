@@ -57,7 +57,7 @@ class OwMessageRequesterTest {
     }
 
     @Test
-    public void testRequestProvider(@Autowired LocationDto geoname) throws IOException {
+    void testRequestProvider(@Autowired LocationDto geoname) throws IOException {
         when(client.request(requester.getUri(geoname))).thenReturn(readJson());
         final OwMessageDto result = requester.requestProvider(geoname);
         assertNotNull(result.getCurrent().getDt());

@@ -4,6 +4,7 @@
 package ru.m4j.meteo.ow.mapper;
 
 import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -57,8 +58,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<Set<OwWeather>, List<OwWeatherDto>> weatherListDtoFromWeatherList = new AbstractConverter<>() {
         @Override
         protected List<OwWeatherDto> convert(Set<OwWeather> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return weatherListDtoFromWeatherList(source);
         }
@@ -66,8 +67,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwWeatherDto>, Set<OwWeather>> weatherListDtoToWeatherList = new AbstractConverter<>() {
         @Override
         protected Set<OwWeather> convert(List<OwWeatherDto> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptySet();
             }
             return weatherListDtoToWeatherList(source);
         }
@@ -75,8 +76,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwDaily>, List<OwDailyDto>> dailyListDtoFromDailyList = new AbstractConverter<>() {
         @Override
         protected List<OwDailyDto> convert(List<OwDaily> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return dailyListDtoFromDailyList(source);
         }
@@ -84,8 +85,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwDailyDto>, List<OwDaily>> dailyListDtoToDailyList = new AbstractConverter<>() {
         @Override
         protected List<OwDaily> convert(List<OwDailyDto> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return dailyListDtoToDailyList(source);
         }
@@ -93,8 +94,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwHourly>, List<OwHourlyDto>> hourlyListDtoFromHourlyList = new AbstractConverter<>() {
         @Override
         protected List<OwHourlyDto> convert(List<OwHourly> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return hourlyListDtoFromHourlyList(source);
         }
@@ -102,8 +103,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwHourlyDto>, List<OwHourly>> hourlyListDtoToHourlyList = new AbstractConverter<>() {
         @Override
         protected List<OwHourly> convert(List<OwHourlyDto> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return hourlyListDtoToHourlyList(source);
         }
@@ -111,8 +112,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwAlert>, List<OwAlertDto>> alertListDtoFromAlertList = new AbstractConverter<>() {
         @Override
         protected List<OwAlertDto> convert(List<OwAlert> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return alertListDtoFromAlertList(source);
         }
@@ -120,8 +121,8 @@ public class OwMessageDtoModelMapper {
     private final Converter<List<OwAlertDto>, List<OwAlert>> alertListDtoToAlertList = new AbstractConverter<>() {
         @Override
         protected List<OwAlert> convert(List<OwAlertDto> source) {
-            if ((source == null) || (source.size() == 0)) {
-                return null;
+            if ((source == null) || (source.isEmpty())) {
+                return Collections.emptyList();
             }
             return alertListDtoToAlertList(source);
         }
@@ -219,9 +220,7 @@ public class OwMessageDtoModelMapper {
     public List<OwDailyDto> dailyListDtoFromDailyList(final List<OwDaily> entityList) {
         final Type listType = new TypeToken<List<OwDailyDto>>() {
         }.getType();
-        List<OwDailyDto> res = modelMapper.map(entityList, listType);
-        // res.sort(new OwDailyComparator());
-        return res;
+        return modelMapper.map(entityList, listType);
     }
 
     public List<OwHourly> hourlyListDtoToHourlyList(final List<OwHourlyDto> dtoList) {
@@ -233,9 +232,7 @@ public class OwMessageDtoModelMapper {
     public List<OwHourlyDto> hourlyListDtoFromHourlyList(final List<OwHourly> entityList) {
         final Type listType = new TypeToken<List<OwHourlyDto>>() {
         }.getType();
-        List<OwHourlyDto> res = modelMapper.map(entityList, listType);
-        // res.sort(new OwHourlyComparator());
-        return res;
+        return modelMapper.map(entityList, listType);
     }
 
     public List<OwMessageDto> messagesDtoFromMessages(final List<OwMessage> entityList) {

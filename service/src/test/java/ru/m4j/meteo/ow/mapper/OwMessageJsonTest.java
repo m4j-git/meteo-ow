@@ -63,7 +63,7 @@ class OwMessageJsonTest {
     }
 
     @Test
-    public void testJacksonMapper() throws IOException {
+    void testJacksonMapper() throws IOException {
         OwMessageDto dto = readJson();
         assertThat(dto.getCurrent().getTemp()).isNotNull();
         String json = jacksonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dto);
