@@ -10,7 +10,7 @@
 <title>OpenWeather</title>
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.css}" />
 <link rel="stylesheet" th:href="@{/css/meteo.css}" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" type="text/javascript"></script>
 <link rel="icon" th:href="@{favicon.png}" type="image/x-icon">
 </head>
 
@@ -19,26 +19,9 @@
 
 	<main>
 		<div class="container-fluid">
-			<h2 class="mt-4">Фактическая погода на 15:00 (MSK) 23.04.2021г. Москва.</h2>
+			<h2 class="mt-4">Фактическая погода на 15:00 (MSK) 23.04.2021г.Москва.</h2>
 			<div class="card mb-4">
-				<div class="card-body">
-					<p class="mb-0">
-						Дата/время: <span th:text="${weather.current.dt}">--</span>
-					</p>
-					<p class="mb-0">
-						Температура: <span th:text="${weather.current.temp}">--</span> C.
-					</p>
-					<p class="mb-0">
-						Температура (ощущается как): <span th:text="${weather.current.feelsLike}">--</span> C.
-					</p>
-
-					<p class="mb-0">
-						Давление: <span th:text="${weather.current.pressure}">--</span> мм.
-					</p>
-					<p class="mb-0">
-						Влажность: <span th:text="${weather.current.humidity}">--</span> %.
-					</p>
-				</div>
+				<div class="card-body"></div>
 			</div>
 		</div>
 	</main>
