@@ -3,13 +3,13 @@
 # Spring Boot App for OpenWeatherMap
 
 ### Environment variables
-
 * METEO_USER
 * METEO_PASSWD
-
 * MYSQL_HOST
 * MYSQL_PORT
 * MYSQL_USER
 * MYSQL_PASSWD
-
 * OPENWEATHERMAP_API_KEY
+
+### Hosts
+* meteohost
