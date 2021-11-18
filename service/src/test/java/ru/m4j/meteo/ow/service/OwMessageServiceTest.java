@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.app.OwTestConstants;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.repo.OwAlertRepository;
@@ -33,12 +32,13 @@ import ru.m4j.meteo.ow.repo.OwFactRepository;
 import ru.m4j.meteo.ow.repo.OwHourlyRepository;
 import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.repo.OwWeatherRepository;
+import ru.m4j.meteo.share.app.GlobalConstants;
 
 @SpringBootTest(classes = OwTestApplication.class)
 @Transactional
 class OwMessageServiceTest {
 
-    private static final String testDataFile = "ow_onecall.json";
+    private static final String TEST_DATA_FILE = "ow_onecall.json";
     private final Integer geonameId = 1;
     private final String messageUuid = "11111111-1111-1111-1111-111111111111";
 
@@ -72,7 +72,7 @@ class OwMessageServiceTest {
         assertEquals(0, hourlyRepo.count());
         assertEquals(0, factRepo.count());
         assertEquals(0, msgRepo.count());
-        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath + testDataFile);
+        final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         OwMessageDto dto;
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             dto = jacksonMapper.readValue(rd, OwMessageDto.class);

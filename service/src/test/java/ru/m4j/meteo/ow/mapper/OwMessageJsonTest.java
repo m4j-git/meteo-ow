@@ -23,14 +23,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.app.OwTestConstants;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.share.app.GlobalConstants;
 
 @SpringBootTest(classes = OwTestApplication.class)
 class OwMessageJsonTest {
 
-    private static final String testDataFile = "ow_onecall.json";
+    private static final String TEST_DATA_FILE = "ow_onecall.json";
     @Autowired
     private ObjectMapper jacksonMapper;
     @Autowired
@@ -42,7 +42,7 @@ class OwMessageJsonTest {
     }
 
     private OwMessageDto readJson() throws IOException {
-        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath + testDataFile);
+        final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             return jacksonMapper.readValue(rd, OwMessageDto.class);
         }

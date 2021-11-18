@@ -22,7 +22,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ru.m4j.meteo.ow.OwTestApplication;
-import ru.m4j.meteo.ow.app.OwTestConstants;
 import ru.m4j.meteo.ow.domain.OwAlert;
 import ru.m4j.meteo.ow.domain.OwDaily;
 import ru.m4j.meteo.ow.domain.OwFact;
@@ -33,11 +32,12 @@ import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwDailyDto;
 import ru.m4j.meteo.ow.model.OwHourlyDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.share.app.GlobalConstants;
 
 @SpringBootTest(classes = OwTestApplication.class)
-public class OwMessageDtoModelMapperTest {
+class OwMessageDtoModelMapperTest {
 
-    private static final String testDataFile = "ow_onecall.json";
+    private static final String TEST_DATA_FILE = "ow_onecall.json";
     @Autowired
     private OwMessageDtoModelMapper mapper;
     @Autowired
@@ -49,7 +49,7 @@ public class OwMessageDtoModelMapperTest {
     }
 
     private OwMessageDto readJson() throws IOException {
-        final FileInputStream fis = new FileInputStream(OwTestConstants.testDataPath + testDataFile);
+        final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             return jacksonMapper.readValue(rd, OwMessageDto.class);
         }
