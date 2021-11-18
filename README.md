@@ -1,6 +1,9 @@
 [![Java CI with Maven](https://github.com/m4j-git/meteo-ow/actions/workflows/maven.yml/badge.svg)](https://github.com/m4j-git/meteo-ow/actions/workflows/maven.yml)
 
-# Spring Boot App for OpenWeather
+# spring-boot-app for open-weather api
+
+### cloning  the repository with submodule
+git clone --recurse-submodules -j8 git://github.com/m4j-git/meteo-ow.git
 
 ### Environment variables
 * METEO_USER
