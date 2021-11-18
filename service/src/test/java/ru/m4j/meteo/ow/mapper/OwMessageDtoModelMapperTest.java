@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -59,9 +60,9 @@ class OwMessageDtoModelMapperTest {
     void testMessageMapper() throws IOException {
         OwMessageDto dto = readJson();
         dto.setCurrent(null);
-        dto.setAlerts(null);
-        dto.setDaily(null);
-        dto.setHourly(null);
+        dto.setAlerts(Collections.emptyList());
+        dto.setDaily(Collections.emptyList());
+        dto.setHourly(Collections.emptyList());
         dto.setLat(null);
         dto.setLon(null);
         dto.setTimezone(null);
