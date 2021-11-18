@@ -2,10 +2,24 @@
 
 # spring-boot-app for open-weather api
 
-### cloning  the repository with submodule
-git clone --recurse-submodules -j8 git://github.com/m4j-git/meteo-ow.git
+Description
+-----------
+....
 
-### Environment variables
+Building
+--------
+### Requirements
+* Maven 3+
+* Java 11+
+* MariaDb 5+
+
+Check out (with submodule) and build:
+
+    git clone --recurse-submodules -j8 git://github.com/m4j-git/meteo-ow.git
+    ./make test
+    ./make prod
+
+### environment variables
 * METEO_USER
 * METEO_PASSWD
 * MYSQL_HOST
