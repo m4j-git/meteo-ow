@@ -6,27 +6,30 @@ Description
 -----------
 ....
 
+
 Building
 --------
-### Requirements
-* Maven 3+
-* Java 11+
-* MariaDb 5+
+##### Requirements
+* Maven 3.6+
+* Java 17+
+* MariaDb 10+
 
-Check out (with submodule) and build:
-
-    git clone --recurse-submodules -j8 git://github.com/m4j-git/meteo-ow.git
-    ./make test
-    ./make prod
-
-### environment variables
+##### Environment variables
 * METEO_USER
 * METEO_PASSWD
+
 * MYSQL_HOST
 * MYSQL_PORT
 * MYSQL_USER
 * MYSQL_PASSWD
+
 * OPENWEATHERMAP_API_KEY
 
-### /etc/hosts
+##### /etc/hosts
 * meteohost
+
+##### Check out (with submodule) and build:
+    git clone --recurse-submodules -j8 git://github.com/m4j-git/meteo-ow.git
+    ./make test
+    ./make prod
+    
