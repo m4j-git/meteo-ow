@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.Collections;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -38,7 +43,7 @@ class OwRestResourceTest {
     private final Integer geonameId = 1;
     private final String host = "localhost";
     private final String scheme = "http";
-    private final String path = "/api/v1";
+    private final String path = "/meteo-ow/api/v1";
     @LocalServerPort
     private int randomServerPort;
     @Autowired
@@ -68,7 +73,11 @@ class OwRestResourceTest {
     void testGetFacts() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/facts")
                 .queryParam("geonameId", geonameId).buildAndExpand().toUri();
-        ResponseEntity<OwCurrentDto[]> response = restTemplate.getForEntity(uri, OwCurrentDto[].class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<?> request = new HttpEntity<>(headers, null);
+        ResponseEntity<OwCurrentDto[]> response = restTemplate.exchange(uri, HttpMethod.GET, request, OwCurrentDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
         assertEquals(1, response.getBody().length);

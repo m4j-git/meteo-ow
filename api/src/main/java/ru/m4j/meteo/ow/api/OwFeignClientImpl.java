@@ -20,19 +20,19 @@ import ru.m4j.meteo.ow.model.OwMessageDto;
 public interface OwFeignClientImpl extends OwRestResource {
 
     @Override
-    @GetMapping(value = "/api/v1/messages", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/meteo-ow/api/v1/messages", consumes = MediaType.APPLICATION_JSON_VALUE)
     List<OwMessageDto> getMessages(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom,
             @RequestParam(required = false) String dateTo);
 
     @Override
-    @GetMapping(value = "/api/v1/messages/one/{uuid}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/meteo-ow/api/v1/messages/one/{uuid}", consumes = MediaType.APPLICATION_JSON_VALUE)
     OwMessageDto getMessage(@PathVariable(value = "uuid") String uuid);
 
-    @GetMapping(value = "/api/v1/messages/last", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/meteo-ow/api/v1/messages/last", consumes = MediaType.APPLICATION_JSON_VALUE)
     @Override
     OwMessageDto getLastMessage(@RequestParam Integer geonameId);
 
-    @GetMapping(value = "/api/v1/messages/facts", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/meteo-ow/api/v1/messages/facts", consumes = MediaType.APPLICATION_JSON_VALUE)
     @Override
     List<OwCurrentDto> getFacts(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom,
             @RequestParam(required = false) String dateTo);

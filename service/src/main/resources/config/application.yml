@@ -40,8 +40,8 @@ spring:
 ##################
 server:
   port: 8081
-  #servlet:
-    #context-path: /meteo-ow
+  servlet:
+    context-path: /meteo-ow
 
 ##################
 #   Logging Settings
@@ -67,7 +67,7 @@ meteo:
 eureka:
   client:
     service-url: 
-      defaultZone: http://meteohost:8761/eureka/
+      defaultZone: http://meteo-host:8761/eureka/
     healthcheck:
       enabled: true
     enabled: false
@@ -152,7 +152,7 @@ spring:
     ##################
     admin:
       client:
-        url: http://meteohost:8090/meteo-admin
+        url: http://meteo-host:8090/meteo-adm
         username: ${METEO_USER}
         password: ${METEO_PASSWD}
         instance:
@@ -160,7 +160,7 @@ spring:
             user:
               name: ${METEO_USER}
               password: ${METEO_PASSWD}
-          service-base-url: http://meteohost:8081
+          service-base-url: http://meteo-host:8081
 
 ##################
 #   Server Settings
@@ -196,7 +196,7 @@ meteo:
   scheduling:
     enabled: true
   provider:
-    type: feign
+    type: resttemplate
         
 eureka:
   client:

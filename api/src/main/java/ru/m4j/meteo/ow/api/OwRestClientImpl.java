@@ -27,11 +27,11 @@ public class OwRestClientImpl implements OwRestResource {
 
     private final RestTemplate restTemplate;
 
-    @Value("${meteo.ow-rest-client.host:meteohost}")
+    @Value("${meteo.ow-rest-client.host:meteo-host}")
     private String host;
     @Value("${meteo.ow-rest-client.scheme:http}")
     private String scheme;
-    @Value("${meteo.ow-rest-client.path:/api/v1}")
+    @Value("${meteo.ow-rest-client.path:/meteo-ow/api/v1}")
     private String path;
     @Value("${meteo.ow-rest-client.port:8081}")
     private Integer port;
