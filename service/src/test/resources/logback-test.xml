@@ -7,7 +7,7 @@
 			<pattern>%d %5p [%t] \(%c.java:%L\) - %m%n</pattern>
 		</encoder>
 	</appender>
-	<root level="WARN">
+	<root level="INFO">
 		<appender-ref ref="stdout" />
 	</root>
 </configuration>
