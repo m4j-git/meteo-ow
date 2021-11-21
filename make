@@ -28,7 +28,7 @@ if [ "$1" = "dev" ]; then
 fi
 
 if [ "$1" = "test" ]; then
-  #mvn clean
+  mvn clean
   mvn test -P dev,h2 -T 1C -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -DargLine="-Xms1024m -Xmx8192m"
 fi
 
