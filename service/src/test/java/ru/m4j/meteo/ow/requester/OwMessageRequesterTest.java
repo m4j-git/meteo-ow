@@ -59,12 +59,12 @@ class OwMessageRequesterTest {
     @Test
     void testRequestProvider(@Autowired LocationDto geoname) throws IOException {
         when(client.request(requester.getUri(geoname))).thenReturn(readJson());
-        final OwMessageDto result = requester.requestProvider(geoname);
+        OwMessageDto result = requester.requestProvider(geoname);
         assertNotNull(result.getCurrent().getDt());
     }
 
     private OwMessageDto readJson() throws IOException {
-        final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
+        FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             return jacksonMapper.readValue(rd, OwMessageDto.class);
         }

@@ -32,7 +32,7 @@ public class OwController {
     @GetMapping("/")
     public String showFactPage(Model model, @ModelAttribute("location") LocationDto location) {
         model.addAttribute("admin-done", SecurityContextHolder.getContext().getAuthentication().getName());
-        OwMessageDto data = service.getLastMessage(location.getGeonameId());
+        OwMessageDto data = service.getLastMessage(1);
         if (data == null) {
             return "index2";
         }
