@@ -12,7 +12,7 @@
 		<groupId>ru.m4j.meteo</groupId>
 		<artifactId>meteo-bom-parent</artifactId>
 		<version>21.4.8-SNAPSHOT</version>
-			<relativePath></relativePath>
+		<relativePath></relativePath>
 	</parent>
 
 	<dependencies>
@@ -114,7 +114,7 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -149,12 +149,12 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -275,5 +275,5 @@
 			<url>https://maven.pkg.github.com/m4j-git/meteo-bom</url>
 		</repository>
 	</repositories>
-	
+
 </project>
