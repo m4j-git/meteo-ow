@@ -14,7 +14,6 @@
 	<inceptionYear>2021</inceptionYear>
 
 	<modules>
-		<module>bom</module>
 		<module>api</module>
 		<module>service</module>
 	</modules>

@@ -1,3 +1,0 @@
-[submodule "meteo-bom"]
-	path = bom
-	url = https://github.com/m4j-git/meteo-bom
