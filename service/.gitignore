@@ -8,3 +8,5 @@ buildNumber.properties
 .attach_pid*
 
 /.dbeaver/
+
+.checkstyle

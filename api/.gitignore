@@ -6,3 +6,5 @@ buildNumber.properties
 .settings
 *.log
 .attach_pid*
+
+.checkstyle
