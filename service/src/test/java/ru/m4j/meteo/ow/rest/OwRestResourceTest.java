@@ -58,12 +58,12 @@ class OwRestResourceTest {
 
     @BeforeEach
     public void setUp(@Qualifier("message") OwMessage mes) throws IOException {
-        assertThat(0).isEqualTo(factRepo.count());
-        assertThat(0).isEqualTo(msgRepo.count());
+        assertThat(factRepo.count()).isZero();
+        assertThat(msgRepo.count()).isZero();
         dir.saveConditionCodesToDb();
         dao.saveMessage(mes, geonameId);
-        assertThat(1).isEqualTo(factRepo.count());
-        assertThat(1).isEqualTo(msgRepo.count());
+        assertThat(factRepo.count()).isEqualTo(1);
+        assertThat(msgRepo.count()).isEqualTo(1);
         assertThat(restTemplate).isNotNull();
         restTemplate.getRestTemplate().setErrorHandler(new OwRestTemplateResponseErrorHandler());
     }
@@ -79,7 +79,7 @@ class OwRestResourceTest {
         ResponseEntity<OwCurrentDto[]> response = restTemplate.exchange(uri, HttpMethod.GET, request, OwCurrentDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(1).isEqualTo(response.getBody().length);
+        assertThat(response.getBody()).hasSize(1);
     }
 
     @Test
@@ -98,7 +98,7 @@ class OwRestResourceTest {
         ResponseEntity<OwMessageDto[]> response = restTemplate.getForEntity(uri, OwMessageDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(1).isEqualTo(response.getBody().length);
+        assertThat(response.getBody()).hasSize(1);
     }
 
     @Test
@@ -114,8 +114,8 @@ class OwRestResourceTest {
     public void tearDown() {
         dao.deleteAllMessages();
         dao.deleteWeatherConditionCodes();
-        assertThat(0).isEqualTo(factRepo.count());
-        assertThat(0).isEqualTo(msgRepo.count());
+        assertThat(factRepo.count()).isZero();
+        assertThat(msgRepo.count()).isZero();
     }
 
 }
