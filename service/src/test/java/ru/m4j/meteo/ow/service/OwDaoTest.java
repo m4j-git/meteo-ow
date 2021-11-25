@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -60,39 +59,39 @@ class OwDaoTest {
     public void setUp() throws IOException {
         assertThat(dao).isNotNull();
         dir.saveConditionCodesToDb();
-        assertThat(0).isEqualTo(alertRepo.count());
-        assertThat(55).isEqualTo(weatherRepo.count());
-        assertThat(0).isEqualTo(dailyRepo.count());
-        assertThat(0).isEqualTo(hourlyRepo.count());
-        assertThat(0).isEqualTo(factRepo.count());
-        assertThat(0).isEqualTo(msgRepo.count());
+        assertThat(alertRepo.count()).isZero();
+        assertThat(weatherRepo.count()).isEqualTo(55);
+        assertThat(dailyRepo.count()).isZero();
+        assertThat(hourlyRepo.count()).isZero();
+        assertThat(factRepo.count()).isZero();
+        assertThat(msgRepo.count()).isZero();
     }
 
     @Test
     void testCreateMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
-        assertNotNull(ent.getMessageId());
-        assertThat(1).isEqualTo(msgRepo.count());
+        assertThat(ent.getMessageId()).isNotNull();
+        assertThat(msgRepo.count()).isEqualTo(1);
     }
 
     @Test
     void testCreateMessage(@Qualifier("message") OwMessage mes) throws IOException {
         dir.saveConditionCodesToDb();
         mes = dao.saveMessage(mes, geonameId);
-        assertThat(1).isEqualTo(factRepo.count());
-        assertNotNull(mes.getFact().getFactId());
-        assertThat(2).isEqualTo(alertRepo.count());
+        assertThat(factRepo.count()).isEqualTo(1);
+        assertThat(mes.getFact().getFactId()).isNotNull();
+        assertThat(alertRepo.count()).isEqualTo(2);
         OwAlert[] alerts = new OwAlert[mes.getAlerts().size()];
         alerts = mes.getAlerts().toArray(alerts);
-        assertNotNull(alerts[0].getAlertId());
-        assertThat(1).isEqualTo(dailyRepo.count());
+        assertThat(alerts[0].getAlertId()).isNotNull();
+        assertThat(dailyRepo.count()).isEqualTo(1);
         OwDaily[] dailies = new OwDaily[mes.getDailies().size()];
         dailies = mes.getDailies().toArray(dailies);
-        assertNotNull(dailies[0].getDailyId());
-        assertThat(2).isEqualTo(hourlyRepo.count());
+        assertThat(dailies[0].getDailyId()).isNotNull();
+        assertThat(hourlyRepo.count()).isEqualTo(2);
         OwHourly[] hourlies = new OwHourly[mes.getHourlies().size()];
         hourlies = mes.getHourlies().toArray(hourlies);
-        assertNotNull(hourlies[0].getHourlyId());
+        assertThat(hourlies[0].getHourlyId()).isNotNull();
     }
 
     @Test
@@ -107,7 +106,7 @@ class OwDaoTest {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         final List<OwFact> fact2List = dao.findFacts(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertThat(1).isEqualTo(fact2List.size());
+        assertThat(fact2List.size()).isEqualTo(1);
         assertThat(ent.getFact()).isEqualTo(fact2List.get(0));
     }
 
@@ -117,9 +116,9 @@ class OwDaoTest {
         final List<OwFact> fact2List = dao.findFactsViaSpecification(geonameId,
             LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertThat(1).isEqualTo(fact2List.size());
+        assertThat(fact2List.size()).isEqualTo(1);
         assertThat(ent.getFact()).isEqualTo(fact2List.get(0));
-        assertNotNull(fact2List.get(0).getFactId());
+        assertThat(fact2List.get(0).getFactId()).isNotNull();
     }
 
     @Test
@@ -127,18 +126,18 @@ class OwDaoTest {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
         final List<OwMessage> ent2List = dao.findMessages(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertThat(1).isEqualTo(ent2List.size());
+        assertThat(ent2List.size()).isEqualTo(1);
         assertThat(ent).isEqualTo(ent2List.get(0));
     }
 
     @Test
     void testFindMessagesViaSpecification(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
-        assertThat(1).isEqualTo(msgRepo.count());
+        assertThat(msgRepo.count()).isEqualTo(1);
         final List<OwMessage> ent2List = dao.findMessagesViaSpecification(geonameId,
             LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertThat(1).isEqualTo(ent2List.size());
+        assertThat(ent2List.size()).isEqualTo(1);
         assertThat(ent).isEqualTo(ent2List.get(0));
     }
 
@@ -155,12 +154,12 @@ class OwDaoTest {
     public void tearDown() {
         dao.deleteAllMessages();
         dao.deleteWeatherConditionCodes();
-        assertThat(0).isEqualTo(alertRepo.count());
-        assertThat(0).isEqualTo(weatherRepo.count());
-        assertThat(0).isEqualTo(dailyRepo.count());
-        assertThat(0).isEqualTo(hourlyRepo.count());
-        assertThat(0).isEqualTo(factRepo.count());
-        assertThat(0).isEqualTo(msgRepo.count());
+        assertThat(alertRepo.count()).isZero();
+        assertThat(weatherRepo.count()).isZero();
+        assertThat(dailyRepo.count()).isZero();
+        assertThat(hourlyRepo.count()).isZero();
+        assertThat(factRepo.count()).isZero();
+        assertThat(msgRepo.count()).isZero();
     }
 
 }

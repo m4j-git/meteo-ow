@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -36,8 +35,8 @@ class OwFactRepositoryTest {
     @BeforeEach
     public void setUp() {
         assertThat(repo).isNotNull();
-        assertThat(0).isEqualTo(repo.count());
-        assertThat(0).isEqualTo(repoM.count());
+        assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
 
     @Test
@@ -45,8 +44,8 @@ class OwFactRepositoryTest {
         mes = repoM.save(mes);
         mes.addFact(fact);
         final OwFact ent1 = repo.save(fact);
-        assertThat(1).isEqualTo(repo.count());
-        assertNotNull(ent1.getFactId());
+        assertThat(repo.count()).isEqualTo(1);
+        assertThat(ent1.getFactId()).isNotNull();
         final OwFact ent2 = repo.findById(ent1.getFactId()).orElseThrow();
         assertThat(ent1).isEqualTo(ent2);
     }
@@ -54,10 +53,10 @@ class OwFactRepositoryTest {
     @Test
     void testFindFacts(@Qualifier("message") OwMessage mes) {
         OwMessage ent = repoM.save(mes);
-        assertThat(1).isEqualTo(repo.count());
+        assertThat(repo.count()).isEqualTo(1);
         final List<OwFact> findFacts = repo.findFacts(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertThat(1).isEqualTo(findFacts.size());
+        assertThat(findFacts.size()).isEqualTo(1);
         assertThat(ent.getFact()).isEqualTo(findFacts.get(0));
     }
 
@@ -65,8 +64,8 @@ class OwFactRepositoryTest {
     public void tearDown() {
         repo.deleteAll();
         repoM.deleteAll();
-        assertThat(0).isEqualTo(repo.count());
-        assertThat(0).isEqualTo(repoM.count());
+        assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
 
 }

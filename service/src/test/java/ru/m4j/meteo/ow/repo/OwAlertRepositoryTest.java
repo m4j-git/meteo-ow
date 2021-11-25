@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,8 +29,8 @@ class OwAlertRepositoryTest {
     @BeforeEach
     public void setUp() {
         assertThat(repo).isNotNull();
-        assertThat(0).isEqualTo(repo.count());
-        assertThat(0).isEqualTo(repoM.count());
+        assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
 
     @Test
@@ -39,8 +38,8 @@ class OwAlertRepositoryTest {
         mes = repoM.save(mes);
         mes.addAlert(alertBean);
         final OwAlert ent1 = repo.save(alertBean);
-        assertThat(1).isEqualTo(repo.count());
-        assertNotNull(ent1.getAlertId());
+        assertThat(repo.count()).isEqualTo(1);
+        assertThat(ent1.getAlertId()).isNotNull();
         final OwAlert ent2 = repo.findById(ent1.getAlertId()).orElseThrow();
         assertThat(ent1).isEqualTo(ent2);
     }
@@ -49,8 +48,8 @@ class OwAlertRepositoryTest {
     public void tearDown() {
         repo.deleteAll();
         repoM.deleteAll();
-        assertThat(0).isEqualTo(repo.count());
-        assertThat(0).isEqualTo(repoM.count());
+        assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
 
 }

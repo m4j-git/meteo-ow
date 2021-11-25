@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 
@@ -35,8 +34,8 @@ class OwHourlyRepositoryTest {
     @BeforeEach
     public void setUp() throws IOException {
         assertThat(repo).isNotNull();
-        assertThat(0).isEqualTo(repo.count());
-        assertThat(0).isEqualTo(repoM.count());
+        assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
         dir.saveConditionCodesToDb();
     }
 
@@ -45,8 +44,8 @@ class OwHourlyRepositoryTest {
         mes = repoM.save(mes);
         hourlyBean.setMessage(mes);
         final OwHourly ent1 = repo.save(hourlyBean);
-        assertThat(1).isEqualTo(repo.count());
-        assertNotNull(ent1.getHourlyId());
+        assertThat(repo.count()).isEqualTo(1);
+        assertThat(ent1.getHourlyId()).isNotNull();
         final OwHourly ent2 = repo.findById(ent1.getHourlyId()).orElseThrow();
         assertThat(ent1).isEqualTo(ent2);
     }
@@ -55,8 +54,8 @@ class OwHourlyRepositoryTest {
     public void tearDown() {
         repo.deleteAll();
         repoM.deleteAll();
-        assertThat(0).isEqualTo(repo.count());
-        assertThat(0).isEqualTo(repoM.count());
+        assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
 
 }

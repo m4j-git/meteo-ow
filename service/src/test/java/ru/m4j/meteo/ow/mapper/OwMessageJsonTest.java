@@ -4,8 +4,6 @@
 package ru.m4j.meteo.ow.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -37,7 +35,7 @@ class OwMessageJsonTest {
 
     @BeforeEach
     public void setUp() {
-        assertNotNull(mapper);
+        assertThat(mapper).isNotNull();
     }
 
     private OwMessageDto readJson() throws IOException {
@@ -57,7 +55,7 @@ class OwMessageJsonTest {
         entity.setMessageUuid(null);
         entity.setCreatedOn(null);
         final OwMessageDto dto2 = mapper.messageDtoFromMessage(entity);
-        assertNotNull(dto2);
+        assertThat(dto2).isNotNull();
         assertThat(dto).isEqualTo(dto2);
     }
 
@@ -66,7 +64,7 @@ class OwMessageJsonTest {
         OwMessageDto dto = readJson();
         assertThat(dto.getCurrent().getTemp()).isNotNull();
         String json = jacksonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dto);
-        assertTrue(json.length() > 10);
+        assertThat(json.length() > 10).isTrue();
     }
 
 }

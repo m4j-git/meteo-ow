@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,17 +16,17 @@ class OwMessageTest {
 
     @Test
     void testMessageSkinny(@Qualifier("message_skinny") OwMessage mes) {
-        assertNotNull(mes);
-        assertNotNull(mes.getMessageUuid());
-        assertThat(mes.hashCode()).isZero();
+        assertThat(mes).isNotNull();
+        assertThat(mes.getMessageUuid()).isNotNull();
+        assertThat(mes.hashCode()).isZero().isNotNull();
         assertThat(mes.toString().length()).isGreaterThan(100);
     }
 
     @Test
     void testMessage(@Qualifier("message") OwMessage mes) {
-        assertNotNull(mes);
-        assertNotNull(mes.getFact());
-        assertNotNull(mes.getDailies());
+        assertThat(mes).isNotNull();
+        assertThat(mes.getFact()).isNotNull();
+        assertThat(mes.getDailies()).isNotNull();
     }
 
 }

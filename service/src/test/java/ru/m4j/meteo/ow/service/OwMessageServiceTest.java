@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -65,7 +64,7 @@ class OwMessageServiceTest {
 
     @BeforeEach
     public void setUp() throws IOException {
-        assertNotNull(service);
+        assertThat(service).isNotNull();
         assertThat(alertRepo.count()).isZero();
         assertThat(weatherRepo.count()).isZero();
         assertThat(dailyRepo.count()).isZero();
@@ -77,7 +76,7 @@ class OwMessageServiceTest {
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             dto = jacksonMapper.readValue(rd, OwMessageDto.class);
         }
-        assertNotNull(dto.getCurrent().getDt());
+        assertThat(dto.getCurrent().getDt()).isNotNull();
         dir.saveConditionCodesToDb();
         dto.setMessageUuid(UUID.fromString(messageUuid));
         service.saveMessageToDb(dto, geonameId);
@@ -92,29 +91,29 @@ class OwMessageServiceTest {
     @Test
     void testGetLastMessage() {
         final OwMessageDto dto = service.getLastMessage(geonameId);
-        assertNotNull(dto);
-        assertNotNull(dto.getCreatedOn());
-        assertNotNull(dto.getMessageUuid());
+        assertThat(dto).isNotNull();
+        assertThat(dto.getCreatedOn()).isNotNull();
+        assertThat(dto.getMessageUuid()).isNotNull();
     }
 
     @Test
     void testGetFacts() {
         final List<OwCurrentDto> fact2List = service.getFacts(geonameId, null, null);
         assertThat(fact2List.size()).isEqualTo(1);
-        assertNotNull(fact2List.get(0));
+        assertThat(fact2List.get(0)).isNotNull();
     }
 
     @Test
     void testGetMessages() {
         final List<OwMessageDto> ent2List = service.getMessages(geonameId, null, null);
         assertThat(ent2List.size()).isEqualTo(1);
-        assertNotNull(ent2List.get(0));
+        assertThat(ent2List.get(0)).isNotNull();
     }
 
     @Test
     void testGetMessage() {
         final OwMessageDto dto = service.getMessage(messageUuid);
-        assertNotNull(dto);
+        assertThat(dto).isNotNull();
     }
 
     @AfterEach

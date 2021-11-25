@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +30,7 @@ class OwDirectoryServiceTest {
 
     @BeforeEach
     public void setUp() {
-        assertNotNull(requester);
+        assertThat(requester).isNotNull();
     }
 
     @Test

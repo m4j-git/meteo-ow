@@ -4,7 +4,7 @@
 package ru.m4j.meteo.ow.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -45,7 +45,7 @@ class OwMessageDtoModelMapperTest {
 
     @BeforeEach
     public void setUp() {
-        assertNotNull(mapper);
+        assertThat(mapper).isNotNull();
     }
 
     private OwMessageDto readJson() throws IOException {
@@ -70,10 +70,11 @@ class OwMessageDtoModelMapperTest {
         final OwMessageDto dto2 = mapper.messageDtoFromMessage(entity);
         dto2.setCreatedOn(null);
         dto2.setMessageUuid(null);
-        assertNotNull(dto2);
-        assertThat(dto).isEqualTo(dto2);
-        assertThat(dto.hashCode()).isEqualTo(dto2.hashCode());
-        assertThat(dto.toString().length()).isPositive();
+        assertThat(dto2).isNotNull();
+        assertAll(
+            () -> assertThat(dto).isEqualTo(dto2),
+            () -> assertThat(dto).hasSameHashCodeAs(dto2));
+        assertThat(dto.toString()).isNotEmpty();
     }
 
     @Test
@@ -82,9 +83,10 @@ class OwMessageDtoModelMapperTest {
         final OwCurrentDto dto1 = dto.getCurrent();
         final OwFact entity = mapper.factDtoToFact(dto1);
         final OwCurrentDto dto2 = mapper.factDtoFromFact(entity);
-        assertNotNull(dto2);
-        assertThat(dto1).isEqualTo(dto2);
-        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
+        assertThat(dto2).isNotNull();
+        assertAll(
+            () -> assertThat(dto1).isEqualTo(dto2),
+            () -> assertThat(dto1).hasSameHashCodeAs(dto2));
     }
 
     @Test
@@ -93,9 +95,10 @@ class OwMessageDtoModelMapperTest {
         final List<OwAlertDto> dto1 = dto.getAlerts();
         final List<OwAlert> entity = mapper.alertListDtoToAlertList(dto1);
         final List<OwAlertDto> dto2 = mapper.alertListDtoFromAlertList(entity);
-        assertNotNull(dto2);
-        assertThat(dto1).isEqualTo(dto2);
-        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
+        assertThat(dto2).isNotNull();
+        assertAll(
+            () -> assertThat(dto).isEqualTo(dto2),
+            () -> assertThat(dto).hasSameHashCodeAs(dto2));
     }
 
     @Test
@@ -104,9 +107,10 @@ class OwMessageDtoModelMapperTest {
         final List<OwDailyDto> dto1 = dto.getDaily();
         final List<OwDaily> entity = mapper.dailyListDtoToDailyList(dto1);
         final List<OwDailyDto> dto2 = mapper.dailyListDtoFromDailyList(entity);
-        assertNotNull(dto2);
-        assertThat(dto1).isEqualTo(dto2);
-        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
+        assertThat(dto2).isNotNull();
+        assertAll(
+            () -> assertThat(dto).isEqualTo(dto2),
+            () -> assertThat(dto).hasSameHashCodeAs(dto2));
     }
 
     @Test
@@ -115,9 +119,10 @@ class OwMessageDtoModelMapperTest {
         final List<OwHourlyDto> dto1 = dto.getHourly();
         final List<OwHourly> entity = mapper.hourlyListDtoToHourlyList(dto1);
         final List<OwHourlyDto> dto2 = mapper.hourlyListDtoFromHourlyList(entity);
-        assertNotNull(dto2);
-        assertThat(dto1).isEqualTo(dto2);
-        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
+        assertThat(dto2).isNotNull();
+        assertAll(
+            () -> assertThat(dto).isEqualTo(dto2),
+            () -> assertThat(dto).hasSameHashCodeAs(dto2));
     }
 
     @Test
@@ -131,10 +136,11 @@ class OwMessageDtoModelMapperTest {
         final OwMessageDto dto2 = mapper.messageDtoFromMessage(entity);
         dto2.setCreatedOn(null);
         dto2.setMessageUuid(null);
-        assertNotNull(dto2);
-        assertThat(dto).isEqualTo(dto2);
-        assertThat(dto.hashCode()).isEqualTo(dto2.hashCode());
-        assertThat(dto.toString().length()).isPositive();
+        assertThat(dto2).isNotNull();
+        assertAll(
+            () -> assertThat(dto).isEqualTo(dto2),
+            () -> assertThat(dto).hasSameHashCodeAs(dto2));
+        assertThat(dto.toString()).isNotEmpty();
     }
 
 }

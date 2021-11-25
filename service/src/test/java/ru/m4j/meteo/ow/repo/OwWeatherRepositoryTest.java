@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,14 +26,14 @@ class OwWeatherRepositoryTest {
     @BeforeEach
     public void setUp() {
         assertThat(repo).isNotNull();
-        assertThat(0).isEqualTo(repo.count());
+        assertThat(repo.count()).isZero();
     }
 
     @Test
     void testCreateAndFindBiId(@Qualifier("weather") OwWeather weatherBean) {
         final OwWeather ent1 = repo.save(weatherBean);
-        assertThat(1).isEqualTo(repo.count());
-        assertNotNull(ent1.getId());
+        assertThat(repo.count()).isEqualTo(1);
+        assertThat(ent1.getId()).isNotNull();
         final OwWeather ent2 = repo.findById(ent1.getId()).orElseThrow();
         assertThat(ent1).isEqualTo(ent2);
     }
@@ -42,7 +41,7 @@ class OwWeatherRepositoryTest {
     @AfterEach
     void tearDown() {
         repo.deleteAll();
-        assertThat(0).isEqualTo(repo.count());
+        assertThat(repo.count()).isZero();
     }
 
 }

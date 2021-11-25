@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ class OwFactTest {
 
     @Test
     void testFact(@Autowired OwFact fact) {
-        assertNotNull(fact);
+        assertThat(fact).isNotNull();
         assertThat(fact.hashCode()).isZero();
         assertThat(fact.toString().length()).isGreaterThan(100);
     }

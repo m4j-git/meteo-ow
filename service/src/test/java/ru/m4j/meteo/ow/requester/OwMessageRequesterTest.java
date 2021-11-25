@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.requester;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import java.io.BufferedReader;
@@ -51,8 +50,8 @@ class OwMessageRequesterTest {
 
     @BeforeEach
     public void setUp() throws IOException {
-        assertNotNull(requester);
-        assertThat(0).isEqualTo(msgRepo.count());
+        assertThat(requester).isNotNull();
+        assertThat(msgRepo.count()).isZero();
         dir.saveConditionCodesToDb();
     }
 
@@ -60,7 +59,7 @@ class OwMessageRequesterTest {
     void testRequestProvider(@Autowired LocationDto geoname) throws IOException {
         when(client.request(requester.getUri(geoname))).thenReturn(readJson());
         OwMessageDto result = requester.requestProvider(geoname);
-        assertNotNull(result.getCurrent().getDt());
+        assertThat(result.getCurrent().getDt()).isNotNull();
     }
 
     private OwMessageDto readJson() throws IOException {
@@ -74,7 +73,7 @@ class OwMessageRequesterTest {
     public void tearDown() {
         dao.deleteMessages();
         dao.deleteWeatherConditionCodes();
-        assertThat(0).isEqualTo(msgRepo.count());
+        assertThat(msgRepo.count()).isZero();
     }
 
 }
