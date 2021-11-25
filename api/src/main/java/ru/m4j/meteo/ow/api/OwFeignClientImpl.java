@@ -26,7 +26,7 @@ public interface OwFeignClientImpl extends OwRestResource {
 
     @Override
     @GetMapping(value = "/meteo-ow/api/v1/messages/one/{uuid}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    OwMessageDto getMessage(@PathVariable(value = "uuid") String uuid);
+    OwMessageDto getMessage(@PathVariable("uuid") String uuid);
 
     @GetMapping(value = "/meteo-ow/api/v1/messages/last", consumes = MediaType.APPLICATION_JSON_VALUE)
     @Override

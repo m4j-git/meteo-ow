@@ -103,8 +103,7 @@ public class OwHourly implements Serializable {
     private Short snow1h;
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    @JoinTable(name = "ow_weather_hourly", joinColumns = { @JoinColumn(name = "hourly_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "weather_id") })
+    @JoinTable(name = "ow_weather_hourly", joinColumns = { @JoinColumn(name = "hourly_id") }, inverseJoinColumns = { @JoinColumn(name = "weather_id") })
     private Set<OwWeather> weather = new HashSet<>();
 
     @ManyToOne

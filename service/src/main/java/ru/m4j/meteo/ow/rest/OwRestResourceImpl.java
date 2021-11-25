@@ -39,7 +39,7 @@ public class OwRestResourceImpl implements OwRestResource {
     @ApiOperation(notes = "openweather messages", value = "get weather message")
     @GetMapping(value = "/messages/one/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Override
-    public OwMessageDto getMessage(@PathVariable(value = "uuid") String uuid) {
+    public OwMessageDto getMessage(@PathVariable("uuid") String uuid) {
         return messageService.getMessage(uuid);
     }
 

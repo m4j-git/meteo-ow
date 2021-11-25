@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-//@Profile("!dev")
 @SpringBootApplication
 @ComponentScan(basePackages = "ru.m4j.meteo")
 public class OwApplication extends SpringBootServletInitializer {

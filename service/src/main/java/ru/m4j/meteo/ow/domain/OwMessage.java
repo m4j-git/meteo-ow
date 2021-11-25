@@ -57,19 +57,19 @@ public class OwMessage implements Serializable {
     @Column(nullable = false, updatable = false)
     private Integer geonameId;
 
-    @Setter(value = AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     @OneToOne(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
     private OwFact fact;
 
-    @Setter(value = AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
     private final List<OwAlert> alerts = new ArrayList<>();
 
-    @Setter(value = AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
     private final List<OwDaily> dailies = new ArrayList<>();
 
-    @Setter(value = AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "message", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH }, orphanRemoval = true)
     private final List<OwHourly> hourlies = new ArrayList<>();
 

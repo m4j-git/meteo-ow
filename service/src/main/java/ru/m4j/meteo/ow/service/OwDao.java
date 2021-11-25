@@ -33,5 +33,5 @@ public interface OwDao {
 
     List<OwMessage> findMessagesViaSpecification(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo);
 
-    public void deleteMessages();
+    void deleteMessages();
 }
