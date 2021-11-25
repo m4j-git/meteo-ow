@@ -72,7 +72,7 @@ class OwRestResourceTest {
     @Test
     void testGetFacts() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/facts")
-                .queryParam("geonameId", geonameId).buildAndExpand().toUri();
+            .queryParam("geonameId", geonameId).buildAndExpand().toUri();
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -86,7 +86,7 @@ class OwRestResourceTest {
     @Test
     void testGetLastMessage() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/last")
-                .queryParam("geonameId", geonameId).buildAndExpand().toUri();
+            .queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
@@ -95,7 +95,7 @@ class OwRestResourceTest {
     @Test
     void testGetMessages() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages")
-                .queryParam("geonameId", geonameId).buildAndExpand().toUri();
+            .queryParam("geonameId", geonameId).buildAndExpand().toUri();
         ResponseEntity<OwMessageDto[]> response = restTemplate.getForEntity(uri, OwMessageDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
@@ -105,7 +105,7 @@ class OwRestResourceTest {
     @Test
     void testGetMessage() {
         URI uri = UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(randomServerPort).path(path).pathSegment("messages/one/{messageUuid}")
-                .buildAndExpand(messageUuid).toUri();
+            .buildAndExpand(messageUuid).toUri();
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();

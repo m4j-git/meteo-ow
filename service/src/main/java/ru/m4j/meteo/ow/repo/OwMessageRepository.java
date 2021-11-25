@@ -22,9 +22,9 @@ public interface OwMessageRepository extends JpaRepository<OwMessage, Long>, Jpa
     OwMessage findTopByGeonameIdOrderByCreatedOnDesc(Integer geonameId);
 
     @Query("select msg from OwMessage as msg  where msg.geonameId=:geoname_id "
-            + "and msg.createdOn BETWEEN :date_from AND :date_to ORDER BY msg.createdOn desc")
+        + "and msg.createdOn BETWEEN :date_from AND :date_to ORDER BY msg.createdOn desc")
     List<OwMessage> findMessages(@Param("geoname_id") Integer geonameId, @Param("date_from") LocalDateTime dateFrom,
-            @Param("date_to") LocalDateTime dateTo);
+        @Param("date_to") LocalDateTime dateTo);
 
     @Query("select msg.messageId from OwMessage as msg  where msg.messageUuid= :message_uuid")
     Long findIdByMessageUuid(@Param("message_uuid") UUID uuid);

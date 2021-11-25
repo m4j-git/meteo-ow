@@ -135,40 +135,40 @@ public class OwMessageDtoModelMapper {
     @PostConstruct
     public void init() {
         modelMapper.createTypeMap(OwMessageDto.class, OwMessage.class).addMapping(OwMessageDto::getCurrent, OwMessage::addFact)
-                .addMappings(mapper -> mapper.using(alertListDtoToAlertList).map(OwMessageDto::getAlerts, OwMessage::addAlerts))
-                .addMappings(mapper -> mapper.using(dailyListDtoToDailyList).map(OwMessageDto::getDaily, OwMessage::addDailies))
-                .addMappings(mapper -> mapper.using(hourlyListDtoToHourlyList).map(OwMessageDto::getHourly, OwMessage::addHourlies));
+            .addMappings(mapper -> mapper.using(alertListDtoToAlertList).map(OwMessageDto::getAlerts, OwMessage::addAlerts))
+            .addMappings(mapper -> mapper.using(dailyListDtoToDailyList).map(OwMessageDto::getDaily, OwMessage::addDailies))
+            .addMappings(mapper -> mapper.using(hourlyListDtoToHourlyList).map(OwMessageDto::getHourly, OwMessage::addHourlies));
 
         modelMapper.createTypeMap(OwMessage.class, OwMessageDto.class).addMapping(OwMessage::getFact, OwMessageDto::setCurrent)
-                .addMappings(mapper -> mapper.using(alertListDtoFromAlertList).map(OwMessage::getAlerts, OwMessageDto::setAlerts))
-                .addMappings(mapper -> mapper.using(dailyListDtoFromDailyList).map(OwMessage::getDailies, OwMessageDto::setDaily))
-                .addMappings(mapper -> mapper.using(hourlyListDtoFromHourlyList).map(OwMessage::getHourlies, OwMessageDto::setHourly));
+            .addMappings(mapper -> mapper.using(alertListDtoFromAlertList).map(OwMessage::getAlerts, OwMessageDto::setAlerts))
+            .addMappings(mapper -> mapper.using(dailyListDtoFromDailyList).map(OwMessage::getDailies, OwMessageDto::setDaily))
+            .addMappings(mapper -> mapper.using(hourlyListDtoFromHourlyList).map(OwMessage::getHourlies, OwMessageDto::setHourly));
 
         modelMapper.createTypeMap(OwCurrentDto.class, OwFact.class)
-                .addMappings(mapper -> mapper.using(precipToDouble).map(OwCurrentDto::getRain, OwFact::setRain1h))
-                .addMappings(mapper -> mapper.using(precipToDouble).map(OwCurrentDto::getSnow, OwFact::setSnow1h))
-                .addMappings(mapper -> mapper.using(weatherListDtoToWeatherList).map(OwCurrentDto::getWeather, OwFact::setWeather));
+            .addMappings(mapper -> mapper.using(precipToDouble).map(OwCurrentDto::getRain, OwFact::setRain1h))
+            .addMappings(mapper -> mapper.using(precipToDouble).map(OwCurrentDto::getSnow, OwFact::setSnow1h))
+            .addMappings(mapper -> mapper.using(weatherListDtoToWeatherList).map(OwCurrentDto::getWeather, OwFact::setWeather));
 
         modelMapper.createTypeMap(OwFact.class, OwCurrentDto.class)
-                .addMappings(mapper -> mapper.using(precipFromDouble).map(OwFact::getRain1h, OwCurrentDto::setRain))
-                .addMappings(mapper -> mapper.using(precipFromDouble).map(OwFact::getSnow1h, OwCurrentDto::setSnow))
-                .addMappings(mapper -> mapper.using(weatherListDtoFromWeatherList).map(OwFact::getWeather, OwCurrentDto::setWeather));
+            .addMappings(mapper -> mapper.using(precipFromDouble).map(OwFact::getRain1h, OwCurrentDto::setRain))
+            .addMappings(mapper -> mapper.using(precipFromDouble).map(OwFact::getSnow1h, OwCurrentDto::setSnow))
+            .addMappings(mapper -> mapper.using(weatherListDtoFromWeatherList).map(OwFact::getWeather, OwCurrentDto::setWeather));
 
         modelMapper.createTypeMap(OwDailyDto.class, OwDaily.class)
-                .addMappings(mapper -> mapper.using(weatherListDtoToWeatherList).map(OwDailyDto::getWeather, OwDaily::setWeather));
+            .addMappings(mapper -> mapper.using(weatherListDtoToWeatherList).map(OwDailyDto::getWeather, OwDaily::setWeather));
 
         modelMapper.createTypeMap(OwDaily.class, OwDailyDto.class)
-                .addMappings(mapper -> mapper.using(weatherListDtoFromWeatherList).map(OwDaily::getWeather, OwDailyDto::setWeather));
+            .addMappings(mapper -> mapper.using(weatherListDtoFromWeatherList).map(OwDaily::getWeather, OwDailyDto::setWeather));
 
         modelMapper.createTypeMap(OwHourlyDto.class, OwHourly.class)
-                .addMappings(mapper -> mapper.using(precipToDouble).map(OwHourlyDto::getRain, OwHourly::setRain1h))
-                .addMappings(mapper -> mapper.using(precipToDouble).map(OwHourlyDto::getSnow, OwHourly::setSnow1h))
-                .addMappings(mapper -> mapper.using(weatherListDtoToWeatherList).map(OwHourlyDto::getWeather, OwHourly::setWeather));
+            .addMappings(mapper -> mapper.using(precipToDouble).map(OwHourlyDto::getRain, OwHourly::setRain1h))
+            .addMappings(mapper -> mapper.using(precipToDouble).map(OwHourlyDto::getSnow, OwHourly::setSnow1h))
+            .addMappings(mapper -> mapper.using(weatherListDtoToWeatherList).map(OwHourlyDto::getWeather, OwHourly::setWeather));
 
         modelMapper.createTypeMap(OwHourly.class, OwHourlyDto.class)
-                .addMappings(mapper -> mapper.using(precipFromDouble).map(OwHourly::getRain1h, OwHourlyDto::setRain))
-                .addMappings(mapper -> mapper.using(precipFromDouble).map(OwHourly::getSnow1h, OwHourlyDto::setSnow))
-                .addMappings(mapper -> mapper.using(weatherListDtoFromWeatherList).map(OwHourly::getWeather, OwHourlyDto::setWeather));
+            .addMappings(mapper -> mapper.using(precipFromDouble).map(OwHourly::getRain1h, OwHourlyDto::setRain))
+            .addMappings(mapper -> mapper.using(precipFromDouble).map(OwHourly::getSnow1h, OwHourlyDto::setSnow))
+            .addMappings(mapper -> mapper.using(weatherListDtoFromWeatherList).map(OwHourly::getWeather, OwHourlyDto::setWeather));
     }
 
     public OwMessage messageDtoToMessage(final OwMessageDto dto) {

@@ -42,7 +42,7 @@ public class OwRestClientImpl implements OwRestResource {
 
     URI getUri(String segment, Object... param) {
         return UriComponentsBuilder.newInstance().scheme(scheme).host(host).port(port).path(path).pathSegment(segment)
-                .queryParam("geonameId", param[0]).buildAndExpand().toUri();
+            .queryParam("geonameId", param[0]).buildAndExpand().toUri();
     }
 
     @Override

@@ -18,7 +18,7 @@ import ru.m4j.meteo.ow.domain.OwFact;
 public interface OwFactRepository extends JpaRepository<OwFact, Long>, JpaSpecificationExecutor<OwFact> {
 
     @Query("select fact from OwFact as fact where fact.message.messageId in "
-            + "(select messageId from OwMessage where geonameId=:geoname_id and createdOn BETWEEN :date_from AND :date_to)")
+        + "(select messageId from OwMessage where geonameId=:geoname_id and createdOn BETWEEN :date_from AND :date_to)")
     List<OwFact> findFacts(@Param("geoname_id") Integer geonameId, @Param("date_from") LocalDateTime dateFrom,
-            @Param("date_to") LocalDateTime dateTo);
+        @Param("date_to") LocalDateTime dateTo);
 }

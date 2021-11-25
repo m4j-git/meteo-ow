@@ -35,7 +35,7 @@ public class OwDaoImpl implements OwDao {
     private final OwHourlyRepository hourlyRepo;
 
     public OwDaoImpl(OwMessageRepository messageRepo, OwFactRepository factRepo, OwWeatherRepository weatherRepo, OwAlertRepository alertRepo,
-            OwDailyRepository dailyRepo, OwHourlyRepository hourlyRepo) {
+        OwDailyRepository dailyRepo, OwHourlyRepository hourlyRepo) {
         this.messageRepo = messageRepo;
         this.factRepo = factRepo;
         this.weatherRepo = weatherRepo;
@@ -125,7 +125,7 @@ public class OwDaoImpl implements OwDao {
 
     public Specification<OwMessage> messageSpecification(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo) {
         return (root, query, builder) -> builder.and(builder.equal(root.get("geonameId"), geonameId),
-                builder.between(root.get("createdOn"), dateFrom, dateTo));
+            builder.between(root.get("createdOn"), dateFrom, dateTo));
     }
 
     @Override

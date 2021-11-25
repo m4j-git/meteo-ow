@@ -32,7 +32,7 @@ public class OwRestResourceImpl implements OwRestResource {
     @ApiOperation(notes = "openweather messages", value = "get list of weather messages")
     @GetMapping(value = "/messages", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<OwMessageDto> getMessages(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom,
-            @RequestParam(required = false) String dateTo) {
+        @RequestParam(required = false) String dateTo) {
         return messageService.getMessages(geonameId, dateFrom, dateTo);
     }
 
@@ -54,7 +54,7 @@ public class OwRestResourceImpl implements OwRestResource {
     @GetMapping(value = "/messages/facts", produces = MediaType.APPLICATION_JSON_VALUE)
     @Override
     public List<OwCurrentDto> getFacts(@RequestParam Integer geonameId, @RequestParam(required = false) String dateFrom,
-            @RequestParam(required = false) String dateTo) {
+        @RequestParam(required = false) String dateTo) {
         return messageService.getFacts(geonameId, dateFrom, dateTo);
     }
 

@@ -82,7 +82,7 @@ public class OwModelMapperConfig {
     public ModelMapper modelMapper() {
         final ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT).setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PUBLIC).setSkipNullEnabled(true);
+            .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PUBLIC).setSkipNullEnabled(true);
 
         modelMapper.addConverter(instantToOffsetDateTime);
         modelMapper.addConverter(instantFromOffsetDateTime);
