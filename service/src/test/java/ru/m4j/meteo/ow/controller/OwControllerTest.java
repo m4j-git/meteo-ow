@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.time.Instant;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -55,7 +54,7 @@ class OwControllerTest {
         final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             OwMessageDto dto = jacksonMapper.readValue(rd, OwMessageDto.class);
-            log.debug(dto.toString();
+            log.debug(dto.toString());
             return dto;
         }
     }
