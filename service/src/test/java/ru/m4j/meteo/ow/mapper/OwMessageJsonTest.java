@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -59,7 +58,7 @@ class OwMessageJsonTest {
         entity.setCreatedOn(null);
         final OwMessageDto dto2 = mapper.messageDtoFromMessage(entity);
         assertNotNull(dto2);
-        assertEquals(dto, dto2);
+        assertThat(dto).isEqualTo(dto2);
     }
 
     @Test

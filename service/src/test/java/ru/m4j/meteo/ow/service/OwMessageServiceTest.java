@@ -3,7 +3,7 @@
  */
 package ru.m4j.meteo.ow.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.BufferedReader;
@@ -66,12 +66,12 @@ class OwMessageServiceTest {
     @BeforeEach
     public void setUp() throws IOException {
         assertNotNull(service);
-        assertEquals(0, alertRepo.count());
-        assertEquals(0, weatherRepo.count());
-        assertEquals(0, dailyRepo.count());
-        assertEquals(0, hourlyRepo.count());
-        assertEquals(0, factRepo.count());
-        assertEquals(0, msgRepo.count());
+        assertThat(alertRepo.count()).isZero();
+        assertThat(weatherRepo.count()).isZero();
+        assertThat(dailyRepo.count()).isZero();
+        assertThat(hourlyRepo.count()).isZero();
+        assertThat(factRepo.count()).isZero();
+        assertThat(msgRepo.count()).isZero();
         final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         OwMessageDto dto;
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
@@ -81,12 +81,12 @@ class OwMessageServiceTest {
         dir.saveConditionCodesToDb();
         dto.setMessageUuid(UUID.fromString(messageUuid));
         service.saveMessageToDb(dto, geonameId);
-        assertEquals(2, alertRepo.count());
-        assertEquals(55, weatherRepo.count());
-        assertEquals(1, dailyRepo.count());
-        assertEquals(2, hourlyRepo.count());
-        assertEquals(1, factRepo.count());
-        assertEquals(1, msgRepo.count());
+        assertThat(alertRepo.count()).isEqualTo(2);
+        assertThat(weatherRepo.count()).isEqualTo(55);
+        assertThat(dailyRepo.count()).isEqualTo(1);
+        assertThat(hourlyRepo.count()).isEqualTo(2);
+        assertThat(factRepo.count()).isEqualTo(1);
+        assertThat(msgRepo.count()).isEqualTo(1);
     }
 
     @Test
@@ -100,14 +100,14 @@ class OwMessageServiceTest {
     @Test
     void testGetFacts() {
         final List<OwCurrentDto> fact2List = service.getFacts(geonameId, null, null);
-        assertEquals(1, fact2List.size());
+        assertThat(fact2List.size()).isEqualTo(1);
         assertNotNull(fact2List.get(0));
     }
 
     @Test
     void testGetMessages() {
         final List<OwMessageDto> ent2List = service.getMessages(geonameId, null, null);
-        assertEquals(1, ent2List.size());
+        assertThat(ent2List.size()).isEqualTo(1);
         assertNotNull(ent2List.get(0));
     }
 
@@ -121,11 +121,11 @@ class OwMessageServiceTest {
     public void tearDown() {
         dao.deleteAllMessages();
         dao.deleteWeatherConditionCodes();
-        assertEquals(0, alertRepo.count());
-        assertEquals(0, weatherRepo.count());
-        assertEquals(0, dailyRepo.count());
-        assertEquals(0, hourlyRepo.count());
-        assertEquals(0, factRepo.count());
-        assertEquals(0, msgRepo.count());
+        assertThat(alertRepo.count()).isZero();
+        assertThat(weatherRepo.count()).isZero();
+        assertThat(dailyRepo.count()).isZero();
+        assertThat(hourlyRepo.count()).isZero();
+        assertThat(factRepo.count()).isZero();
+        assertThat(msgRepo.count()).isZero();
     }
 }

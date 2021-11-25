@@ -3,7 +3,7 @@
  */
 package ru.m4j.meteo.ow.requester;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -52,7 +52,7 @@ class OwMessageRequesterTest {
     @BeforeEach
     public void setUp() throws IOException {
         assertNotNull(requester);
-        assertEquals(0, msgRepo.count());
+        assertThat(0).isEqualTo(msgRepo.count());
         dir.saveConditionCodesToDb();
     }
 
@@ -74,7 +74,7 @@ class OwMessageRequesterTest {
     public void tearDown() {
         dao.deleteMessages();
         dao.deleteWeatherConditionCodes();
-        assertEquals(0, msgRepo.count());
+        assertThat(0).isEqualTo(msgRepo.count());
     }
 
 }

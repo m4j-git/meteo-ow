@@ -3,8 +3,8 @@
  */
 package ru.m4j.meteo.ow.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,14 +36,14 @@ class OwDirectoryServiceTest {
 
     @Test
     void testReadConditionalFromFile() throws IOException {
-        final List<OwWeatherDto> res = requester.readConditionCodesFromFile();
-        assertTrue(res.size() > 0);
+        List<OwWeatherDto> res = requester.readConditionCodesFromFile();
+        assertThat(res.size()).isPositive();
     }
 
     @Test
     void testSaveConditionalToDb() throws IOException {
-        final Set<OwWeather> res = requester.saveConditionCodesToDb();
-        assertTrue(res.size() > 0);
+        Set<OwWeather> res = requester.saveConditionCodesToDb();
+        assertThat(res.size()).isPositive();
         dao.deleteWeatherConditionCodes();
     }
 

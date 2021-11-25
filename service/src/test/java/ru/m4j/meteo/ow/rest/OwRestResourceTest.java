@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.net.URI;
@@ -59,12 +58,12 @@ class OwRestResourceTest {
 
     @BeforeEach
     public void setUp(@Qualifier("message") OwMessage mes) throws IOException {
-        assertEquals(0, factRepo.count());
-        assertEquals(0, msgRepo.count());
+        assertThat(0).isEqualTo(factRepo.count());
+        assertThat(0).isEqualTo(msgRepo.count());
         dir.saveConditionCodesToDb();
         dao.saveMessage(mes, geonameId);
-        assertEquals(1, factRepo.count());
-        assertEquals(1, msgRepo.count());
+        assertThat(1).isEqualTo(factRepo.count());
+        assertThat(1).isEqualTo(msgRepo.count());
         assertThat(restTemplate).isNotNull();
         restTemplate.getRestTemplate().setErrorHandler(new OwRestTemplateResponseErrorHandler());
     }
@@ -80,7 +79,7 @@ class OwRestResourceTest {
         ResponseEntity<OwCurrentDto[]> response = restTemplate.exchange(uri, HttpMethod.GET, request, OwCurrentDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertEquals(1, response.getBody().length);
+        assertThat(1).isEqualTo(response.getBody().length);
     }
 
     @Test
@@ -99,7 +98,7 @@ class OwRestResourceTest {
         ResponseEntity<OwMessageDto[]> response = restTemplate.getForEntity(uri, OwMessageDto[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertEquals(1, response.getBody().length);
+        assertThat(1).isEqualTo(response.getBody().length);
     }
 
     @Test
@@ -115,8 +114,8 @@ class OwRestResourceTest {
     public void tearDown() {
         dao.deleteAllMessages();
         dao.deleteWeatherConditionCodes();
-        assertEquals(0, factRepo.count());
-        assertEquals(0, msgRepo.count());
+        assertThat(0).isEqualTo(factRepo.count());
+        assertThat(0).isEqualTo(msgRepo.count());
     }
 
 }

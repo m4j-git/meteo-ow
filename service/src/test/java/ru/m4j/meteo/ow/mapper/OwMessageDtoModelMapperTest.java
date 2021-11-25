@@ -3,9 +3,8 @@
  */
 package ru.m4j.meteo.ow.mapper;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -72,9 +71,9 @@ class OwMessageDtoModelMapperTest {
         dto2.setCreatedOn(null);
         dto2.setMessageUuid(null);
         assertNotNull(dto2);
-        assertEquals(dto, dto2);
-        assertEquals(dto.hashCode(), dto2.hashCode());
-        assertTrue(dto.toString().length() > 0);
+        assertThat(dto).isEqualTo(dto2);
+        assertThat(dto.hashCode()).isEqualTo(dto2.hashCode());
+        assertThat(dto.toString().length()).isPositive();
     }
 
     @Test
@@ -84,8 +83,8 @@ class OwMessageDtoModelMapperTest {
         final OwFact entity = mapper.factDtoToFact(dto1);
         final OwCurrentDto dto2 = mapper.factDtoFromFact(entity);
         assertNotNull(dto2);
-        assertEquals(dto1, dto2);
-        assertEquals(dto1.hashCode(), dto2.hashCode());
+        assertThat(dto1).isEqualTo(dto2);
+        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
     }
 
     @Test
@@ -95,8 +94,8 @@ class OwMessageDtoModelMapperTest {
         final List<OwAlert> entity = mapper.alertListDtoToAlertList(dto1);
         final List<OwAlertDto> dto2 = mapper.alertListDtoFromAlertList(entity);
         assertNotNull(dto2);
-        assertEquals(dto1, dto2);
-        assertEquals(dto1.hashCode(), dto2.hashCode());
+        assertThat(dto1).isEqualTo(dto2);
+        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
     }
 
     @Test
@@ -106,8 +105,8 @@ class OwMessageDtoModelMapperTest {
         final List<OwDaily> entity = mapper.dailyListDtoToDailyList(dto1);
         final List<OwDailyDto> dto2 = mapper.dailyListDtoFromDailyList(entity);
         assertNotNull(dto2);
-        assertEquals(dto1, dto2);
-        assertEquals(dto1.hashCode(), dto2.hashCode());
+        assertThat(dto1).isEqualTo(dto2);
+        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
     }
 
     @Test
@@ -117,8 +116,8 @@ class OwMessageDtoModelMapperTest {
         final List<OwHourly> entity = mapper.hourlyListDtoToHourlyList(dto1);
         final List<OwHourlyDto> dto2 = mapper.hourlyListDtoFromHourlyList(entity);
         assertNotNull(dto2);
-        assertEquals(dto1, dto2);
-        assertEquals(dto1.hashCode(), dto2.hashCode());
+        assertThat(dto1).isEqualTo(dto2);
+        assertThat(dto1.hashCode()).isEqualTo(dto2.hashCode());
     }
 
     @Test
@@ -133,9 +132,9 @@ class OwMessageDtoModelMapperTest {
         dto2.setCreatedOn(null);
         dto2.setMessageUuid(null);
         assertNotNull(dto2);
-        assertEquals(dto, dto2);
-        assertEquals(dto.hashCode(), dto2.hashCode());
-        assertTrue(dto.toString().length() > 0);
+        assertThat(dto).isEqualTo(dto2);
+        assertThat(dto.hashCode()).isEqualTo(dto2.hashCode());
+        assertThat(dto.toString().length()).isPositive();
     }
 
 }

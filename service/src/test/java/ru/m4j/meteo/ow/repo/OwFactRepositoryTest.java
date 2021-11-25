@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.Instant;
@@ -37,8 +36,8 @@ class OwFactRepositoryTest {
     @BeforeEach
     public void setUp() {
         assertThat(repo).isNotNull();
-        assertEquals(0, repo.count());
-        assertEquals(0, repoM.count());
+        assertThat(0).isEqualTo(repo.count());
+        assertThat(0).isEqualTo(repoM.count());
     }
 
     @Test
@@ -46,28 +45,28 @@ class OwFactRepositoryTest {
         mes = repoM.save(mes);
         mes.addFact(fact);
         final OwFact ent1 = repo.save(fact);
-        assertEquals(1, repo.count());
+        assertThat(1).isEqualTo(repo.count());
         assertNotNull(ent1.getFactId());
         final OwFact ent2 = repo.findById(ent1.getFactId()).orElseThrow();
-        assertEquals(ent1, ent2);
+        assertThat(ent1).isEqualTo(ent2);
     }
 
     @Test
     void testFindFacts(@Qualifier("message") OwMessage mes) {
         OwMessage ent = repoM.save(mes);
-        assertEquals(1, repo.count());
+        assertThat(1).isEqualTo(repo.count());
         final List<OwFact> findFacts = repo.findFacts(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertEquals(1, findFacts.size());
-        assertEquals(ent.getFact(), findFacts.get(0));
+        assertThat(1).isEqualTo(findFacts.size());
+        assertThat(ent.getFact()).isEqualTo(findFacts.get(0));
     }
 
     @AfterEach
     public void tearDown() {
         repo.deleteAll();
         repoM.deleteAll();
-        assertEquals(0, repo.count());
-        assertEquals(0, repoM.count());
+        assertThat(0).isEqualTo(repo.count());
+        assertThat(0).isEqualTo(repoM.count());
     }
 
 }

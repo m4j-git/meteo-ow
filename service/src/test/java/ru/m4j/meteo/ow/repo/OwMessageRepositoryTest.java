@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.Instant;
@@ -34,50 +33,50 @@ class OwMessageRepositoryTest {
     @BeforeEach
     public void setUp() {
         assertThat(repo).isNotNull();
-        assertEquals(0, repo.count());
+        assertThat(0).isEqualTo(repo.count());
     }
 
     @Test
     void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes) {
         OwMessage ent1 = repo.save(mes);
-        assertEquals(1, repo.count());
+        assertThat(1).isEqualTo(repo.count());
         assertNotNull(ent1.getMessageId());
         assertNotNull(ent1.getCreatedOn());
         final OwMessage ent2 = repo.findById(ent1.getMessageId()).orElseThrow();
-        assertEquals(ent1, ent2);
+        assertThat(ent1).isEqualTo(ent2);
     }
 
     @Test
     void testFindLastMessage(@Qualifier("message_skinny") OwMessage mes) {
         OwMessage ent1 = repo.save(mes);
-        assertEquals(1, repo.count());
+        assertThat(1).isEqualTo(repo.count());
         final OwMessage ent2 = repo.findTopByGeonameIdOrderByCreatedOnDesc(geonameId);
-        assertEquals(ent1, ent2);
+        assertThat(ent1).isEqualTo(ent2);
     }
 
     @Test
     void testFindIdByUuid(@Qualifier("message_skinny") OwMessage mes) {
         final OwMessage ent = repo.save(mes);
-        assertEquals(1, repo.count());
+        assertThat(1).isEqualTo(repo.count());
         assertNotNull(ent.getMessageUuid());
         Long id = repo.findIdByMessageUuid(ent.getMessageUuid());
         assertNotNull(id);
-        assertEquals(ent.getMessageId(), id);
+        assertThat(ent.getMessageId()).isEqualTo(id);
     }
 
     @Test
     void testFindMessages(@Qualifier("message_skinny") OwMessage mes) {
         OwMessage ent = repo.save(mes);
-        assertEquals(1, repo.count());
+        assertThat(1).isEqualTo(repo.count());
         final List<OwMessage> findMessages = repo.findMessages(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertEquals(1, findMessages.size());
-        assertEquals(ent, findMessages.get(0));
+        assertThat(1).isEqualTo(findMessages.size());
+        assertThat(ent).isEqualTo(findMessages.get(0));
     }
 
     @AfterEach
     public void tearDown() {
         repo.deleteAll();
-        assertEquals(0, repo.count());
+        assertThat(0).isEqualTo(repo.count());
     }
 }
