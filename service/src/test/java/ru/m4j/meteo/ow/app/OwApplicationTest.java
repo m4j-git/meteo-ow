@@ -3,7 +3,7 @@
  */
 package ru.m4j.meteo.ow.app;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ class OwApplicationTest {
     @Test
     void testApplication() {
         log.info("test app {}", env.getProperty("spring.application.name"));
-        assertTrue(true);
+        assertThat(env).isNotNull();
     }
 
 }
