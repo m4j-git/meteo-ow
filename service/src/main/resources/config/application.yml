@@ -54,7 +54,7 @@ logging:
       springframework:
         security: INFO
     ru:    
-      m4j: DEBUG
+      m4j: INFO
 ##################
 #   Meteo Settings
 ##################
@@ -115,7 +115,7 @@ logging:
       hibernate: INFO
       springframework: INFO
     ru:
-      m4j: DEBUG
+      m4j: INFO
 
 ##################
 #   Meteo Settings
