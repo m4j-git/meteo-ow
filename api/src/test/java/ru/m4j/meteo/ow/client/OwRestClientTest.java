@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2002-2021 meteo@m4j.ru
+  * Copyright (c) 2002-2021 meteo@m4j.ru
  */
-package ru.m4j.meteo.ow.api;
+package ru.m4j.meteo.ow.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
