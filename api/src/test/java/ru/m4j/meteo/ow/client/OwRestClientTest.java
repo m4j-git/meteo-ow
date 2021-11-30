@@ -36,7 +36,7 @@ import ru.m4j.meteo.share.app.GlobalConstants;
 @RestClientTest(OwRestClientImpl.class)
 @AutoConfigureWebClient(registerRestTemplate = true)
 @ContextConfiguration(classes = TestConfiguration.class)
-@ComponentScan(basePackages = "ru.m4j.meteo.ow.api")
+@ComponentScan(basePackages = "ru.m4j.meteo.ow.client")
 class OwRestClientTest {
 
     private static final String TEST_DATA_FILE = "ow_onecall.json";
