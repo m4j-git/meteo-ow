@@ -7,6 +7,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -63,7 +64,13 @@ class OwControllerTest {
     void testCallOwFact() throws Exception {
         when(locationService.requestLocations()).thenReturn(List.of(new LocationDto(1, null, null, null)));
         given(service.getLastMessage(geonameId)).willReturn(readJson());
-        this.mockMvc.perform(get("/").param("geonameId", "1")).andDo(print()).andExpect(status().isOk()).andExpect(view().name("index"));
+        mockMvc.perform(get("/")
+            .param("geonameId", "1"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(model().hasNoErrors())
+            .andExpect(model().attributeExists("weather"))
+            .andExpect(view().name("index"));
     }
 
 }

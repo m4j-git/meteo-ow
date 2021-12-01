@@ -64,8 +64,9 @@ class OwRestClientTest {
         factList.add(dto.getCurrent());
         String json = jacksonMapper.writeValueAsString(factList);
 
-        this.server.expect(requestTo(client.getUri("messages/facts", geonameId))).andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
-        List<OwCurrentDto> wf = this.client.getFacts(geonameId, null, null);
+        server.expect(requestTo(client.getUri("messages/facts", geonameId)))
+            .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
+        List<OwCurrentDto> wf = client.getFacts(geonameId, null, null);
         assertThat(wf.size()).isPositive();
     }
 
@@ -74,8 +75,9 @@ class OwRestClientTest {
         OwMessageDto dto = readJson();
         String json = jacksonMapper.writeValueAsString(dto);
 
-        this.server.expect(requestTo(client.getUri("messages/last", geonameId))).andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
-        OwMessageDto wf = this.client.getLastMessage(geonameId);
+        server.expect(requestTo(client.getUri("messages/last", geonameId)))
+            .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
+        OwMessageDto wf = client.getLastMessage(geonameId);
         assertThat(wf.getCurrent().getTemp()).isNotNull();
     }
 
@@ -84,8 +86,9 @@ class OwRestClientTest {
         OwMessageDto dto = readJson();
         OwMessageDto[] mesList = new OwMessageDto[] { dto };
         String json = jacksonMapper.writeValueAsString(mesList);
-        this.server.expect(requestTo(client.getUri("messages", geonameId))).andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
-        List<OwMessageDto> wf = this.client.getMessages(geonameId, null, null);
+        server.expect(requestTo(client.getUri("messages", geonameId)))
+            .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
+        List<OwMessageDto> wf = client.getMessages(geonameId, null, null);
         assertThat(wf.size()).isPositive();
     }
 
