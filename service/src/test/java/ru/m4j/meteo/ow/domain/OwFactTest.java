@@ -19,7 +19,7 @@ class OwFactTest {
     @Test
     void testFact(@Autowired OwFact fact) {
         assertThat(fact).isNotNull();
-        log.info("fact: {}", fact);
+        log.info("fact: " + fact);
     }
 
 }

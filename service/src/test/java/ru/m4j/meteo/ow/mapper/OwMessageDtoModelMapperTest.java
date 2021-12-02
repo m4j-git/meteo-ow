@@ -20,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.domain.OwAlert;
 import ru.m4j.meteo.ow.domain.OwDaily;
@@ -33,6 +34,7 @@ import ru.m4j.meteo.ow.model.OwHourlyDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.share.app.GlobalConstants;
 
+@Slf4j
 @SpringBootTest(classes = OwTestApplication.class)
 class OwMessageDtoModelMapperTest {
 
@@ -69,9 +71,10 @@ class OwMessageDtoModelMapperTest {
         final OwMessageDto dto2 = mapper.messageDtoFromMessage(entity);
         dto2.setCreatedOn(null);
         dto2.setMessageUuid(null);
-        assertThat(dto2).isNotNull();
-        assertThat(dto).isEqualTo(dto2).hasSameHashCodeAs(dto2);
-        assertThat(dto.toString()).isNotEmpty();
+        assertThat(dto2).isNotNull()
+            .isEqualTo(dto)
+            .hasSameHashCodeAs(dto);
+        log.debug("result: " + dto2);
     }
 
     @Test
@@ -80,8 +83,9 @@ class OwMessageDtoModelMapperTest {
         final OwCurrentDto dto1 = dto.getCurrent();
         final OwFact entity = mapper.factDtoToFact(dto1);
         final OwCurrentDto dto2 = mapper.factDtoFromFact(entity);
-        assertThat(dto2).isNotNull();
-        assertThat(dto1).isEqualTo(dto2).hasSameHashCodeAs(dto2);
+        assertThat(dto1).isNotNull()
+            .isEqualTo(dto2)
+            .hasSameHashCodeAs(dto2);
     }
 
     @Test
@@ -90,8 +94,9 @@ class OwMessageDtoModelMapperTest {
         final List<OwAlertDto> dto1 = dto.getAlerts();
         final List<OwAlert> entity = mapper.alertListDtoToAlertList(dto1);
         final List<OwAlertDto> dto2 = mapper.alertListDtoFromAlertList(entity);
-        assertThat(dto2).isNotNull();
-        assertThat(dto1).isEqualTo(dto2).hasSameHashCodeAs(dto2);
+        assertThat(dto2).isNotNull()
+            .isEqualTo(dto1)
+            .hasSameHashCodeAs(dto1);
     }
 
     @Test
@@ -100,8 +105,9 @@ class OwMessageDtoModelMapperTest {
         final List<OwDailyDto> dto1 = dto.getDaily();
         final List<OwDaily> entity = mapper.dailyListDtoToDailyList(dto1);
         final List<OwDailyDto> dto2 = mapper.dailyListDtoFromDailyList(entity);
-        assertThat(dto2).isNotNull();
-        assertThat(dto1).isEqualTo(dto2).hasSameHashCodeAs(dto2);
+        assertThat(dto2).isNotNull()
+            .isEqualTo(dto1)
+            .hasSameHashCodeAs(dto1);
     }
 
     @Test
@@ -110,8 +116,9 @@ class OwMessageDtoModelMapperTest {
         final List<OwHourlyDto> dto1 = dto.getHourly();
         final List<OwHourly> entity = mapper.hourlyListDtoToHourlyList(dto1);
         final List<OwHourlyDto> dto2 = mapper.hourlyListDtoFromHourlyList(entity);
-        assertThat(dto2).isNotNull();
-        assertThat(dto1).isEqualTo(dto2).hasSameHashCodeAs(dto2);
+        assertThat(dto2).isNotNull()
+            .isEqualTo(dto1)
+            .hasSameHashCodeAs(dto1);
     }
 
     @Test
@@ -125,9 +132,10 @@ class OwMessageDtoModelMapperTest {
         final OwMessageDto dto2 = mapper.messageDtoFromMessage(entity);
         dto2.setCreatedOn(null);
         dto2.setMessageUuid(null);
-        assertThat(dto2).isNotNull();
-        assertThat(dto).isEqualTo(dto2).hasSameHashCodeAs(dto2);
-        assertThat(dto.toString()).isNotEmpty();
+        assertThat(dto2).isNotNull()
+            .isEqualTo(dto)
+            .hasSameHashCodeAs(dto);
+        log.info("dto " + dto2);
     }
 
 }

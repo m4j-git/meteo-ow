@@ -53,10 +53,10 @@ public class OwMessageRequester {
             dto = client.request(getUri(geo));
             service.saveMessageToDb(dto, geo.getGeonameId());
             log.info("read ow weather message ok for {}", geo);
-            log.debug(dto.toString());
+            log.debug("response: " + dto);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("ow message is {}", (dto == null ? "null" : dto.toString()));
+            log.error("ow message is " + (dto == null ? "null" : dto));
         }
         return dto;
     }

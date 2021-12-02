@@ -20,7 +20,7 @@ class OwMessageTest {
     void entity_test(@Qualifier("message_skinny") OwMessage mes) {
         assertThat(mes).isNotNull();
         assertThat(mes.getMessageUuid()).isNotNull();
-        log.info("message: {}", mes);
+        log.info("message: " + mes);
     }
 
     @Test

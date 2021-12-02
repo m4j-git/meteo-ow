@@ -60,7 +60,7 @@ public class OwRestClientImpl implements OwRestResource {
         URI uri = getUri("messages/last", geonameId);
         ResponseEntity<OwMessageDto> response = restTemplate.getForEntity(uri, OwMessageDto.class);
         if ((response.getStatusCode() == HttpStatus.OK) && response.hasBody()) {
-            log.debug(response.getBody().toString());
+            log.debug("response: " + response.getBody());
             return response.getBody();
         }
         return null;

@@ -55,7 +55,7 @@ class OwControllerTest {
         final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
         try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             OwMessageDto dto = jacksonMapper.readValue(rd, OwMessageDto.class);
-            log.debug(dto.toString());
+            log.debug("read from json " + dto);
             return dto;
         }
     }
