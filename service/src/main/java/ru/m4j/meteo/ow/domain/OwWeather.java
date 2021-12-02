@@ -4,7 +4,6 @@
 package ru.m4j.meteo.ow.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,11 +13,13 @@ import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "ow_weather")
 public class OwWeather implements Serializable {
@@ -26,6 +27,7 @@ public class OwWeather implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @EqualsAndHashCode.Include
     private Short id;
     /**
      * Group of weather parameters (Rain, Snow, Extreme etc.)
@@ -47,23 +49,6 @@ public class OwWeather implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof OwWeather)) {
-            return false;
-        }
-        OwWeather other = (OwWeather) o;
-        return (id != null) && id.equals(other.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 
 }

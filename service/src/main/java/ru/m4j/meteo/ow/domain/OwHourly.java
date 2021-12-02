@@ -6,7 +6,6 @@ package ru.m4j.meteo.ow.domain;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,11 +24,13 @@ import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "ow_hourly")
 public class OwHourly implements Serializable {
@@ -38,6 +39,7 @@ public class OwHourly implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Include
     private Long hourlyId;
     /**
      * Time of the forecasted data, Unix, UTC
@@ -118,23 +120,6 @@ public class OwHourly implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof OwHourly)) {
-            return false;
-        }
-        OwHourly other = (OwHourly) o;
-        return (hourlyId != null) && hourlyId.equals(other.getHourlyId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(hourlyId);
     }
 
 }

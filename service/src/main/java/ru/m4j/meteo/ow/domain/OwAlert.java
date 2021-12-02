@@ -5,7 +5,6 @@ package ru.m4j.meteo.ow.domain;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +18,13 @@ import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "ow_alert")
 public class OwAlert implements Serializable {
@@ -32,6 +33,7 @@ public class OwAlert implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Include
     private Long alertId;
     /**
      * Name of the alert source
@@ -66,20 +68,4 @@ public class OwAlert implements Serializable {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof OwAlert)) {
-            return false;
-        }
-        OwAlert other = (OwAlert) o;
-        return (alertId != null) && alertId.equals(other.getAlertId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(alertId);
-    }
 }

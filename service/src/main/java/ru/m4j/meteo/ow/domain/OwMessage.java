@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -28,11 +27,13 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "ow_message")
 @EntityListeners(AuditingEntityListener.class)
@@ -43,6 +44,7 @@ public class OwMessage implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "message_id")
+    @EqualsAndHashCode.Include
     private Long messageId;
 
     @CreatedDate
@@ -111,23 +113,6 @@ public class OwMessage implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof OwMessage)) {
-            return false;
-        }
-        OwMessage other = (OwMessage) o;
-        return (messageId != null) && messageId.equals(other.getMessageId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(messageId);
     }
 
 }
