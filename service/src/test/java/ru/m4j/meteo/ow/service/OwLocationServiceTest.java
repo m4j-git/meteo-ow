@@ -14,9 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import ru.m4j.meteo.ow.OwTestApplication;
-
-@SpringBootTest(classes = OwTestApplication.class)
+@SpringBootTest
 class OwLocationServiceTest {
 
     @Autowired

@@ -26,7 +26,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
@@ -35,7 +34,7 @@ import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.service.OwDao;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = OwTestApplication.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class OwRestResourceTest {
 
     private final String messageUuid = "11111111-1111-1111-1111-111111111111";

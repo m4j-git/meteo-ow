@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2002-2021 meteo@m4j.ru
  */
-package ru.m4j.meteo.ow.domain;
+package ru.m4j.meteo.ow.config;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -10,13 +10,21 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import ru.m4j.meteo.ow.domain.OwAlert;
+import ru.m4j.meteo.ow.domain.OwDaily;
+import ru.m4j.meteo.ow.domain.OwFact;
+import ru.m4j.meteo.ow.domain.OwFeelsLike;
+import ru.m4j.meteo.ow.domain.OwHourly;
+import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.domain.OwTemp;
+import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.model.LocationDto;
 
-@Configuration
+@TestConfiguration
 public class OwTestBeanFactory {
 
     private final Integer geonameId = 1;

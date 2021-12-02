@@ -5,11 +5,7 @@ package ru.m4j.meteo.ow.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,9 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import ru.m4j.meteo.ow.OwTestApplication;
+import ru.m4j.meteo.ow.config.OwTestBeanSource;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.repo.OwAlertRepository;
@@ -31,13 +25,11 @@ import ru.m4j.meteo.ow.repo.OwFactRepository;
 import ru.m4j.meteo.ow.repo.OwHourlyRepository;
 import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.repo.OwWeatherRepository;
-import ru.m4j.meteo.share.app.GlobalConstants;
 
-@SpringBootTest(classes = OwTestApplication.class)
+@SpringBootTest
 @Transactional
 class OwMessageServiceTest {
 
-    private static final String TEST_DATA_FILE = "ow_onecall.json";
     private final Integer geonameId = 1;
     private final String messageUuid = "11111111-1111-1111-1111-111111111111";
 
@@ -48,7 +40,7 @@ class OwMessageServiceTest {
     @Autowired
     private OwDirectoryService dir;
     @Autowired
-    private ObjectMapper jacksonMapper;
+    private OwTestBeanSource src;
     @Autowired
     private OwMessageRepository msgRepo;
     @Autowired
@@ -71,11 +63,7 @@ class OwMessageServiceTest {
         assertThat(hourlyRepo.count()).isZero();
         assertThat(factRepo.count()).isZero();
         assertThat(msgRepo.count()).isZero();
-        final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
-        OwMessageDto dto;
-        try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
-            dto = jacksonMapper.readValue(rd, OwMessageDto.class);
-        }
+        OwMessageDto dto = src.readJson();
         assertThat(dto.getCurrent().getDt()).isNotNull();
         dir.saveConditionCodesToDb();
         dto.setMessageUuid(UUID.fromString(messageUuid));

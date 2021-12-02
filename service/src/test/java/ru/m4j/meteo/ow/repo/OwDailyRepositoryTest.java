@@ -15,12 +15,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.domain.OwDaily;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
 
-@SpringBootTest(classes = OwTestApplication.class)
+@SpringBootTest
 @Transactional
 class OwDailyRepositoryTest {
 

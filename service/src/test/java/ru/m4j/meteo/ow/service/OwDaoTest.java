@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.m4j.meteo.ow.OwTestApplication;
 import ru.m4j.meteo.ow.domain.OwAlert;
 import ru.m4j.meteo.ow.domain.OwDaily;
 import ru.m4j.meteo.ow.domain.OwFact;
@@ -33,7 +32,7 @@ import ru.m4j.meteo.ow.repo.OwHourlyRepository;
 import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.repo.OwWeatherRepository;
 
-@SpringBootTest(classes = OwTestApplication.class)
+@SpringBootTest
 @Transactional
 class OwDaoTest {
 
