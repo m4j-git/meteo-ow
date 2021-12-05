@@ -27,7 +27,7 @@ import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.service.OwLocationService;
 import ru.m4j.meteo.ow.service.OwMessageService;
 
-@ContextConfiguration(classes = { OwWeatherFormMapper.class, OwWebSecurityTestConfig.class, OwTestBeanSource.class })
+@ContextConfiguration(classes = { OwController.class, OwWeatherFormMapper.class, OwWebSecurityTestConfig.class, OwTestBeanSource.class })
 @WebMvcTest(OwController.class)
 class OwControllerTest {
 
@@ -51,7 +51,7 @@ class OwControllerTest {
             .andExpect(status().isOk())
             .andExpect(model().hasNoErrors())
             .andExpect(model().attributeExists("weather"))
-            .andExpect(view().name("index"));
+            .andExpect(view().name("ow"));
     }
 
 }

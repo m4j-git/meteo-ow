@@ -22,21 +22,21 @@ import lombok.Setter;
 public class OwWeatherForm {
 
     private Instant obsTime;
-    private Integer temp;
-    private Integer feelsLike;
-    private Integer pressure;
+    private String temp;
+    private String feelsLike;
+    private Integer pressureMm;
     private Integer humidity;
     private Double dewPoint;
     private Double uvi;
     private Integer clouds;
     private Integer visibility;
     private Double windSpeed;
-    private Integer windDeg;
+    private String windDir;
     private Double windGust;
-    private String weather;
+    private String condition;
     private Double precipM1h;
     private String icon;
-    private Integer tempWater;
+    private String tempWater;
 
     @Override
     public String toString() {

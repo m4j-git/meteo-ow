@@ -3,19 +3,23 @@
  */
 package ru.m4j.meteo.ow.controller;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import lombok.extern.slf4j.Slf4j;
+import ru.m4j.meteo.ow.form.OwMessageForm;
+import ru.m4j.meteo.ow.form.OwWeatherFormMapper;
 import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.service.OwLocationService;
 import ru.m4j.meteo.ow.service.OwMessageService;
 
+@Slf4j
 @Controller
 @RequestMapping("/")
 @SessionAttributes("location")
@@ -23,21 +27,21 @@ public class OwController {
 
     private final OwMessageService service;
     private final OwLocationService locationService;
+    private final OwWeatherFormMapper mapper;
 
-    public OwController(OwMessageService service, OwLocationService locationService) {
+    public OwController(OwMessageService service, OwLocationService locationService, OwWeatherFormMapper mapper) {
         this.service = service;
         this.locationService = locationService;
+        this.mapper = mapper;
     }
 
     @GetMapping("/")
-    public String showFactPage(Model model, @ModelAttribute("location") LocationDto location) {
-        model.addAttribute("admin-done", SecurityContextHolder.getContext().getAuthentication().getName());
-        OwMessageDto data = service.getLastMessage(1);
-        if (data == null) {
-            return "index2";
-        }
-        model.addAttribute("weather", data);
-        return "index";
+    public String showFactPage(Model model, @ModelAttribute("location") LocationDto location, @RequestParam("geonameId") Integer geonameId) {
+        log.info("request:" + location);
+        OwMessageDto data = service.getLastMessage(geonameId);
+        OwMessageForm form = mapper.mapMessage(data);
+        model.addAttribute("weather", form);
+        return "ow";
     }
 
     @ModelAttribute("location")

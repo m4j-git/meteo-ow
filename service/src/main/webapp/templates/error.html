@@ -1,0 +1,33 @@
+<!DOCTYPE html/>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header-head">
+<meta charset="utf-8" />
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<title>Open Weather</title>
+<link rel="icon" th:href="@{favicon.png}" type="image/x-icon">
+</head>
+
+
+<body>
+	<main>
+		<div class="container">
+			<div class="card mb-4 max-width: 75%">
+				<div class="card-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-md display-4" th:text="${errorMessage}">errorMessage</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+
+</body>
+</html>

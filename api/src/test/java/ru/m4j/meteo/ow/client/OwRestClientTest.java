@@ -21,7 +21,7 @@ import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebCl
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.client.MockRestServiceServer;
@@ -29,6 +29,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ru.m4j.meteo.ow.client.OwRestClientTest.RestClientTestConfig;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.share.app.GlobalConstants;
@@ -36,7 +37,7 @@ import ru.m4j.meteo.share.app.GlobalConstants;
 @RestClientTest(OwRestClientImpl.class)
 @AutoConfigureWebClient(registerRestTemplate = true)
 @ContextConfiguration(classes = OwRestClientImpl.class)
-@ComponentScan(basePackages = "ru.m4j.meteo.ow")
+@Import(RestClientTestConfig.class)
 class OwRestClientTest {
 
     private static final String TEST_DATA_FILE = "ow_onecall.json";
