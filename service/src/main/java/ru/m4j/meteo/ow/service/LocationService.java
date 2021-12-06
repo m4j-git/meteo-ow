@@ -7,7 +7,7 @@ import java.util.List;
 
 import ru.m4j.meteo.ow.model.LocationDto;
 
-public interface OwLocationService {
+public interface LocationService {
 
     List<LocationDto> requestLocations();
 

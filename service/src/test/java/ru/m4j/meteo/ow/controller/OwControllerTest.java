@@ -24,7 +24,7 @@ import ru.m4j.meteo.ow.config.OwTestBeanSource;
 import ru.m4j.meteo.ow.config.OwWebSecurityTestConfig;
 import ru.m4j.meteo.ow.form.OwWeatherFormMapper;
 import ru.m4j.meteo.ow.model.LocationDto;
-import ru.m4j.meteo.ow.service.OwLocationService;
+import ru.m4j.meteo.ow.service.LocationService;
 import ru.m4j.meteo.ow.service.OwMessageService;
 
 @ContextConfiguration(classes = { OwController.class, OwWeatherFormMapper.class, OwWebSecurityTestConfig.class, OwTestBeanSource.class })
@@ -39,7 +39,7 @@ class OwControllerTest {
     @MockBean
     private OwMessageService service;
     @MockBean
-    private OwLocationService locationService;
+    private LocationService locationService;
 
     @Test
     void showMessagePage_test() throws Exception {

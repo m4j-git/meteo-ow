@@ -16,7 +16,7 @@ import ru.m4j.meteo.ow.form.OwMessageForm;
 import ru.m4j.meteo.ow.form.OwWeatherFormMapper;
 import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.ow.service.OwLocationService;
+import ru.m4j.meteo.ow.service.LocationService;
 import ru.m4j.meteo.ow.service.OwMessageService;
 
 @Slf4j
@@ -26,10 +26,10 @@ import ru.m4j.meteo.ow.service.OwMessageService;
 public class OwController {
 
     private final OwMessageService service;
-    private final OwLocationService locationService;
+    private final LocationService locationService;
     private final OwWeatherFormMapper mapper;
 
-    public OwController(OwMessageService service, OwLocationService locationService, OwWeatherFormMapper mapper) {
+    public OwController(OwMessageService service, LocationService locationService, OwWeatherFormMapper mapper) {
         this.service = service;
         this.locationService = locationService;
         this.mapper = mapper;

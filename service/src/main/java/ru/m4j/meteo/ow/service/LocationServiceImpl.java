@@ -16,11 +16,11 @@ import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.model.LocationsDto;
 
 @Service
-public class OwLocationServiceImpl implements OwLocationService {
+public class LocationServiceImpl implements LocationService {
 
     private final ResourceLoader resourceLoader;
 
-    public OwLocationServiceImpl(ResourceLoader resourceLoader) {
+    public LocationServiceImpl(ResourceLoader resourceLoader) {
         super();
         this.resourceLoader = resourceLoader;
     }

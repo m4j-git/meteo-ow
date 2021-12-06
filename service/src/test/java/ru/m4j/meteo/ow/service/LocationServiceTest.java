@@ -15,10 +15,10 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @SpringBootTest
-class OwLocationServiceTest {
+class LocationServiceTest {
 
     @Autowired
-    private OwLocationService service;
+    private LocationService service;
 
     @Test
     void test01() throws JsonGenerationException, JsonMappingException, IOException {
