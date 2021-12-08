@@ -5,9 +5,11 @@ package ru.m4j.meteo.ow.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.Join;
 import javax.transaction.Transactional;
 
@@ -33,15 +35,20 @@ public class OwDaoImpl implements OwDao {
     private final OwAlertRepository alertRepo;
     private final OwDailyRepository dailyRepo;
     private final OwHourlyRepository hourlyRepo;
+    private final EntityManager em;
+
+    private static final String QUERY_LAST_MESSAGE = "select msg from OwMessage as msg where msg.geonameId=:geoname_id "
+        + "ORDER BY msg.createdOn desc";
 
     public OwDaoImpl(OwMessageRepository messageRepo, OwFactRepository factRepo, OwWeatherRepository weatherRepo, OwAlertRepository alertRepo,
-        OwDailyRepository dailyRepo, OwHourlyRepository hourlyRepo) {
+        OwDailyRepository dailyRepo, OwHourlyRepository hourlyRepo, EntityManager em) {
         this.messageRepo = messageRepo;
         this.factRepo = factRepo;
         this.weatherRepo = weatherRepo;
         this.alertRepo = alertRepo;
         this.dailyRepo = dailyRepo;
         this.hourlyRepo = hourlyRepo;
+        this.em = em;
     }
 
     @Override
@@ -96,13 +103,16 @@ public class OwDaoImpl implements OwDao {
 
     @Override
     @Transactional
-    public OwMessage findLastMessage(final Integer geonameId) {
-        return messageRepo.findTopByGeonameIdOrderByCreatedOnDesc(geonameId);
+    public Optional<OwMessage> findLastMessage(final Integer geonameId) {
+        return Optional.ofNullable((OwMessage) em.createQuery(QUERY_LAST_MESSAGE)
+            .setMaxResults(1)
+            .setParameter("geoname_id", geonameId)
+            .getSingleResult());
     }
 
     @Override
-    public OwMessage findMessageByUuid(UUID messageUuid) {
-        return messageRepo.findMessageByUuid(messageUuid).orElseThrow();
+    public Optional<OwMessage> findMessageByUuid(UUID messageUuid) {
+        return messageRepo.findMessageByUuid(messageUuid);
     }
 
     @Override

@@ -45,14 +45,6 @@ class OwMessageRepositoryTest {
     }
 
     @Test
-    void testFindLastMessage(@Qualifier("message_skinny") OwMessage mes) {
-        OwMessage ent1 = repo.save(mes);
-        assertThat(repo.count()).isEqualTo(1);
-        final OwMessage ent2 = repo.findTopByGeonameIdOrderByCreatedOnDesc(geonameId);
-        assertThat(ent1).isEqualTo(ent2);
-    }
-
-    @Test
     void testFindIdByUuid(@Qualifier("message_skinny") OwMessage mes) {
         final OwMessage ent = repo.save(mes);
         assertThat(repo.count()).isEqualTo(1);

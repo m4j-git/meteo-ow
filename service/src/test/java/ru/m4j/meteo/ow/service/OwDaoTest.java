@@ -96,7 +96,7 @@ class OwDaoTest {
     @Test
     void testFindLastMessage(@Qualifier("message") OwMessage mes) {
         final OwMessage ent = dao.saveMessage(mes, geonameId);
-        final OwMessage ent2 = dao.findLastMessage(geonameId);
+        final OwMessage ent2 = dao.findLastMessage(geonameId).get();
         assertThat(ent).isEqualTo(ent2);
     }
 
@@ -145,7 +145,7 @@ class OwDaoTest {
         UUID uuid = UUID.randomUUID();
         ent1.setMessageUuid(uuid);
         ent1 = dao.saveMessage(ent1, geonameId);
-        final OwMessage ent2 = dao.findMessageByUuid(uuid);
+        final OwMessage ent2 = dao.findMessageByUuid(uuid).get();
         assertThat(ent1).isEqualTo(ent2);
     }
 

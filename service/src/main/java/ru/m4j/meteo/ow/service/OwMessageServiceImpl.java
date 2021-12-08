@@ -19,6 +19,8 @@ import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.mapper.OwMessageDtoModelMapper;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.share.misc.ErrorAttribute;
+import ru.m4j.meteo.share.misc.ResourceNotFoundException;
 
 @Slf4j
 @Service
@@ -54,7 +56,8 @@ public class OwMessageServiceImpl implements OwMessageService {
     @Transactional
     public OwMessageDto getLastMessage(final Integer geonameId) {
         validGeoname(geonameId);
-        final OwMessage ent = dao.findLastMessage(geonameId);
+        final OwMessage ent = dao.findLastMessage(geonameId).orElseThrow(
+            () -> new ResourceNotFoundException(ErrorAttribute.MESSAGE_ERROR_CODE, ErrorAttribute.RESOURCE_NOT_FOUND_ERROR, String.valueOf(geonameId)));
         return mapper.messageDtoFromMessage(ent);
     }
 
@@ -62,7 +65,8 @@ public class OwMessageServiceImpl implements OwMessageService {
     @Transactional
     public OwMessageDto getMessage(String messageUuid) {
         validMessage(messageUuid);
-        final OwMessage ent = dao.findMessageByUuid(UUID.fromString(messageUuid));
+        final OwMessage ent = dao.findMessageByUuid(UUID.fromString(messageUuid)).orElseThrow(
+            () -> new ResourceNotFoundException(ErrorAttribute.MESSAGE_ERROR_CODE, ErrorAttribute.RESOURCE_NOT_FOUND_ERROR, messageUuid));
         return mapper.messageDtoFromMessage(ent);
     }
 

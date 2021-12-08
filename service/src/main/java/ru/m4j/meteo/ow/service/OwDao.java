@@ -5,6 +5,7 @@ package ru.m4j.meteo.ow.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,9 +26,9 @@ public interface OwDao {
 
     void deleteWeatherConditionCodes();
 
-    OwMessage findLastMessage(Integer geonameId);
+    Optional<OwMessage> findLastMessage(Integer geonameId);
 
-    OwMessage findMessageByUuid(UUID uuid);
+    Optional<OwMessage> findMessageByUuid(UUID uuid);
 
     List<OwMessage> findMessages(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo);
 
