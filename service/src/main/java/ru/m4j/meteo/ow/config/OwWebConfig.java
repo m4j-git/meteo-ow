@@ -8,8 +8,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+
 @Configuration
 @EnableWebMvc
+@OpenAPIDefinition(info = @Info(title = "meteo-ow"))
 public class OwWebConfig implements WebMvcConfigurer {
 
     @Override
