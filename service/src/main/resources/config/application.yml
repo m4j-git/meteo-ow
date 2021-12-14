@@ -249,7 +249,7 @@ spring:
       on-profile: mysql      
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/meteo-ow?&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql-host:3306/meteo-ow?&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true
     username: ${METEO_USER}
     password: ${METEO_PASSWD}
   jpa:

@@ -48,7 +48,9 @@ if [ "$1" = "build-docker" ]; then
   docker run -it -d --restart unless-stopped \
       -p ${PORT}:${PORT} --network=host \
       --name ${CONTAINER_NAME} \
-      ${IMAGE_NAME}
+      ${IMAGE_NAME} \
+      -e METEO_USER=${METEO_USER} \
+      -e METEO_PASSWD=${METEO_PASSWD}
 fi
 
 if [ "$1" = "test-wrk" ]; then
