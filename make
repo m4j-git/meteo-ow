@@ -42,7 +42,7 @@ if [ "$1" = "docker-build" ]; then
   set -e
   
   echo -e "\nDocker build image with name ${IMAGE_NAME}...\n"
-  docker build -t ${IMAGE_NAME} -f Dockerfile .
+  docker build -t ${IMAGE_NAME} -f Dockerfile service
   
   echo -e "\nStart Docker container of the image ${IMAGE_NAME} with name ${CONTAINER_NAME}...\n"
   docker run -it -d --restart unless-stopped \
