@@ -47,8 +47,10 @@ if [ "$1" = "build-docker" ]; then
   echo -e "\nStart Docker container of the image ${IMAGE_NAME} with name ${CONTAINER_NAME}...\n"
   docker run -it -d --restart unless-stopped \
       -p ${PORT}:${PORT} --network=host \
+      -v /opt/meteo/meteo-ow/logs:/opt/meteo/logs \
       -e METEO_USER=${METEO_USER} \
       -e METEO_PASSWD=${METEO_PASSWD} \
+      -e OPENWEATHERMAP_API_KEY=${OPENWEATHERMAP_API_KEY} \
       --name ${CONTAINER_NAME} \
       ${IMAGE_NAME} 
 
