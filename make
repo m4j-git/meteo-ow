@@ -23,7 +23,7 @@ if [ "$1" = "test-dev" ]; then
   mvn clean test -P dev,h2 -T 1C -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -DargLine="-Xms1024m -Xmx8192m"
 fi
 
-if [ "$1" = "site" ]; then
+if [ "$1" = "build-site" ]; then
   mvn site -P prod,mysql -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
 fi
 
