@@ -27,7 +27,7 @@ public class OwRestClientImpl implements OwRestResource {
 
     private final RestTemplate restTemplate;
 
-    @Value("${meteo.ow-rest-client.host:meteo-host}")
+    @Value("${meteo.ow-rest-client.host:meteo-ow-host}")
     private String host;
     @Value("${meteo.ow-rest-client.scheme:http}")
     private String scheme;

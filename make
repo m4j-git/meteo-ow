@@ -57,5 +57,5 @@ if [ "$1" = "build-docker" ]; then
 fi
 
 if [ "$1" = "test-wrk" ]; then
-  ./wrk -t12 -c12 -d30s http://meteo-host:8081/meteo-ow/?geonameId=1
+  ./wrk -t12 -c12 -d30s http://meteo-ow-host:8081/meteo-ow/?geonameId=1
 fi
