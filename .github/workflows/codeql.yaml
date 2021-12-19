@@ -32,7 +32,7 @@ jobs:
         languages: java
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v1.0.24
+      run: mvn -B package  -P dev,h2 -Dmaven.test.skip --file pom.xml
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1.0.24
