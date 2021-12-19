@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2021 meteo@m4j.ru
+  * Copyright (c) 2002-2021 meteo@m4j.ru
  */
 package ru.m4j.meteo.ow.config;
 
@@ -63,7 +63,13 @@ public class OwTestBeanFactory {
         return entity;
     }
 
-    @Bean
+    @Bean(name = "fact_skinny")
+    @Scope("prototype")
+    OwFact createFact() {
+        return createFact(null);
+    }
+
+    @Bean(name = "fact")
     @Scope("prototype")
     OwFact createFact(@Qualifier("weather") final OwWeather weather) {
         final OwFact entity = new OwFact();

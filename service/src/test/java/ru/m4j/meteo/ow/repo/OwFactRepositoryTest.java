@@ -39,7 +39,7 @@ class OwFactRepositoryTest {
     }
 
     @Test
-    void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes, @Autowired OwFact fact) {
+    void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes, @Qualifier("fact_skinny") OwFact fact) {
         mes = repoM.save(mes);
         mes.addFact(fact);
         final OwFact ent1 = repo.save(fact);

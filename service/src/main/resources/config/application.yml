@@ -227,7 +227,7 @@ spring:
       on-profile: h2        
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:meteo-ow
+    url: jdbc:h2:mem:meteo-ow;MODE=MySQL
     username: ${METEO_USER}
     password: ${METEO_PASSWD}
   jpa:

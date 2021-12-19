@@ -18,7 +18,7 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: end
+                  name: end_
                   type: datetime
               - column:
                   constraints:

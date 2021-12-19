@@ -6,6 +6,7 @@ package ru.m4j.meteo.ow.domain;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -53,6 +54,7 @@ public class OwAlert implements Serializable {
      * Date and time of the end of the alert, Unix, UTC
      */
     @NotNull
+    @Column(name = "end_")
     private OffsetDateTime end;
     /**
      * Description of the alert
