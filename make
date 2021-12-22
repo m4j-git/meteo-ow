@@ -8,19 +8,19 @@ absdir=`cd $dir; pwd`
 cd $absdir
 
 if [ "$1" = "build-prod" ]; then
-  mvn clean install -P prod,mysql -T 1C -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
+  mvn clean install -P prod,mysql -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
 fi
 
 if [ "$1" = "build-stage" ]; then
-  mvn clean install -P stage,mysql -T 1C -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
+  mvn clean install -P stage,mysql -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
 fi
 
 if [ "$1" = "build-dev" ]; then
-  mvn clean install -P dev,h2 -T 1C -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
+  mvn clean install -P dev,h2 -Dmaven.test.skip -Dorg.slf4j.simpleLogger.defaultLogLevel=info -DargLine="-Xms1024m -Xmx8192m"
 fi
 
 if [ "$1" = "test-dev" ]; then
-  mvn clean test -P dev,h2 -T 1C -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -DargLine="-Xms1024m -Xmx8192m"
+  mvn clean test -P dev,h2 -Dorg.slf4j.simpleLogger.defaultLogLevel=warn -DargLine="-Xms1024m -Xmx8192m"
 fi
 
 if [ "$1" = "build-site" ]; then
