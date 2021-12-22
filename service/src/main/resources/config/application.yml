@@ -48,13 +48,13 @@ server:
 ##################
 logging:
   level:
-    ROOT: INFO
+    ROOT: WARN
     org:
-      hibernate: INFO
+      hibernate: WARN
       springframework:
-        security: INFO
+        security: WARN
     ru:    
-      m4j: INFO
+      m4j: WARN
 ##################
 #   Meteo Settings
 ##################
