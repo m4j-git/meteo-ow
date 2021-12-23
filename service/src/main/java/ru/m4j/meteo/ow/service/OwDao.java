@@ -14,13 +14,12 @@ import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.domain.OwWeather;
 
 public interface OwDao {
+
     OwMessage saveMessage(OwMessage message, Integer geonameId);
 
     void deleteAllMessages();
 
     List<OwFact> findFacts(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo);
-
-    List<OwFact> findFactsViaSpecification(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo);
 
     void saveWeatherConditionCodes(Set<OwWeather> weather);
 
@@ -32,7 +31,7 @@ public interface OwDao {
 
     List<OwMessage> findMessages(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo);
 
-    List<OwMessage> findMessagesViaSpecification(Integer geonameId, LocalDateTime dateFrom, LocalDateTime dateTo);
-
     void deleteMessages();
+
+    long count(Class<?> clazz);
 }

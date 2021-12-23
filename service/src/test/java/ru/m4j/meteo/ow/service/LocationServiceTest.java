@@ -10,11 +10,16 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-@SpringBootTest
+import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
+
+@SpringBootTest(classes = OwTestDaoConfiguration.class)
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 class LocationServiceTest {
 
     @Autowired

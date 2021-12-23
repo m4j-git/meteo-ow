@@ -15,7 +15,10 @@
 
 	<modules>
 		<module>api</module>
+        <module>mvc</module>
+        <module>client</module>
 		<module>service</module>
+	    <module>app</module>
 	</modules>
 
 	<scm>

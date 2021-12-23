@@ -12,14 +12,21 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ru.m4j.meteo.ow.config.OwTestBeanSource;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.srv.config.OwTestBeanFactory;
+import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
+import ru.m4j.meteo.ow.srv.config.OwTestDomainConfiguration;
 
-@SpringBootTest
+@SpringBootTest(classes = { OwTestDomainConfiguration.class })
+@Import(OwTestBeanFactory.class)
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 class OwMessageJsonTest {
 
     @Autowired
@@ -30,7 +37,7 @@ class OwMessageJsonTest {
     private OwTestBeanSource src;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         assertThat(mapper).isNotNull();
     }
 

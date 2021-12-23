@@ -11,13 +11,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
 import ru.m4j.meteo.ow.domain.OwAlert;
 import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
-@SpringBootTest
+@SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 class OwAlertRepositoryTest {
 
     @Autowired
@@ -26,7 +30,7 @@ class OwAlertRepositoryTest {
     private OwMessageRepository repoM;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         assertThat(repo).isNotNull();
         assertThat(repo.count()).isZero();
         assertThat(repoM.count()).isZero();
@@ -44,7 +48,7 @@ class OwAlertRepositoryTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         repo.deleteAll();
         repoM.deleteAll();
         assertThat(repo.count()).isZero();

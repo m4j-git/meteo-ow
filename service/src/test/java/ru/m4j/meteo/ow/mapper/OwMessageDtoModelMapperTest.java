@@ -13,9 +13,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
 import lombok.extern.slf4j.Slf4j;
-import ru.m4j.meteo.ow.config.OwTestBeanSource;
 import ru.m4j.meteo.ow.domain.OwAlert;
 import ru.m4j.meteo.ow.domain.OwDaily;
 import ru.m4j.meteo.ow.domain.OwFact;
@@ -26,9 +26,13 @@ import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwDailyDto;
 import ru.m4j.meteo.ow.model.OwHourlyDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.srv.config.OwTestBeanFactory;
+import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
+import ru.m4j.meteo.ow.srv.config.OwTestDomainConfiguration;
 
 @Slf4j
-@SpringBootTest
+@SpringBootTest(classes = { OwTestDomainConfiguration.class })
+@Import(OwTestBeanFactory.class)
 class OwMessageDtoModelMapperTest {
 
     @Autowired
@@ -37,7 +41,7 @@ class OwMessageDtoModelMapperTest {
     private OwTestBeanSource src;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         assertThat(mapper).isNotNull();
     }
 

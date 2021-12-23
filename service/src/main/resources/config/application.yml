@@ -2,8 +2,6 @@
 #   Spring Settings
 ##################
 spring:
-  application:
-    name: meteo-ow
   profiles:
     active:
       - '@spring.profiles.active@'
@@ -24,66 +22,11 @@ spring:
     jpa:
       repositories:
         bootstrap-mode: deferred #?
-  thymeleaf:
-    cache: true
-    # mode: HTML
-  security:
-    user:
-      name: ${METEO_USER}
-      password: ${METEO_PASSWD}
-#  main:
-#    lazy-initialization: true
   liquibase:
     enabled: true
-##################
-#   Server Settings
-##################
-server:
-  port: 8081
-  servlet:
-    context-path: /meteo-ow
 
-##################
-#   Logging Settings
-##################
-logging:
-  level:
-    ROOT: WARN
-    org:
-      hibernate: WARN
-      springframework:
-        security: WARN
-    ru:    
-      m4j: WARN
-##################
-#   Meteo Settings
-##################
-meteo:
-  scheduling:
-    enabled: false
-  provider:
-    type: resttemplate
-
-eureka:
-  client:
-    service-url: 
-      defaultZone: http://meteo-eu-host:8761/eureka/
-    healthcheck:
-      enabled: true
-    enabled: false
-    
-##################
-#   Maven Settings
-##################
-maven:
-  branch-name: '@scmBranch@'
-  build-number: '@buildNumber@'
   
 --- ################### stage ################### 
-
-##################
-#   Spring Settings
-##################
 spring:
   config:
     activate:
@@ -94,128 +37,17 @@ spring:
       hibernate:
         type: info
     show-sql: false
-  thymeleaf:
-    cache: false
-  output:
-    ansi:
-      enabled: ALWAYS
   liquibase:
     enabled: true
-##################
-#   Server Settings
-##################
 
-##################
-#   Logging Settings
-##################
-logging:
-  level:
-    ROOT: INFO
-    org:
-      hibernate: INFO
-      springframework: INFO
-    ru:
-      m4j: INFO
-
-##################
-#   Meteo Settings
-##################
-meteo:
-  scheduling:
-    enabled: false
-  provider:
-    type: resttemplate
-    
-eureka:
-  client:
-    enabled: false
-    
 --- ################### prod ################### 
-
-##################
-#   Spring Settings
-##################
 spring:
   config:
     activate:
       on-profile: prod
-  devtools:
-    restart:
-      enabled: false
-    livereload:
-      enabled: false
   liquibase:
     enabled: true
-  boot:
-    ##################
-    #   Admin client Settings
-    ##################
-    admin:
-      client:
-        url: http://meteo-adm-host:8090/meteo-adm
-        username: ${METEO_USER}
-        password: ${METEO_PASSWD}
-        instance:
-          metadata:
-            user:
-              name: ${METEO_USER}
-              password: ${METEO_PASSWD}
-          service-base-url: http://meteo-ow-host:8081
-
-##################
-#   Server Settings
-##################
-server:
-  shutdown: graceful  # а для встроенного??
-  compression:
-    enabled: true
-    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
-    min-response-size: 1024
-##################
-#   Logging Settings
-##################
-logging:
-  level:
-    ROOT: INFO
-    org:
-      hibernate: INFO
-      springframework:
-        security: INFO
-    ru:
-      m4j: INFO
-  file:
-    path: logs
-    max-history: 30
-    max-size: 1MB  
-    clean-history-on-start: true
     
-##################
-#   Meteo Settings
-##################
-meteo:
-  scheduling:
-    enabled: true
-  provider:
-    type: resttemplate
-        
-eureka:
-  client:
-    enabled: true
-    
-##################
-#   Management Settings
-##################
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-
 --- ################### h2 ###################
  
 ##################

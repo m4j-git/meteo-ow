@@ -1,0 +1,56 @@
+id	main	description	icon
+200	Thunderstorm	thunderstorm with light rain	11
+201	Thunderstorm	thunderstorm with rain	11
+202	Thunderstorm	thunderstorm with heavy rain	 11
+210	Thunderstorm	light thunderstorm	 11
+211	Thunderstorm	thunderstorm	 11
+212	Thunderstorm	heavy thunderstorm	 11
+221	Thunderstorm	ragged thunderstorm	 11
+230	Thunderstorm	thunderstorm with light drizzle	 11
+231	Thunderstorm	thunderstorm with drizzle	 11
+232	Thunderstorm	thunderstorm with heavy drizzle	 11
+300	Drizzle	light intensity drizzle	 09
+301	Drizzle	drizzle	 09
+302	Drizzle	heavy intensity drizzle	 09
+310	Drizzle	light intensity drizzle rain	 09
+311	Drizzle	drizzle rain	 09
+312	Drizzle	heavy intensity drizzle rain	 09
+313	Drizzle	shower rain and drizzle	 09
+314	Drizzle	heavy shower rain and drizzle	 09
+321	Drizzle	shower drizzle	 09
+500	Rain	light rain	 10
+501	Rain	moderate rain	 10
+502	Rain	heavy intensity rain	 10
+503	Rain	very heavy rain	 10
+504	Rain	extreme rain	 10
+511	Rain	freezing rain	 13
+520	Rain	light intensity shower rain	 09
+521	Rain	shower rain	 09
+522	Rain	heavy intensity shower rain	 09
+531	Rain	ragged shower rain	 09
+600	Snow	light snow	 13
+601	Snow	Snow	 13
+602	Snow	Heavy snow	 13
+611	Snow	Sleet	 13
+612	Snow	Light shower sleet	 13
+613	Snow	Shower sleet	 13
+615	Snow	Light rain and snow	 13
+616	Snow	Rain and snow	 13
+620	Snow	Light shower snow	 13
+621	Snow	Shower snow	 13
+622	Snow	Heavy shower snow	 13
+701	Mist	mist	 50
+711	Smoke	Smoke	 50
+721	Haze	Haze	 50
+731	Dust	sand/ dust whirls	 50
+741	Fog	fog	 50
+751	Sand	sand	 50
+761	Dust	dust	 50
+762	Ash	volcanic ash	 50
+771	Squall	squalls	 50
+781	Tornado	tornado	 50
+800	Clear	clear sky	 01
+801	Clouds	few clouds: 11-25%	 02
+802	Clouds	scattered clouds: 25-50%	 03
+803	Clouds	broken clouds: 51-84%	 04
+804	Clouds	overcast clouds: 85-100%	 04

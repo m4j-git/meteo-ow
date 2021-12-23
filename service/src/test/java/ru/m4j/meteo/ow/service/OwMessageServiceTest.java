@@ -14,20 +14,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.m4j.meteo.ow.config.OwTestBeanSource;
+import ru.m4j.meteo.ow.domain.OwAlert;
+import ru.m4j.meteo.ow.domain.OwDaily;
+import ru.m4j.meteo.ow.domain.OwFact;
+import ru.m4j.meteo.ow.domain.OwHourly;
+import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.ow.repo.OwAlertRepository;
-import ru.m4j.meteo.ow.repo.OwDailyRepository;
-import ru.m4j.meteo.ow.repo.OwFactRepository;
-import ru.m4j.meteo.ow.repo.OwHourlyRepository;
-import ru.m4j.meteo.ow.repo.OwMessageRepository;
-import ru.m4j.meteo.ow.repo.OwWeatherRepository;
+import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
+import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
-@SpringBootTest
+@SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 class OwMessageServiceTest {
 
     private final Integer geonameId = 1;
@@ -41,39 +45,28 @@ class OwMessageServiceTest {
     private OwDirectoryService dir;
     @Autowired
     private OwTestBeanSource src;
-    @Autowired
-    private OwMessageRepository msgRepo;
-    @Autowired
-    private OwFactRepository factRepo;
-    @Autowired
-    private OwWeatherRepository weatherRepo;
-    @Autowired
-    private OwAlertRepository alertRepo;
-    @Autowired
-    private OwDailyRepository dailyRepo;
-    @Autowired
-    private OwHourlyRepository hourlyRepo;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    void setUp() throws IOException {
         assertThat(service).isNotNull();
-        assertThat(alertRepo.count()).isZero();
-        assertThat(weatherRepo.count()).isZero();
-        assertThat(dailyRepo.count()).isZero();
-        assertThat(hourlyRepo.count()).isZero();
-        assertThat(factRepo.count()).isZero();
-        assertThat(msgRepo.count()).isZero();
+        assertThat(dao.count(OwAlert.class)).isZero();
+        assertThat(dao.count(OwWeather.class)).isZero();
+        assertThat(dao.count(OwDaily.class)).isZero();
+        assertThat(dao.count(OwHourly.class)).isZero();
+        assertThat(dao.count(OwFact.class)).isZero();
+        assertThat(dao.count(OwMessage.class)).isZero();
         OwMessageDto dto = src.readJson();
         assertThat(dto.getCurrent().getDt()).isNotNull();
         dir.saveConditionCodesToDb();
         dto.setMessageUuid(UUID.fromString(messageUuid));
         service.saveMessageToDb(dto, geonameId);
-        assertThat(alertRepo.count()).isEqualTo(2);
-        assertThat(weatherRepo.count()).isEqualTo(55);
-        assertThat(dailyRepo.count()).isEqualTo(1);
-        assertThat(hourlyRepo.count()).isEqualTo(2);
-        assertThat(factRepo.count()).isEqualTo(1);
-        assertThat(msgRepo.count()).isEqualTo(1);
+        assertThat(dao.count(OwAlert.class)).isEqualTo(2);
+        assertThat(dao.count(OwWeather.class)).isEqualTo(55);
+        assertThat(dao.count(OwDaily.class)).isEqualTo(1);
+        assertThat(dao.count(OwHourly.class)).isEqualTo(2);
+        assertThat(dao.count(OwFact.class)).isEqualTo(1);
+        assertThat(dao.count(OwMessage.class)).isEqualTo(1);
+
     }
 
     @Test
@@ -105,14 +98,14 @@ class OwMessageServiceTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         dao.deleteAllMessages();
         dao.deleteWeatherConditionCodes();
-        assertThat(alertRepo.count()).isZero();
-        assertThat(weatherRepo.count()).isZero();
-        assertThat(dailyRepo.count()).isZero();
-        assertThat(hourlyRepo.count()).isZero();
-        assertThat(factRepo.count()).isZero();
-        assertThat(msgRepo.count()).isZero();
+        assertThat(dao.count(OwAlert.class)).isZero();
+        assertThat(dao.count(OwWeather.class)).isZero();
+        assertThat(dao.count(OwDaily.class)).isZero();
+        assertThat(dao.count(OwHourly.class)).isZero();
+        assertThat(dao.count(OwFact.class)).isZero();
+        assertThat(dao.count(OwMessage.class)).isZero();
     }
 }

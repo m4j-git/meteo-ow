@@ -11,6 +11,8 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,9 +31,9 @@ public class OwMessageServiceImpl implements OwMessageService {
     private final OwDao dao;
     private final OwMessageDtoModelMapper mapper;
 
-    public OwMessageServiceImpl(OwMessageDtoModelMapper mapper, OwDao dao) {
+    public OwMessageServiceImpl(ApplicationContext context, OwMessageDtoModelMapper mapper, @Value("${meteo.service.dao:owDaoImplV1Jpa}") String daoImpl) {
+        dao = (OwDao) context.getBean(daoImpl);
         this.mapper = mapper;
-        this.dao = dao;
     }
 
     @Override

@@ -1,0 +1,26 @@
+<locations>
+  <location>
+    <geonameId>1</geonameId>
+    <geoname>Moscow</geoname>
+    <lat>55.75</lat>
+    <lon>37.6</lon>
+  </location>
+  <location>
+    <geonameId>2</geonameId>
+    <geoname>Shilovo</geoname>
+    <lat>54.571705</lat>
+    <lon>41.08374</lon>
+  </location>
+  <location>
+    <geonameId>3</geonameId>
+    <geoname>Kaliningrad</geoname>
+    <lat>54.710157</lat>
+    <lon>20.510137</lon>
+  </location>
+  <location>
+    <geonameId>4</geonameId>
+    <geoname>Magadan</geoname>
+    <lat>59.5638</lat>
+    <lon>150.803</lon>
+  </location>
+</locations>

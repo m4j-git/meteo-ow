@@ -16,12 +16,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
 import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
-@SpringBootTest
+@SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 class OwMessageRepositoryTest {
 
     private final Integer geonameId = 1;
@@ -29,7 +33,7 @@ class OwMessageRepositoryTest {
     private OwMessageRepository repo;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         assertThat(repo).isNotNull();
         assertThat(repo.count()).isZero();
     }
@@ -65,7 +69,7 @@ class OwMessageRepositoryTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         repo.deleteAll();
         assertThat(repo.count()).isZero();
     }
