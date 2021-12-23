@@ -49,31 +49,31 @@ public class OwWeatherFormMapper {
     }
 
     private String mapWindDeg(Integer deg) {
-        if (deg >= 0 && deg <= 22) {
+        if ((deg >= 0) && (deg <= 22)) {
             return "C";
         }
-        if (deg >= 23 && deg <= 67) {
+        if ((deg >= 23) && (deg <= 67)) {
             return "CВ";
         }
-        if (deg >= 68 && deg <= 112) {
+        if ((deg >= 68) && (deg <= 112)) {
             return "В";
         }
-        if (deg >= 113 && deg <= 157) {
+        if ((deg >= 113) && (deg <= 157)) {
             return "ЮВ";
         }
-        if (deg >= 158 && deg <= 202) {
+        if ((deg >= 158) && (deg <= 202)) {
             return "Ю";
         }
-        if (deg >= 203 && deg <= 247) {
+        if ((deg >= 203) && (deg <= 247)) {
             return "ЮЗ";
         }
-        if (deg >= 248 && deg <= 292) {
+        if ((deg >= 248) && (deg <= 292)) {
             return "З";
         }
-        if (deg >= 293 && deg <= 337) {
+        if ((deg >= 293) && (deg <= 337)) {
             return "CЗ";
         }
-        if (deg >= 337 && deg <= 360) {
+        if ((deg >= 337) && (deg <= 360)) {
             return "C";
         }
         throw new IllegalStateException("deg");

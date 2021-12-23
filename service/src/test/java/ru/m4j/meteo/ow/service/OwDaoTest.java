@@ -29,7 +29,7 @@ public abstract class OwDaoTest {
 
     private final Integer geonameId = 2;
 
-    private OwDao dao;
+    private final OwDao dao;
 
     public OwDaoTest(OwDao dao) {
         this.dao = dao;
