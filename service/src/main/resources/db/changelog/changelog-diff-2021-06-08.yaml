@@ -18,7 +18,7 @@ databaseChangeLog:
               - column:
                   constraints:
                     nullable: false
-                  name: end_
+                  name: end
                   type: datetime
               - column:
                   constraints:
@@ -248,7 +248,7 @@ databaseChangeLog:
       id: 1623186307138-4
       author: alex (generated)
       changes:
-        - createTable:
+        - createTable: 
             columns:
               - column:
                   autoIncrement: true

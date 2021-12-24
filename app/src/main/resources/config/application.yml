@@ -7,23 +7,6 @@ spring:
   profiles:
     active:
       - '@spring.profiles.active@'
-      - '@spring.profiles.db@'
-  jpa:
-    generate-ddl: false
-    open-in-view: false
-    properties:
-      hibernate:
-        "[format_sql]": true
-        type: info
-        "[use_sql_comments]": true
-    show-sql: false
-    hibernate:
-      ddl-auto: validate
-      use-new-id-generator-mappings: false
-  data:
-    jpa:
-      repositories:
-        bootstrap-mode: deferred #?
   thymeleaf:
     cache: true
     # mode: HTML
@@ -88,12 +71,6 @@ spring:
   config:
     activate:
       on-profile: stage
-  jpa:
-    generate-ddl: false
-    properties:
-      hibernate:
-        type: info
-    show-sql: false
   thymeleaf:
     cache: false
   output:
@@ -216,43 +193,5 @@ management:
       exposure:
         include: '*'
 
---- ################### h2 ###################
  
-##################
-#   Spring Settings
-##################
-spring:
-  config:
-    activate:
-      on-profile: h2        
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:meteo-ow;MODE=MySQL
-    username: ${METEO_USER}
-    password: ${METEO_PASSWD}
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-
---- ################### mysql ################### 
-
-##################
-#   Spring Settings
-##################
-spring:
-  config:
-    activate:
-      on-profile: mysql      
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-host:3306/meteo-ow?&serverTimezone=Europe/Moscow&useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true
-    username: ${METEO_USER}
-    password: ${METEO_PASSWD}
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL55Dialect        
+      

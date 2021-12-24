@@ -133,7 +133,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -218,35 +222,6 @@
 				<spring.profiles.active>prod</spring.profiles.active>
 				<skip.tests>true</skip.tests>
 			</properties>
-		</profile>
-		<profile>
-			<id>mysql</id>
-			<properties>
-				<spring.profiles.db>mysql</spring.profiles.db>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>mysql</groupId>
-					<artifactId>mysql-connector-java</artifactId>
-					<scope>runtime</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>h2</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<spring.profiles.db>h2</spring.profiles.db>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.h2database</groupId>
-					<artifactId>h2</artifactId>
-					<scope>runtime</scope>
-				</dependency>
-			</dependencies>
 		</profile>
 	</profiles>
 

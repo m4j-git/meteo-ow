@@ -28,7 +28,7 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
       - name: Build with Maven
-        run: mvn -B package  -P dev,h2 --file pom.xml
+        run: mvn -B package  -P dev --file pom.xml
         env:
           OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: renameColumn-end
+      author: alex (generated)
+      changes:
+      -  renameColumn:  
+           columnDataType:  datetime  
+           newColumnName:  end_  
+           oldColumnName:  end  
+           tableName:  ow_alert 
+
+
+
