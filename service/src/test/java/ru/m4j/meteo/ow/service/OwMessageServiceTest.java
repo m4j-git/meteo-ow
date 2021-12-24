@@ -26,13 +26,14 @@ import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
 import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwMessageServiceTest {
+class OwMessageServiceTest extends OwMysqlContainerBase {
 
     private final Integer geonameId = 1;
     private final String messageUuid = "11111111-1111-1111-1111-111111111111";

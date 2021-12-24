@@ -20,12 +20,13 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.m4j.meteo.ow.domain.OwDaily;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwDailyRepositoryTest {
+class OwDailyRepositoryTest extends OwMysqlContainerBase {
 
     @Autowired
     private OwDailyRepository repo;

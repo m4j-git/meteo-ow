@@ -1,5 +1,8 @@
 databaseChangeLog:
   - include:
       # schema
-      file: db/changelog/changelog-diff-2021-06-08.yaml
-      file: db/changelog/changelog-diff-2021-12-23.yaml
+      file: 
+      - db/changelog/changelog-diff-2021-06-08.yaml
+  - include:
+      file:       
+      - db/changelog/changelog-diff-2021-12-23.yaml

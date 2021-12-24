@@ -42,7 +42,7 @@ public class OwMessage implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "message_id")
     @EqualsAndHashCode.Include
     private Long messageId;

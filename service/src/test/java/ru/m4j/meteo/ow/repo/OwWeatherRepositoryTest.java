@@ -16,12 +16,13 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
 import ru.m4j.meteo.ow.domain.OwWeather;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwWeatherRepositoryTest {
+class OwWeatherRepositoryTest extends OwMysqlContainerBase {
 
     @Autowired
     private OwWeatherRepository repo;

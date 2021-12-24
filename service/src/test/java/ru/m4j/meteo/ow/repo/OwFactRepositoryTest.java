@@ -22,12 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ru.m4j.meteo.ow.domain.OwFact;
 import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwFactRepositoryTest {
+class OwFactRepositoryTest extends OwMysqlContainerBase {
 
     private final Integer geonameId = 1;
     @Autowired

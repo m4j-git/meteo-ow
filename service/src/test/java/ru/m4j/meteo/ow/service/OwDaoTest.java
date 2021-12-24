@@ -24,8 +24,9 @@ import ru.m4j.meteo.ow.domain.OwFact;
 import ru.m4j.meteo.ow.domain.OwHourly;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.domain.OwWeather;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 
-public abstract class OwDaoTest {
+public abstract class OwDaoTest extends OwMysqlContainerBase {
 
     private final Integer geonameId = 2;
 
