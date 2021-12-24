@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
@@ -43,6 +44,7 @@ public class OwFact implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @Column(name = "fact_id")
     private Long factId;
     /**
      * Current time, Unix, UTC
@@ -65,6 +67,7 @@ public class OwFact implements Serializable {
      * Temperature. This temperature parameter accounts for the human perception of
      * weather. Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
+    @Column(name = "feels_like")
     private Short feelsLike;
     /**
      * Atmospheric pressure on the sea level, hPa
@@ -79,6 +82,7 @@ public class OwFact implements Serializable {
      * which water droplets begin to condense and dew can form. Units – default:
      * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
+    @Column(name = "dew_point")
     private Short dewPoint;
     /**
      * UV index
@@ -96,15 +100,18 @@ public class OwFact implements Serializable {
      * Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec,
      * imperial: miles/hour. How to change units used
      */
+    @Column(name = "wind_speed")
     private Short windSpeed;
     /**
      * Wind direction, degrees (meteorological)
      */
+    @Column(name = "wind_deg")
     private Short windDeg;
     /**
      * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
      * miles/hour
      */
+    @Column(name = "wind_gust")
     private Short windGust;
     /**
      * Rain volume for last hour, mm

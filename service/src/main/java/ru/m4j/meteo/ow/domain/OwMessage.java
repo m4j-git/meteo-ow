@@ -48,15 +48,15 @@ public class OwMessage implements Serializable {
     private Long messageId;
 
     @CreatedDate
-    @Column(nullable = false, updatable = false, columnDefinition = "timestamp")
+    @Column(name = "created_on", nullable = false, updatable = false, columnDefinition = "timestamp")
     private LocalDateTime createdOn;
 
     @NotNull
-    @Column(nullable = false, updatable = false, unique = true, columnDefinition = "varbinary")
+    @Column(name = "message_uuid", nullable = false, updatable = false, unique = true, columnDefinition = "varbinary")
     private UUID messageUuid;
 
     @NotNull
-    @Column(nullable = false, updatable = false)
+    @Column(name = "geoname_id", nullable = false, updatable = false)
     private Integer geonameId;
 
     @Setter(AccessLevel.NONE)

@@ -35,10 +35,12 @@ public class OwAlert implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @Column(name = "alert_id")
     private Long alertId;
     /**
      * Name of the alert source
      */
+    @Column(name = "sender_name")
     private String senderName;
     /**
      * Alert event name

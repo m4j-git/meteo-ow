@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,6 +41,7 @@ public class OwHourly implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @Column(name = "hourly_id")
     private Long hourlyId;
     /**
      * Time of the forecasted data, Unix, UTC
@@ -54,6 +56,7 @@ public class OwHourly implements Serializable {
      * Temperature. This accounts for the human perception of weather. Units –
      * default: kelvin, metric: Celsius, imperial: Fahrenheit.
      */
+    @Column(name = "feels_like")
     private Short feelsLike;
     /**
      * Atmospheric pressure on the sea level, hPa
@@ -68,6 +71,7 @@ public class OwHourly implements Serializable {
      * which water droplets begin to condense and dew can form. Units – default:
      * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
+    @Column(name = "dew_point")
     private Short dewPoint;
     /**
      * Cloudiness, %
@@ -81,15 +85,18 @@ public class OwHourly implements Serializable {
      * Wind speed. Units – default: metre/sec, metric: metre/sec, imperial:
      * miles/hour
      */
+    @Column(name = "wind_speed")
     private Short windSpeed;
     /**
      * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
      * miles/hour.
      */
+    @Column(name = "wind_gust")
     private Short windGust;
     /**
      * Wind direction, degrees (meteorological)
      */
+    @Column(name = "wind_deg")
     private Short windDeg;
     /**
      * Probability of precipitation

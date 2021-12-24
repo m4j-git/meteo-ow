@@ -13,11 +13,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import lombok.extern.slf4j.Slf4j;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 
 @Slf4j
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwApplicationTest {
+class OwApplicationTest extends OwMysqlContainerBase {
 
     @Autowired
     private Environment env;

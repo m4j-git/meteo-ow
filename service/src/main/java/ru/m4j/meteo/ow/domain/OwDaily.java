@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -40,6 +41,7 @@ public class OwDaily implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @Column(name = "daily_id ")
     private Long dailyId;
     /**
      * Time of the forecasted data, Unix, UTC
@@ -62,6 +64,7 @@ public class OwDaily implements Serializable {
      * This accounts for the human perception of weather. Units – default: kelvin,
      * metric
      */
+    @Column(name = "feels_like")
     private OwFeelsLike feelsLike;
     /**
      * Atmospheric pressure on the sea level, hPa
@@ -76,20 +79,24 @@ public class OwDaily implements Serializable {
      * which water droplets begin to condense and dew can form. Units – default:
      * kelvin, metric: Celsius, imperial: Fahrenheit.
      */
+    @Column(name = "dew_point")
     private Short dewPoint;
     /**
      * Wind speed. Units – default: metre/sec, metric: metre/sec, imperial:
      * miles/hour.
      */
+    @Column(name = "wind_speed")
     private Short windSpeed;
     /**
      * Wind gust. Units – default: metre/sec, metric: metre/sec, imperial:
      * miles/hour
      */
+    @Column(name = "wind_gust")
     private Short windGust;
     /**
      * Wind direction, degrees (meteorological)
      */
+    @Column(name = "wind_deg")
     private Short windDeg;
     /**
      * Cloudiness, %

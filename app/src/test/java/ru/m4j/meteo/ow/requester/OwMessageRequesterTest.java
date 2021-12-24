@@ -23,12 +23,13 @@ import ru.m4j.meteo.ow.model.OwMessageDto;
 import ru.m4j.meteo.ow.repo.OwMessageRepository;
 import ru.m4j.meteo.ow.service.OwDao;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
+import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
 
 @SpringBootTest
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwMessageRequesterTest {
+class OwMessageRequesterTest extends OwMysqlContainerBase {
 
     @MockBean
     private OwMessageClient client;
