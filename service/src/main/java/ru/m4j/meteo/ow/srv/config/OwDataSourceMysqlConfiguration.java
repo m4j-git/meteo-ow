@@ -17,7 +17,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-@Profile("prod,stage")
+@Profile({ "prod", "stage" })
 @Configuration
 public class OwDataSourceMysqlConfiguration {
 
