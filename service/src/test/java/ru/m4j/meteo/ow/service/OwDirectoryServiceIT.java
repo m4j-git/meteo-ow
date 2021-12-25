@@ -28,7 +28,7 @@ import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwDirectoryServiceTest extends OwMysqlContainerBase {
+class OwDirectoryServiceIT extends OwMysqlContainerBase {
 
     @Autowired
     private OwDao dao;

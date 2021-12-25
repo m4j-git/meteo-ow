@@ -17,9 +17,9 @@ import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwDaoImplV2JpaSpecTest extends OwDaoTest {
+class OwDaoImplV2JpaSpecIT extends OwDaoTestBase {
 
-    OwDaoImplV2JpaSpecTest(ApplicationContext context) {
+    OwDaoImplV2JpaSpecIT(ApplicationContext context) {
         super((OwDao) context.getBean("owDaoImplV2JpaSpec"));
     }
 

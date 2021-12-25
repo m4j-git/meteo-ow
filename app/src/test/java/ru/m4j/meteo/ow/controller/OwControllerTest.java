@@ -6,7 +6,6 @@ package ru.m4j.meteo.ow.controller;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -50,7 +49,7 @@ class OwControllerTest {
         given(service.getLastMessage(geonameId)).willReturn(src.readJson());
         mockMvc.perform(get("/")
             .param("geonameId", "1"))
-            .andDo(print())
+            //.andDo(print())
             .andExpect(status().isOk())
             .andExpect(model().hasNoErrors())
             .andExpect(model().attributeExists("weather"))

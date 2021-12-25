@@ -18,7 +18,7 @@ import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 @Slf4j
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwApplicationTest extends OwMysqlContainerBase {
+class OwApplicationIT extends OwMysqlContainerBase {
 
     @Autowired
     private Environment env;

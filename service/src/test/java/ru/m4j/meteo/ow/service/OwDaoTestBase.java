@@ -26,13 +26,13 @@ import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.domain.OwWeather;
 import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 
-public abstract class OwDaoTest extends OwMysqlContainerBase {
+public abstract class OwDaoTestBase extends OwMysqlContainerBase {
 
     private final Integer geonameId = 2;
 
     private final OwDao dao;
 
-    public OwDaoTest(OwDao dao) {
+    public OwDaoTestBase(OwDao dao) {
         this.dao = dao;
     }
 

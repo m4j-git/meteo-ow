@@ -29,7 +29,7 @@ import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
 @SpringBootTest
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwMessageRequesterTest extends OwMysqlContainerBase {
+class OwMessageRequesterIT extends OwMysqlContainerBase {
 
     @MockBean
     private OwMessageClient client;

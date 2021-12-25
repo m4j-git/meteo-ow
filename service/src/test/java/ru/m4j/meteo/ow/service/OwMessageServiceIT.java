@@ -33,7 +33,7 @@ import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwMessageServiceTest extends OwMysqlContainerBase {
+class OwMessageServiceIT extends OwMysqlContainerBase {
 
     private final Integer geonameId = 1;
     private final String messageUuid = "11111111-1111-1111-1111-111111111111";

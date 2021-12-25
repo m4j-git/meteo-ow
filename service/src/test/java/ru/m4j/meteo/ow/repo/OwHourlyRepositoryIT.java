@@ -5,6 +5,8 @@ package ru.m4j.meteo.ow.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,36 +17,40 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.m4j.meteo.ow.domain.OwAlert;
+import ru.m4j.meteo.ow.domain.OwHourly;
 import ru.m4j.meteo.ow.domain.OwMessage;
+import ru.m4j.meteo.ow.service.OwDirectoryService;
 import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwAlertRepositoryTest extends OwMysqlContainerBase {
+class OwHourlyRepositoryIT extends OwMysqlContainerBase {
 
     @Autowired
-    private OwAlertRepository repo;
+    private OwHourlyRepository repo;
     @Autowired
     private OwMessageRepository repoM;
+    @Autowired
+    private OwDirectoryService dir;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         assertThat(repo).isNotNull();
         assertThat(repo.count()).isZero();
         assertThat(repoM.count()).isZero();
+        dir.saveConditionCodesToDb();
     }
 
     @Test
-    void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Qualifier("alert") OwAlert alertBean) {
+    void testCreateAndFindBiId(@Qualifier("message_skinny") OwMessage mes, @Qualifier("hourly") OwHourly hourlyBean) {
         mes = repoM.save(mes);
-        mes.addAlert(alertBean);
-        final OwAlert ent1 = repo.save(alertBean);
+        hourlyBean.setMessage(mes);
+        final OwHourly ent1 = repo.save(hourlyBean);
         assertThat(repo.count()).isEqualTo(1);
-        assertThat(ent1.getAlertId()).isNotNull();
-        final OwAlert ent2 = repo.findById(ent1.getAlertId()).orElseThrow();
+        assertThat(ent1.getHourlyId()).isNotNull();
+        final OwHourly ent2 = repo.findById(ent1.getHourlyId()).orElseThrow();
         assertThat(ent1).isEqualTo(ent2);
     }
 

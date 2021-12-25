@@ -20,6 +20,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.m4j.meteo.ow.domain.OwFact;
 import ru.m4j.meteo.ow.domain.OwMessage;
 import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
@@ -27,51 +28,48 @@ import ru.m4j.meteo.ow.srv.config.OwTestDaoConfiguration;
 @SpringBootTest(classes = OwTestDaoConfiguration.class)
 @Transactional
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwMessageRepositoryTest extends OwMysqlContainerBase {
+class OwFactRepositoryIT extends OwMysqlContainerBase {
 
     private final Integer geonameId = 1;
     @Autowired
-    private OwMessageRepository repo;
+    private OwFactRepository repo;
+    @Autowired
+    private OwMessageRepository repoM;
 
     @BeforeEach
     void setUp() {
         assertThat(repo).isNotNull();
         assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
 
     @Test
-    void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes) {
-        OwMessage ent1 = repo.save(mes);
+    void testCreateAndFindById(@Qualifier("message_skinny") OwMessage mes, @Qualifier("fact_skinny") OwFact fact) {
+        mes = repoM.save(mes);
+        mes.addFact(fact);
+        final OwFact ent1 = repo.save(fact);
         assertThat(repo.count()).isEqualTo(1);
-        assertThat(ent1.getMessageId()).isNotNull();
-        assertThat(ent1.getCreatedOn()).isNotNull();
-        final OwMessage ent2 = repo.findById(ent1.getMessageId()).orElseThrow();
+        assertThat(ent1.getFactId()).isNotNull();
+        final OwFact ent2 = repo.findById(ent1.getFactId()).orElseThrow();
         assertThat(ent1).isEqualTo(ent2);
     }
 
     @Test
-    void testFindIdByUuid(@Qualifier("message_skinny") OwMessage mes) {
-        final OwMessage ent = repo.save(mes);
+    void testFindFacts(@Qualifier("message") OwMessage mes) {
+        OwMessage ent = repoM.save(mes);
         assertThat(repo.count()).isEqualTo(1);
-        assertThat(ent.getMessageUuid()).isNotNull();
-        Long id = repo.findIdByMessageUuid(ent.getMessageUuid());
-        assertThat(id).isNotNull();
-        assertThat(ent.getMessageId()).isEqualTo(id);
-    }
-
-    @Test
-    void testFindMessages(@Qualifier("message_skinny") OwMessage mes) {
-        OwMessage ent = repo.save(mes);
-        assertThat(repo.count()).isEqualTo(1);
-        final List<OwMessage> findMessages = repo.findMessages(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
+        final List<OwFact> findFacts = repo.findFacts(geonameId, LocalDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.systemDefault()),
             LocalDateTime.ofInstant(Instant.ofEpochSecond(Integer.MAX_VALUE), ZoneId.systemDefault()));
-        assertThat(findMessages.size()).isEqualTo(1);
-        assertThat(ent).isEqualTo(findMessages.get(0));
+        assertThat(findFacts.size()).isEqualTo(1);
+        assertThat(ent.getFact()).isEqualTo(findFacts.get(0));
     }
 
     @AfterEach
     void tearDown() {
         repo.deleteAll();
+        repoM.deleteAll();
         assertThat(repo.count()).isZero();
+        assertThat(repoM.count()).isZero();
     }
+
 }

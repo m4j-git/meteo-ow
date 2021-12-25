@@ -38,7 +38,7 @@ import ru.m4j.meteo.ow.srv.config.OwMysqlContainerBase;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-class OwRestResourceTest extends OwMysqlContainerBase {
+class OwRestResourceIT extends OwMysqlContainerBase {
 
     private final String messageUuid = "11111111-1111-1111-1111-111111111111";
     private final Integer geonameId = 1;
