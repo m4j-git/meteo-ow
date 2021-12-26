@@ -11,7 +11,7 @@
 
 	<description>Spring Boot App for OpenWeatherMap</description>
 	<url>https://m4j.ru/meteo-ow</url>
-	<inceptionYear>2021</inceptionYear>
+	<inceptionYear>2022</inceptionYear>
 
 	<modules>
 		<module>api</module>
