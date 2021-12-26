@@ -26,7 +26,7 @@ docker_stop(){
  } 
   
 docker_build(){
-  IMAGE_NAME=${MODULE_NAME}:latest
+  IMAGE_NAME=${MODULE_NAME}:21.4.10
   docker_stop 
   
   echo -e "\nDocker build image with name ${IMAGE_NAME}...\n"
@@ -43,35 +43,39 @@ docker_build(){
       ${IMAGE_NAME} 
 }
 
-if [ "$1" = "build-prod" ]; then
-  mvn clean install -P prod  $skip   
+if [ ! -n "$1" ] ;then
+    show_help
+else
+    case "$1" in
+        "build-dev")
+            mvn clean install -P dev $skip
+            ;;
+        "build-stage")
+            mvn clean install -P stage $skip
+            ;;
+        "build-prod")
+              mvn clean install -P prod $skip 
+            ;;
+        "build-site")
+            mvn site -P prod $skip
+            ;;
+        "docker-build")
+            docker_build
+            ;;
+        "docker-stop")
+            docker_stop
+            ;;
+        "test-it")
+            mvn clean test verify -P dev
+            ;;
+        "test-stress")
+              ./wrk -t12 -c12 -d30s http://meteo-ow-host:8081/meteo-ow/?geonameId=1
+            ;;                          
+        *)
+            echo 'Invalid command!'
+            show_help
+            ;;
+    esac
 fi
 
-if [ "$1" = "build-stage" ]; then
-  mvn clean install -P stage $skip   
-fi
-
-if [ "$1" = "build-dev" ]; then
-  mvn clean install -P dev $skip   
-fi
-
-if [ "$1" = "test-it" ]; then
-  mvn clean test  verify -P dev  
-fi
-
-if [ "$1" = "build-site" ]; then
-  mvn site -P prod $skip   
-fi
-
-if [ "$1" = "docker-build" ]; then
-  docker_build
-fi
-
-if [ "$1" = "test-stress" ]; then
-  ./wrk -t12 -c12 -d30s http://meteo-ow-host:8081/meteo-ow/?geonameId=1
-fi
-
-if [ "$1" = "docker-stop" ]; then
-  docker_stop
-fi
 
