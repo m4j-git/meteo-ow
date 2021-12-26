@@ -26,7 +26,7 @@ docker_stop(){
  } 
   
 docker_build(){
-  IMAGE_NAME=${MODULE_NAME}:21.4.10
+  IMAGE_NAME=${MODULE_NAME}:22.1.1
   docker_stop 
   
   echo -e "\nDocker build image with name ${IMAGE_NAME}...\n"

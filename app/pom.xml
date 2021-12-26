@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>ru.m4j.meteo</groupId>
 		<artifactId>meteo-share-bom</artifactId>
-		<version>21.4.10-SNAPSHOT</version>
+		<version>22.1.1-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
 
