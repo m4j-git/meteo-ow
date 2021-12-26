@@ -7,7 +7,7 @@ dir=`dirname $0`
 absdir=`cd $dir; pwd`
 cd $absdir
 
-skip='-Dmaven.test.skip -DskipITs'
+skip='-DskipITs'
 
 MODULE_NAME=meteo-ow
 echo "make $MODULE_NAME"
