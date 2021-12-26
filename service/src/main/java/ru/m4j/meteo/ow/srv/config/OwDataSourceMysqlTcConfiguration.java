@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,9 +48,9 @@ public class OwDataSourceMysqlTcConfiguration {
         vendorAdapter.setGenerateDdl(false);
         vendorAdapter.setShowSql(false);
 
-        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.MySQL55Dialect");
-        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "validate");
-        jpaProperties.put(org.hibernate.cfg.Environment.USE_NEW_ID_GENERATOR_MAPPINGS, "false");
+        jpaProperties.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL55Dialect");
+        jpaProperties.put(AvailableSettings.HBM2DDL_AUTO, "validate");
+        jpaProperties.put(AvailableSettings.USE_NEW_ID_GENERATOR_MAPPINGS, "false");
 
         return entityManagerFactoryBean;
     }
