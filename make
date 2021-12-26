@@ -9,6 +9,8 @@ cd $absdir
 
 skip='-Dmaven.test.skip -DskipITs'
 
+MODULE_NAME=meteo-ow
+echo "make $MODULE_NAME"
 
 show_help(){
     echo -e "Usage: ./make build|git|check|deploy|test"
@@ -64,7 +66,7 @@ if [ "$1" = "build-site" ]; then
 fi
 
 if [ "$1" = "build-docker" ]; then
-  build_ docker
+  build_docker
 fi
 
 if [ "$1" = "test-stress" ]; then
