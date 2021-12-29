@@ -21,14 +21,13 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import ru.m4j.meteo.ow.config.OwWebSecurityTestConfig;
 import ru.m4j.meteo.ow.form.OwWeatherFormMapper;
 import ru.m4j.meteo.ow.model.LocationDto;
 import ru.m4j.meteo.ow.service.LocationService;
 import ru.m4j.meteo.ow.service.OwMessageService;
 import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
 
-@ContextConfiguration(classes = { OwController.class, OwWeatherFormMapper.class, OwWebSecurityTestConfig.class, OwTestBeanSource.class })
+@ContextConfiguration(classes = { OwController.class, OwWeatherFormMapper.class, OwTestBeanSource.class })
 @WebMvcTest(OwController.class)
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 class OwControllerTest {
