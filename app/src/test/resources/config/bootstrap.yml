@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: meteo-ow
+  profiles:
+    active: 
+      - '@spring.profiles.active@'
+  cloud:
+    config:
+      enabled: false

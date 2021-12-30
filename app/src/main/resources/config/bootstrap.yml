@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: meteo-ow
+  profiles:
+    active: 
+      - '@spring.profiles.active@'
+  cloud:
+    config:
+      uri: http://localhost:8888/meteo-config 
+      name: meteo-ow
+      profile: '@spring.profiles.active@'
+      label: master
+      
+--- ################### prod ###################
+spring:
+  config:
+    activate:
+      on-profile: prod
+  cloud:
+    config:           
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-interval: 2000
+        max-attempts: 100 
