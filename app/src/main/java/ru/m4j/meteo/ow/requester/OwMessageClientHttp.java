@@ -11,13 +11,17 @@ import java.net.URI;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.model.OwMessageDto;
 
+@Slf4j
 @ConditionalOnProperty(name = "meteo.provider.type", havingValue = "http")
 @Component
 public class OwMessageClientHttp implements OwMessageClient {
@@ -35,6 +39,11 @@ public class OwMessageClientHttp implements OwMessageClient {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
             return jacksonMapper.readValue(rd, OwMessageDto.class);
         }
+    }
+
+    @PostConstruct
+    void init() {
+        log.info(this.getClass().getCanonicalName() + " inited");
     }
 
 }

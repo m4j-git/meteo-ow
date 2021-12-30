@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
@@ -79,6 +81,11 @@ public class OwRestClientImpl implements OwRestResource {
     @Override
     public OwMessageDto getMessage(String uuid) {
         throw new IllegalStateException("not implemented");
+    }
+
+    @PostConstruct
+    void init() {
+        log.info(this.getClass().getCanonicalName() + " inited");
     }
 
 }

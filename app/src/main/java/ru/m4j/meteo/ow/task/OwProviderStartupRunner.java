@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 import ru.m4j.meteo.ow.service.OwDirectoryService;
 
-@Component
-@ConditionalOnProperty(name = "meteo.scheduling.enabled", havingValue = "true")
 @Slf4j
+@Component
+@ConditionalOnProperty(name = "meteo.scheduling.enabled", havingValue = "true", matchIfMissing = false)
 public class OwProviderStartupRunner implements CommandLineRunner {
 
     private final OwDirectoryService dir;
