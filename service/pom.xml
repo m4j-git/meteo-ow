@@ -11,7 +11,7 @@
 
 	<parent>
 		<groupId>ru.m4j.meteo</groupId>
-		<artifactId>meteo-share-bom</artifactId>
+		<artifactId>meteo-share-bom-service</artifactId>
 		<version>22.1.1-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
@@ -33,173 +33,20 @@
 			<version>${meteo.project.version}</version>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-json</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-			<artifactId>jackson-dataformat-csv</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>mysql</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
 
 		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test-jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>com.mycila</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-			</plugin>
-
-
-			<plugin>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-maven-plugin</artifactId>
-				<configuration>
-					<changeLogFile>${change.log.path}db.changelog-master.xml</changeLogFile>
-					<driver>com.mysql.cj.jdbc.Driver</driver>
-					<url>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/meteo-ya</url>
-					<username>${env.METEO_USER}</username>
-					<password>${env.METEO_PASSWD}</password>
-					<outputChangeLogFile>${change.log.path}changelog-gen-${maven.build.timestamp.format}.yaml
-					</outputChangeLogFile>
-					<referenceDriver>com.mysql.cj.jdbc.Driver</referenceDriver>
-					<referenceUrl>jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/meteo-ya-dev</referenceUrl>
-					<referenceUsername>${env.METEO_USER}</referenceUsername>
-					<referencePassword>${env.METEO_PASSWD}</referencePassword>
-					<diffChangeLogFile>${change.log.path}changelog-diff-${maven.build.timestamp.format}.yaml
-					</diffChangeLogFile>
-					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-				</configuration>
-			</plugin>
 
 
 		</plugins>
 	</build>
 
 	<profiles>
-		<profile>
-			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<spring.profiles.active>dev</spring.profiles.active>
-				<skip.tests>false</skip.tests>
-			</properties>
-		</profile>
 
-		<profile>
-			<id>stage</id>
-			<properties>
-				<spring.profiles.active>stage</spring.profiles.active>
-				<skip.tests>false</skip.tests>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<spring.profiles.active>prod</spring.profiles.active>
-				<skip.tests>true</skip.tests>
-			</properties>
-		</profile>
 	</profiles>
-
-	<repositories>
-		<repository>
-			<id>github</id>
-			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/m4j-git/meteo-share</url>
-		</repository>
-	</repositories>
 
 
 </project>

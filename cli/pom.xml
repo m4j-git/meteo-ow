@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ru.m4j.meteo</groupId>
+		<artifactId>meteo-share-bom-cli</artifactId>
+		<version>22.1.1-SNAPSHOT</version>
+		<relativePath></relativePath>
+	</parent>
+
+	<artifactId>meteo-ow-cli</artifactId>
+	<packaging>jar</packaging>
+	<name>meteo-ow-cli</name>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>ru.m4j.meteo</groupId>
+			<artifactId>meteo-share-lib</artifactId>
+			<version>${meteo.project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ru.m4j.meteo</groupId>
+			<artifactId>meteo-ow-api</artifactId>
+			<version>${meteo.project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.m4j.meteo</groupId>
+			<artifactId>meteo-ow-service</artifactId>
+			<version>${meteo.project.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>meteo-ow-cli</finalName>
+
+		<plugins>
+
+		</plugins>
+	</build>
+
+	<profiles>
+
+	</profiles>
+
+
+</project>

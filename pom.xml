@@ -15,15 +15,24 @@
 
 	<modules>
 		<module>api</module>
-        <module>mvc</module>
-        <module>client</module>
+		<module>mvc</module>
+		<module>client</module>
 		<module>service</module>
-	    <module>app</module>
+		<module>app</module>
+        <module>cli</module>
 	</modules>
 
 	<scm>
 		<connection>scm:git:https://github.com/m4j-git/meteo-ow</connection>
 		<url>https://github.com/m4j-git/meteo-ow</url>
 	</scm>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/m4j-git/meteo-share</url>
+		</repository>
+	</repositories>
 
 </project>

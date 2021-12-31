@@ -1,0 +1,19 @@
+##################
+#   Spring Settings
+##################
+spring:
+  application:
+    name: meteo-ow-cli
+  profiles:
+    active: 
+      - '@spring.profiles.active@'
+  output:
+    ansi:
+      enabled: ALWAYS
+
+maven:
+  branch-name: '@scmBranch@'
+  build-number: '@buildNumber@'
+  
+
+
