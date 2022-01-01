@@ -22,5 +22,7 @@ eureka:
   client:
       enabled: false          
     
-
+meteo:   
+  instance:
+    hostname: meteo-ya-host
    
