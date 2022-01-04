@@ -7,11 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,15 +28,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.m4j.meteo.ow.client.OwRestClientTest.RestClientTestConfig;
 import ru.m4j.meteo.ow.model.OwCurrentDto;
 import ru.m4j.meteo.ow.model.OwMessageDto;
-import ru.m4j.meteo.share.app.GlobalConstants;
+import ru.m4j.meteo.ow.srv.config.OwTestBeanSource;
 
 @RestClientTest(OwRestClientImpl.class)
 @AutoConfigureWebClient(registerRestTemplate = true)
-@ContextConfiguration(classes = OwRestClientImpl.class)
+@ContextConfiguration(classes = { OwRestClientImpl.class, OwTestBeanSource.class })
 @Import(RestClientTestConfig.class)
 class OwRestClientTest {
-
-    private static final String TEST_DATA_FILE = "ow_onecall.json";
 
     private final Integer geonameId = 1;
 
@@ -50,17 +44,12 @@ class OwRestClientTest {
     private MockRestServiceServer server;
     @Autowired
     private ObjectMapper jacksonMapper;
-
-    private OwMessageDto readJson() throws IOException {
-        final FileInputStream fis = new FileInputStream(GlobalConstants.TEST_DATA_PATH + TEST_DATA_FILE);
-        try (BufferedReader rd = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
-            return jacksonMapper.readValue(rd, OwMessageDto.class);
-        }
-    }
+    @Autowired
+    private OwTestBeanSource src;
 
     @Test
     void whenCallingGetFacts_thenClientMakesCorrectCall() throws IOException {
-        OwMessageDto dto = readJson();
+        OwMessageDto dto = src.readJson();
         List<OwCurrentDto> factList = new ArrayList<>();
         factList.add(dto.getCurrent());
         String json = jacksonMapper.writeValueAsString(factList);
@@ -73,7 +62,7 @@ class OwRestClientTest {
 
     @Test
     void whenCallingGetLastMessage_thenClientMakesCorrectCall() throws IOException {
-        OwMessageDto dto = readJson();
+        OwMessageDto dto = src.readJson();
         String json = jacksonMapper.writeValueAsString(dto);
 
         server.expect(requestTo(client.getUri("messages/last", geonameId)))
@@ -84,7 +73,7 @@ class OwRestClientTest {
 
     @Test
     void whenCallingGetMessages_thenClientMakesCorrectCall() throws IOException {
-        OwMessageDto dto = readJson();
+        OwMessageDto dto = src.readJson();
         OwMessageDto[] mesList = new OwMessageDto[] { dto };
         String json = jacksonMapper.writeValueAsString(mesList);
         server.expect(requestTo(client.getUri("messages", geonameId)))
