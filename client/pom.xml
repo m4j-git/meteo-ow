@@ -11,7 +11,7 @@
 		<groupId>ru.m4j.meteo</groupId>
 		<artifactId>meteo-share-bom-client</artifactId>
 		<version>22.1.1-SNAPSHOT</version>
-		<relativePath></relativePath>
+		<relativePath>../../meteo-share/bom/client</relativePath>
 	</parent>
 
 	<dependencies>

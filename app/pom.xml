@@ -12,7 +12,7 @@
 		<groupId>ru.m4j.meteo</groupId>
 		<artifactId>meteo-share-bom-app</artifactId>
 		<version>22.1.1-SNAPSHOT</version>
-		<relativePath></relativePath>
+		<relativePath>../../meteo-share/bom/app</relativePath>
 	</parent>
 
 	<dependencies>
