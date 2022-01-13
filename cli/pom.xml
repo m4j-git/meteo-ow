@@ -34,7 +34,13 @@
 			<artifactId>meteo-ow-service</artifactId>
 			<version>${meteo.project.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>ru.m4j.meteo</groupId>
+			<artifactId>meteo-ow-service</artifactId>
+			<version>${meteo.project.version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -38,7 +38,7 @@ public class OwMessageServiceImpl implements OwMessageService {
 
     @Override
     @Transactional
-    public void saveMessageToDb(final OwMessageDto dto, final Integer geonameId) {
+    public void saveMessage(final OwMessageDto dto, final Integer geonameId) {
         final OwMessage message = dao.saveMessage(mapper.messageDtoToMessage(dto), geonameId);
         log.info("save openWeatherMap message to db - ok, id = {}", message.getMessageId());
     }

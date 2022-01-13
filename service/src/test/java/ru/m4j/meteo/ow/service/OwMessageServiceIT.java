@@ -60,7 +60,7 @@ class OwMessageServiceIT extends OwMysqlContainerBase {
         assertThat(dto.getCurrent().getDt()).isNotNull();
         dir.saveConditionCodesToDb();
         dto.setMessageUuid(UUID.fromString(messageUuid));
-        service.saveMessageToDb(dto, geonameId);
+        service.saveMessage(dto, geonameId);
         assertThat(dao.count(OwAlert.class)).isEqualTo(2);
         assertThat(dao.count(OwWeather.class)).isEqualTo(55);
         assertThat(dao.count(OwDaily.class)).isEqualTo(1);

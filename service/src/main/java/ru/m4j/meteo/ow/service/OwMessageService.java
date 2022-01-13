@@ -10,7 +10,7 @@ import ru.m4j.meteo.ow.model.OwMessageDto;
 
 public interface OwMessageService {
 
-    void saveMessageToDb(OwMessageDto dto, Integer geonameId);
+    void saveMessage(OwMessageDto dto, Integer geonameId);
 
     List<OwCurrentDto> getFacts(Integer geonameId, String dateFrom, String dateTo);
 

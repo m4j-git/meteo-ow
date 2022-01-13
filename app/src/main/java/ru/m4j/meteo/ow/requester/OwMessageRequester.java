@@ -51,7 +51,7 @@ public class OwMessageRequester {
         OwMessageDto dto = null;
         try {
             dto = client.request(getUri(geo));
-            service.saveMessageToDb(dto, geo.getGeonameId());
+            service.saveMessage(dto, geo.getGeonameId());
             log.info("read ow weather message ok for {}", geo);
             log.debug("response: " + dto);
         } catch (Exception e) {
